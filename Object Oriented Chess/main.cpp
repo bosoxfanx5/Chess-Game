@@ -11,7 +11,7 @@
 
 int main(int argc, const char * argv[])
 {
-   Board board;
+   ChessBoard board;
    board.load();
    while (board.interact())
       board.draw();

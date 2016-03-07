@@ -11,7 +11,10 @@
 
 class Board
 {
-
+public:
+   void load() {};
+   void draw() {};
+   bool interact() {return true;}
 };
 
 #endif /* board_h */

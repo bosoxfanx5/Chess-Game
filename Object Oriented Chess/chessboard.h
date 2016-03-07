@@ -11,9 +11,11 @@
 
 #include "board.h"
 #include "chessboardsquare.h"
+#include "chessmove.h"
+#include "chesspiece.h"
 #include <vector>
 
-class ChessBoard : Board
+class ChessBoard : public Board
 {
    ChessBoardSquare squares[8][8];
    std::vector<ChessMove> history;

@@ -9,9 +9,14 @@
 #ifndef chessboard_h
 #define chessboard_h
 
+#include "board.h"
+#include "chessboardsquare.h"
+#include <vector>
+
 class ChessBoard : Board
 {
-
-}
+   ChessBoardSquare squares[8][8];
+   std::vector<ChessMove> history;
+};
 
 #endif /* chessboard_h */

@@ -12,6 +12,6 @@
 class Location
 {
 
-}
+};
 
 #endif /* location_h */

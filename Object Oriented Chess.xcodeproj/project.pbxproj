@@ -28,8 +28,10 @@
 		846B6FB71C8D2E450067E829 /* board.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = board.h; sourceTree = "<group>"; };
 		846B6FB81C8D2EF80067E829 /* chessboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = chessboard.h; sourceTree = "<group>"; };
 		846B6FB91C8D2F280067E829 /* piece.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = piece.h; sourceTree = "<group>"; };
-		846B6FBA1C8D2F630067E829 /* chesspiece.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = chesspiece.h; sourceTree = "<group>"; };
 		846B6FBB1C8D30110067E829 /* location.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = location.h; sourceTree = "<group>"; };
+		846B6FBD1C8D30A30067E829 /* chessboardsquare.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = chessboardsquare.h; path = ../chessboardsquare.h; sourceTree = "<group>"; };
+		846B6FBE1C8D30E00067E829 /* chesspieces.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = chesspieces.h; sourceTree = "<group>"; };
+		846B6FBF1C8D31030067E829 /* chesspiece.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = chesspiece.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,12 +64,14 @@
 		846B6FAF1C8D2D380067E829 /* Object Oriented Chess */ = {
 			isa = PBXGroup;
 			children = (
+				846B6FBD1C8D30A30067E829 /* chessboardsquare.h */,
 				846B6FB01C8D2D380067E829 /* main.cpp */,
 				846B6FBB1C8D30110067E829 /* location.h */,
-				846B6FBA1C8D2F630067E829 /* chesspiece.h */,
 				846B6FB71C8D2E450067E829 /* board.h */,
 				846B6FB81C8D2EF80067E829 /* chessboard.h */,
 				846B6FB91C8D2F280067E829 /* piece.h */,
+				846B6FBE1C8D30E00067E829 /* chesspieces.h */,
+				846B6FBF1C8D31030067E829 /* chesspiece.h */,
 			);
 			path = "Object Oriented Chess";
 			sourceTree = "<group>";

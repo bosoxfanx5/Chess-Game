@@ -12,6 +12,6 @@
 class Piece
 {
 
-}
+};
 
 #endif /* piece_h */

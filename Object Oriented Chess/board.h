@@ -12,6 +12,6 @@
 class Board
 {
 
-}
+};
 
 #endif /* board_h */

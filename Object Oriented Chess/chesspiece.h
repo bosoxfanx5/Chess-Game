@@ -9,9 +9,11 @@
 #ifndef chesspiece_h
 #define chesspiece_h
 
-class ChessPiece : Piece
+#include "piece.h"
+
+class ChessPiece
 {
 
-}
+};
 
 #endif /* chesspiece_h */

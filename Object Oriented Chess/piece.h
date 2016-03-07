@@ -9,9 +9,14 @@
 #ifndef piece_h
 #define piece_h
 
+#include "move.h"
+#include <vector>
+
 class Piece
 {
-
+public:
+   bool move();
+   void getPossibleMoves(std::vector<Move> moves);
 };
 
 #endif /* piece_h */

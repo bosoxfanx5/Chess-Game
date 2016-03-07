@@ -15,6 +15,11 @@ public:
    void load() {};
    void draw() {};
    bool interact() {return true;}
+   
+private:
+   float length = 0;
+   float width  = 0;
+   float height = 0;
 };
 
 #endif /* board_h */

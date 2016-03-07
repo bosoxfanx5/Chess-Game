@@ -13,7 +13,12 @@
 
 class ChessPiece
 {
-
+public:
+   ChessPiece(bool isWhite) {}
+   bool getIsWhite() {return isWhite;}
+   
+private:
+   bool isWhite;
 };
 
 #endif /* chesspiece_h */

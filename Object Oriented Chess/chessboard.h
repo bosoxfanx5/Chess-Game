@@ -15,9 +15,12 @@
 #include "chesspiece.h"
 #include <vector>
 
-class ChessBoard : public Board
+class Chessboard : public Board
 {
-   ChessBoardSquare squares[8][8];
+public:
+   void drawTest();
+   ChessPiece getPieceAtLocation(Location location) {return squares[(int)location.x][(int)location.y].getPiece();}
+   ChessboardSquare squares[8][8];
    std::vector<ChessMove> history;
 };
 

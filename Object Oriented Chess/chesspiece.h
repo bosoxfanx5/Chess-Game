@@ -11,13 +11,14 @@
 
 #include "piece.h"
 
-class ChessPiece
+class ChessPiece : public Piece
 {
 public:
    ChessPiece(bool isWhite) {}
    bool getIsWhite() {return isWhite;}
+   virtual bool getLetter() {return ' ';}
    
-private:
+protected:
    bool isWhite;
 };
 

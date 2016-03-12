@@ -32,9 +32,14 @@
 class Chessboard : public Board
 {
 public:
+   Chessboard() {};
+   void init();
+   void load() {};
+   void draw();
    void drawTest();
    ChessPiece getPieceAtLocation(Location location) {return squares[(int)location.x][(int)location.y].getPiece();}
    ChessboardSquare squares[8][8];
+   bool interact() {std::cin; std::cin.ignore(); return true;}
    std::vector<ChessMove> history;
 };
 

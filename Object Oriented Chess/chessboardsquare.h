@@ -16,9 +16,9 @@ class ChessboardSquare : Location
 {
 public:
    ChessboardSquare();
+   ChessboardSquare(ChessPiece inPiece) {piece = &inPiece;};
    ChessPiece getPiece() {return piece;}
-   
-private:
+   char getLetter() {return piece->getLetter();}
    ChessPiece * piece; //Use a pointer to avoid slicing problem
 };
 

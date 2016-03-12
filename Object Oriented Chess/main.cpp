@@ -11,7 +11,7 @@
 
 int main(int argc, const char * argv[])
 {
-   Chessboard board; //default to clean board
+   Chessboard board = *new Chessboard(); //default to clean board
    board.load();     //
    while (board.interact())
       board.draw();

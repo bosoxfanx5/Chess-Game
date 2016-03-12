@@ -34,8 +34,8 @@
 		846B6FBF1C8D31030067E829 /* chesspiece.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = chesspiece.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		846B6FC01C8D33AD0067E829 /* move.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = move.h; sourceTree = "<group>"; };
 		846B6FC11C8D33D50067E829 /* chessmove.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = chessmove.h; sourceTree = "<group>"; };
-		846B6FC31C8D7B540067E829 /* chessboardsquare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chessboardsquare.h; sourceTree = "<group>"; };
 		846B6FDB1C93BDD80067E829 /* chessboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = chessboard.cpp; sourceTree = "<group>"; };
+		846B6FE11C93D8980067E829 /* chessboardsquare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chessboardsquare.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,10 +75,10 @@
 				846B6FB71C8D2E450067E829 /* board.h */,
 				846B6FB81C8D2EF80067E829 /* chessboard.h */,
 				846B6FDB1C93BDD80067E829 /* chessboard.cpp */,
-				846B6FC31C8D7B540067E829 /* chessboardsquare.h */,
 				846B6FC11C8D33D50067E829 /* chessmove.h */,
 				846B6FBF1C8D31030067E829 /* chesspiece.h */,
 				846B6FBE1C8D30E00067E829 /* chesspieces.h */,
+				846B6FE11C93D8980067E829 /* chessboardsquare.h */,
 			);
 			path = "Object Oriented Chess";
 			sourceTree = "<group>";

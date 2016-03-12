@@ -3,7 +3,7 @@
 //  Object Oriented Chess
 //
 //  Created by Dan on 3/6/16.
-//  Copyright © 2016 Dan McDaniel. All rights reserved.
+//  Copyright © 2016 Brooks, Dan and Tom. All rights reserved.
 //
 
 #include <iostream>
@@ -11,8 +11,8 @@
 
 int main(int argc, const char * argv[])
 {
-   Chessboard board;
-   board.load();
+   Chessboard board; //default to clean board
+   board.load();     //
    while (board.interact())
       board.draw();
    

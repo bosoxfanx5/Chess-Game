@@ -3,7 +3,7 @@
 //  Object Oriented Chess
 //
 //  Created by Dan on 3/6/16.
-//  Copyright © 2016 Dan McDaniel. All rights reserved.
+//  Copyright © 2016 Brooks, Dan and Tom. All rights reserved.
 //
 
 #ifndef board_h
@@ -12,8 +12,8 @@
 class Board
 {
 public:
-   void load() {};
-   void draw() {};
+   virtual void load() = 0;
+   virtual void draw() = 0;
    bool interact() {return true;}
    
 private:

@@ -35,7 +35,7 @@ public:
    Chessboard() {};
    void init();
    void load() {};
-   //void draw();
+   void draw();
    void drawTest();
    ChessPiece getPieceAtLocation(Location location) {return squares[(int)location.x][(int)location.y].getPiece();}
    

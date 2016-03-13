@@ -21,6 +21,7 @@ int main(int argc, const char * argv[])
    //{
    //   std::cout << ".";
       board.drawTest();
+      board.draw();
    //}
    
    // insert code here...

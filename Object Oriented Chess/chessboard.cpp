@@ -14,7 +14,7 @@
 
 /**************
  * Draw Board *
- **************\/
+ **************/
 void Chessboard::draw()
 {
    std::cout << CLEAR;
@@ -31,8 +31,8 @@ void Chessboard::draw()
          
          //Output
          //ChessPiece piece = squares[r][c].getPiece();
-         if (squares[r][c].getPiece().getLetter() != '\0') //occupied if not null
-            std::cout << " " << squares[r][c].getPiece().getLetter() << " ";
+         if (this->squares[r][c].getLetter() != '\0') //occupied if not null
+            std::cout << " " << this->squares[r][c].getLetter() << " ";
          else                     //free
             std::cout << "   ";
          std::cout << BW;              //reset formatting

@@ -15,10 +15,12 @@
 class ChessboardSquare : Location
 {
 public:
-   ChessboardSquare();
+   ChessboardSquare() {};
    ChessboardSquare(ChessPiece inPiece) {piece = &inPiece;};
    ChessPiece getPiece() {return piece;}
    char getLetter() {return piece->getLetter();}
+   
+   //Could be any chess piece derived from ChessPiece (King, etc...)
    ChessPiece * piece; //Use a pointer to avoid slicing problem
 };
 

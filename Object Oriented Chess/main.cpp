@@ -11,13 +11,20 @@
 
 int main(int argc, const char * argv[])
 {
-   Chessboard board = *new Chessboard(); //default to clean board
+   Chessboard board = Chessboard(); //default to clean board
    board.load();     //
-   while (board.interact())
-      board.draw();
+   board.init();
+   
+   //std::cout << ".";
+   
+   //while (board.interact())
+   //{
+   //   std::cout << ".";
+      board.drawTest();
+   //}
    
    // insert code here...
-   std::cout << "Hello, World!\n";
+   //std::cout << "Hello, World!\n";
     return 0;
 }
 

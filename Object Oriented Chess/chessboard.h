@@ -38,8 +38,10 @@ public:
    void draw();
    void drawTest();
    ChessPiece getPieceAtLocation(Location location) {return squares[(int)location.x][(int)location.y].getPiece();}
+   
+   //Location Class //Array
    ChessboardSquare squares[8][8];
-   bool interact() {std::cin; std::cin.ignore(); return true;}
+   bool interact() {std::cin; /*std::cin.ignore()*/; return true;}
    std::vector<ChessMove> history;
 };
 

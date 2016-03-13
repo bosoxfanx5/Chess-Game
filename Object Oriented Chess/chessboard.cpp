@@ -108,6 +108,6 @@ void Chessboard::init()
    this->squares[0][6].piece = new Knight(false);
    this->squares[0][2].piece = new Bishop(false);
    this->squares[0][5].piece = new Bishop(false);
-   this->squares[0][3].piece = new Queen(true);
+   this->squares[0][3].piece = new Queen(false);
    this->squares[0][4].piece = new King(false);
 }

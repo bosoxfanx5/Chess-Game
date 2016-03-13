@@ -18,8 +18,10 @@ public:
    bool getIsWhite() {return isWhite;}
    virtual bool getLetter() {return ' ';}
    
-protected:
    bool isWhite;
+   
+protected:
+   //bool isWhite;
 };
 
 #endif /* chesspiece_h */

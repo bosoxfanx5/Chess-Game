@@ -15,8 +15,9 @@ class King : public ChessPiece
 {
 public:
    King(bool isWhite)  : ChessPiece(isWhite) {};
-   virtual int getScore()   const { return isWhite ? 100 : -100; }
-   virtual char getLetter() const { return isWhite ? 'k' : 'K';  }
+   int getScore()   const { return isWhite ? 100 : -100; }
+   char getLetter() const { return isWhite ? 'k' : 'K';  }
+   //virtual bool getIsWhite() {return true;}
 };
 
 class Queen : public ChessPiece

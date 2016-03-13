@@ -14,7 +14,7 @@
 
 /**************
  * Draw Board *
- **************/
+ **************\/
 void Chessboard::draw()
 {
    std::cout << CLEAR;
@@ -30,9 +30,9 @@ void Chessboard::draw()
          else       std::cout << ((this->squares[r][c].getLetter() > 97) ? RW : RB); //white/black piece
          
          //Output
-         ChessPiece piece = squares[r][c].getPiece();
-         if (piece.getLetter() != '\0') //occupied if not null
-            std::cout << " " << piece.getLetter() << " ";
+         //ChessPiece piece = squares[r][c].getPiece();
+         if (squares[r][c].getPiece().getLetter() != '\0') //occupied if not null
+            std::cout << " " << squares[r][c].getPiece().getLetter() << " ";
          else                     //free
             std::cout << "   ";
          std::cout << BW;              //reset formatting
@@ -44,6 +44,7 @@ void Chessboard::draw()
       std::cout << std::endl;
    }
 }
+//*/
 
 /*******************
  * Draw Test Board *
@@ -55,8 +56,9 @@ void Chessboard::drawTest()
    {
       std::cout << r + 1 << " ";        //row headers
       for (int c = 0; c < 8; c++)
-         if (this->squares[r][c].getLetter() != '\0')  //occupied if not null
+         if (this->squares[r][c].piece->getLetter() != '\0')  //occupied if not null
             std::cout << this->squares[r][c].getLetter();
+            //std::cout << 'z';
          else                      //free
             std::cout << " ";
       std::cout << std::endl;

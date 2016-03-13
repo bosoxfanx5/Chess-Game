@@ -14,9 +14,12 @@
 class ChessPiece : public Piece
 {
 public:
-   ChessPiece(bool isWhite) {}
+   ChessPiece(bool isWhiteIn) { isWhite = isWhiteIn;}
+   //bool getIsWhite() {return isWhite;}
    bool getIsWhite() {return isWhite;}
-   virtual bool getLetter() {return ' ';}
+   
+   virtual char getLetter() const = 0;
+   //virtual char getLetter() {return 'x';}
    
    bool isWhite;
    

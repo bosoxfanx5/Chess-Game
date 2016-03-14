@@ -10,10 +10,21 @@
 #define chessmove_h
 
 #include "move.h"
+#include "chessboardsquare.h"
+#include "chessboard.h"
+#include <string>
 
-class ChessMove : Move
+class ChessMove : public Move
 {
-
+public:
+   ChessMove(std::string s, Chessboard & inBoard) : Move() {moveString = s; board = &inBoard;}
+   void parse();
+   bool validate();
+   void execute();
+   std::string moveString;
+   Chessboard * board;
 };
+
+
 
 #endif /* chessmove_h */

@@ -14,6 +14,7 @@
 #include "chessmove.h"
 #include "chesspiece.h"
 #include <vector>
+#include <string.h>
 
 /////////////////
 // Definitions //
@@ -34,14 +35,14 @@ class Chessboard : public Board
 public:
    Chessboard() {};
    void init();
-   void load() {};
+   void load(std::string filename);
    void draw();
    void drawTest();
    ChessPiece getPieceAtLocation(Location location) {return squares[(int)location.x][(int)location.y].getPiece();}
    
    //Location Class //Array
    ChessboardSquare squares[8][8];
-   bool interact() {std::cin; /*std::cin.ignore()*/; return true;}
+   bool interact();// {std::cin; /*std::cin.ignore()*/; return true;}
    std::vector<ChessMove> history;
 };
 

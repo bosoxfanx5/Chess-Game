@@ -13,13 +13,15 @@
 
 class Move
 {
-   Move(Location origin, Location destination) {};
-   
 public:
-   Location origin;
-   Location destination;
-   bool validate();
-   void execute();
+   
+   Move();
+   Move(Location origin, Location destination) {};
+
+   Location * origin;
+   Location * destination;
+   virtual bool validate() = 0;
+   virtual void execute() = 0;
 };
 
 #endif /* move_h */

@@ -7,29 +7,11 @@
 //
 
 #include <iostream>
-#include "chessboard.h"
-
-/***********************************************************************
- * Program:
- *    Project 1, Procedural Chess
- *    Brother McCracken, CS165
- * Author:
- *    Dan McDaniel
- * Summary:
- *    This project demonstrates mastery of procedural programming by
- *    implementing a variety of techniques in the context of a chess
- *    game.
- *
- *    Estimated:  16.00 hrs
- *    Actual:     16.00 hrs
- *      Hardest Part: StyleChecker freaking out over vector syntax and
- *                    unenclosed if statements.
- ************************************************************************/
-
-#include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
+#include "chessmove.h"
+#include "chessboard.h"
 //#include <regex> // couldn't get this to work
 
 using namespace std;
@@ -69,7 +51,7 @@ struct Coordinates
  *  - Color           *
  *  - Coordinates     *
  **********************/
-struct Piece
+struct PieceOld
 {
    //Color
    bool color;
@@ -85,7 +67,7 @@ struct Piece
  *  - Mover           *
  *  - Victim          *
  **********************/
-struct Move
+struct MoveOld
 {
    //Squares
    Coordinates source;
@@ -199,15 +181,15 @@ void test(char board[8][8])
  *************/
 void makeMove(char board[8][8], string move)
 {
-   Move m;
-   m.source.row = move[0] - 97;
-   m.source.col = move[1] - 49;
-   m.dest.row   = move[2] - 97;
-   m.dest.col   = move[3] - 49;
+   //ChessMove m(move);
+   //m.origin.row = move[0] - 97;
+   //m.origin.col = move[1] - 49;
+   //m.destination.row   = move[2] - 97;
+   //m.destination.col   = move[3] - 49;
    
    //move the source piece to the destination
-   board[m.dest.col][m.dest.row] = board[m.source.col][m.source.row];
-   board[m.source.col][m.source.row] = '\0';
+   //board[m.dest.col][m.dest.row] = board[m.source.col][m.source.row];
+   //board[m.source.col][m.source.row] = '\0';
 }
 
 /******************************
@@ -384,8 +366,8 @@ void save(string filename, vector <string> & moveArray)
 
 int main(int argc, const char * argv[])
 {
-   Chessboard board = Chessboard(); //default to clean board
-   board.load();     //
+   Chessboard board = *new Chessboard(); //default to clean board
+   board.Board::load();     //
    board.init();
    
    //std::cout << ".";

@@ -11,7 +11,15 @@
 
 #include "board.h"
 #include "chessboardsquare.h"
+
+#ifndef chessmove_h
+#define chessmove_h
+
 #include "chessmove.h"
+
+#endif
+
+
 #include "chesspiece.h"
 #include <vector>
 #include <string.h>
@@ -43,7 +51,7 @@ public:
    //Location Class //Array
    ChessboardSquare squares[8][8];
    bool interact();// {std::cin; /*std::cin.ignore()*/; return true;}
-   std::vector<ChessMove> history;
+   std::vector<std::string> history;
 };
 
 #endif /* chessboard_h */

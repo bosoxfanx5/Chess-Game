@@ -15,7 +15,7 @@ class Move
 {
 public:
    
-   Move();
+   Move() {};
    Move(Location origin, Location destination) {};
 
    Location * origin;

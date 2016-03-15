@@ -140,7 +140,7 @@ bool Chessboard::interact()
       //if (move.origin move[0] >= 97 && move[0] <= 104) //first letter is a-h
       if (move.validate()) //first letter is a-h
          {
-         history.push_back(move);
+         history.push_back(moveString);
          move.execute();
          drawTest();
       }
@@ -171,6 +171,7 @@ bool Chessboard::interact()
                //list(moveArray);
                break;
             case 'q' :
+               return false;
                break;          //quit
             default:           //unknown input
                std::cout << "Error: Unknown Input"
@@ -186,6 +187,7 @@ bool Chessboard::interact()
    if (std::cin.get() != '\n');
       //save(response, moveArray);
    std::cin.ignore();
+   return true;
 }
 
 

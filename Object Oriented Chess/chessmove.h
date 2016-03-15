@@ -17,6 +17,7 @@
 class ChessMove : public Move
 {
 public:
+   ChessMove();
    ChessMove(std::string s, Chessboard & inBoard) : Move() {moveString = s; board = &inBoard;}
    void parse();
    bool validate();
@@ -24,7 +25,5 @@ public:
    std::string moveString;
    Chessboard * board;
 };
-
-
 
 #endif /* chessmove_h */

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3316732B1C9B919F00487F21 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3316732A1C9B919F00487F21 /* main.cpp */; };
+		3316732D1C9B91E300487F21 /* board.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3316732C1C9B91E300487F21 /* board.cpp */; };
+		331673301C9B920600487F21 /* piece.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3316732F1C9B920600487F21 /* piece.cpp */; };
+		331673331C9B921E00487F21 /* position.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 331673321C9B921E00487F21 /* position.cpp */; };
+		331673361C9B923600487F21 /* move.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 331673351C9B923600487F21 /* move.cpp */; };
 		846B6FB11C8D2D380067E829 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 846B6FB01C8D2D380067E829 /* main.cpp */; };
 		846B6FDC1C93BDD80067E829 /* chessboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 846B6FDB1C93BDD80067E829 /* chessboard.cpp */; };
 		846B6FE31C9669B50067E829 /* chessmove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 846B6FE21C9669B50067E829 /* chessmove.cpp */; };
@@ -25,6 +30,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3316732A1C9B919F00487F21 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		3316732C1C9B91E300487F21 /* board.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = board.cpp; sourceTree = "<group>"; };
+		3316732E1C9B91F200487F21 /* board.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = board.h; sourceTree = "<group>"; };
+		3316732F1C9B920600487F21 /* piece.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = piece.cpp; sourceTree = "<group>"; };
+		331673311C9B921100487F21 /* piece.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = piece.h; sourceTree = "<group>"; };
+		331673321C9B921E00487F21 /* position.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = position.cpp; sourceTree = "<group>"; };
+		331673341C9B922800487F21 /* position.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = position.h; sourceTree = "<group>"; };
+		331673351C9B923600487F21 /* move.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = move.cpp; sourceTree = "<group>"; };
+		331673371C9B924E00487F21 /* move.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = move.h; sourceTree = "<group>"; };
 		846B6FAD1C8D2D380067E829 /* Object Oriented Chess */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Object Oriented Chess"; sourceTree = BUILT_PRODUCTS_DIR; };
 		846B6FB01C8D2D380067E829 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = main.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		846B6FB71C8D2E450067E829 /* board.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = board.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -51,9 +65,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		331673291C9B917300487F21 /* New Chess Game */ = {
+			isa = PBXGroup;
+			children = (
+				3316732A1C9B919F00487F21 /* main.cpp */,
+				3316732C1C9B91E300487F21 /* board.cpp */,
+				3316732E1C9B91F200487F21 /* board.h */,
+				3316732F1C9B920600487F21 /* piece.cpp */,
+				331673311C9B921100487F21 /* piece.h */,
+				331673321C9B921E00487F21 /* position.cpp */,
+				331673341C9B922800487F21 /* position.h */,
+				331673351C9B923600487F21 /* move.cpp */,
+				331673371C9B924E00487F21 /* move.h */,
+			);
+			name = "New Chess Game";
+			sourceTree = "<group>";
+		};
 		846B6FA41C8D2D370067E829 = {
 			isa = PBXGroup;
 			children = (
+				331673291C9B917300487F21 /* New Chess Game */,
 				846B6FAF1C8D2D380067E829 /* Object Oriented Chess */,
 				846B6FAE1C8D2D380067E829 /* Products */,
 			);
@@ -142,8 +173,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				331673361C9B923600487F21 /* move.cpp in Sources */,
 				846B6FE31C9669B50067E829 /* chessmove.cpp in Sources */,
+				3316732D1C9B91E300487F21 /* board.cpp in Sources */,
+				331673301C9B920600487F21 /* piece.cpp in Sources */,
 				846B6FB11C8D2D380067E829 /* main.cpp in Sources */,
+				331673331C9B921E00487F21 /* position.cpp in Sources */,
+				3316732B1C9B919F00487F21 /* main.cpp in Sources */,
 				846B6FDC1C93BDD80067E829 /* chessboard.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,6 +299,7 @@
 				846B6FB61C8D2D380067E829 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

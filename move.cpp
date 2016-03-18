@@ -14,7 +14,7 @@ using namespace std;
 /*************************************
  * main
  **************************************/
-int main()
+int main4()
 {
     Move move1;
     Move move2;

@@ -74,8 +74,8 @@ struct MoveOld
    Coordinates dest;
    
    //Pieces
-   Piece mover;
-   Piece victim;
+   Piece1 mover;
+   Piece1 victim;
 };
 
 /////////////
@@ -367,7 +367,7 @@ void save(string filename, vector <string> & moveArray)
 int main(int argc, const char * argv[])
 {
    Chessboard board = *new Chessboard(); //default to clean board
-   board.Board::load();     //
+   board.Board1::load();     //
    board.init();
    
    //std::cout << ".";

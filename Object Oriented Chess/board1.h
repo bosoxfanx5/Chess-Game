@@ -9,10 +9,10 @@
 #ifndef board_h
 #define board_h
 
-class Board
+class Board1
 {
 public:
-   Board() {};
+   Board1() {};
    /*virtual*/ void init() {};// = 0;
    /*vritual*/ void load() {};// = 0;
    /*virtual*/ void draw() {};// = 0;

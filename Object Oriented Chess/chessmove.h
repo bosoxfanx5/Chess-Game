@@ -9,16 +9,16 @@
 #ifndef chessmove_h
 #define chessmove_h
 
-#include "move.h"
+#include "move1.h"
 #include "chessboardsquare.h"
 #include "chessboard.h"
 #include <string>
 
-class ChessMove : public Move
+class ChessMove : public Move1
 {
 public:
    ChessMove();
-   ChessMove(std::string s, Chessboard & inBoard) : Move() {moveString = s; board = &inBoard;}
+   ChessMove(std::string s, Chessboard & inBoard) : Move1() {moveString = s; board = &inBoard;}
    void parse();
    bool validate();
    void execute();

@@ -33,7 +33,7 @@ void ChessMove::parse()
    ChessboardSquare * destinationSquare = &board->squares[destinationRow][destinationCol];
    
    destinationSquare->piece = originSquare->piece;
-   originSquare->piece = new Space();
+   originSquare->piece = new Space1();
    
    //(ChessboardSquare)destination->piece = (ChessboardSquare)origin->piece;
 }

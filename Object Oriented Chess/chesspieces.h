@@ -11,59 +11,59 @@
 
 #include "chesspiece.h"
 
-class King : public ChessPiece
+class King1 : public ChessPiece
 {
 public:
-   King(bool isWhite)  : ChessPiece(isWhite) {};
+   King1(bool isWhite)  : ChessPiece(isWhite) {};
    int getScore()   const { return isWhite ? 100 : -100; }
    char getLetter() const { return isWhite ? 'k' : 'K';  }
    //virtual bool getIsWhite() {return true;}
 };
 
-class Queen : public ChessPiece
+class Queen1 : public ChessPiece
 {
 public:
-   Queen(bool isWhite) : ChessPiece(isWhite) {};
+   Queen1(bool isWhite) : ChessPiece(isWhite) {};
    virtual int getScore()   const { return isWhite ?  9 : -9; }
    virtual char getLetter() const { return isWhite ? 'q' : 'Q'; }
 };
 
-class Bishop : public ChessPiece
+class Bishop1 : public ChessPiece
 {
 public:
-   Bishop(bool isWhite) : ChessPiece(isWhite) {};
+   Bishop1(bool isWhite) : ChessPiece(isWhite) {};
    virtual int getScore()   const { return isWhite ?  5 : -5; }
    virtual char getLetter() const { return isWhite ? 'b' : 'B'; }
 };
 
-class Knight : public ChessPiece
+class Knight1 : public ChessPiece
 {
 public:
-   Knight(bool isWhite) : ChessPiece(isWhite) {};
+   Knight1(bool isWhite) : ChessPiece(isWhite) {};
    virtual int getScore()   const { return isWhite ? 3 : -3; }
    virtual char getLetter() const { return isWhite ? 'n' : 'N'; }
 };
 
-class Rook : public ChessPiece
+class Rook1 : public ChessPiece
 {
 public:
-   Rook(bool isWhite) : ChessPiece(isWhite) {};
+   Rook1(bool isWhite) : ChessPiece(isWhite) {};
    virtual int getScore()   const { return isWhite ?  3 : -3; }
    virtual char getLetter() const { return isWhite ? 'r' : 'R'; }
 };
 
-class Pawn : public ChessPiece
+class Pawn1 : public ChessPiece
 {
 public:
-   Pawn(bool isWhite)  : ChessPiece(isWhite) {};
+   Pawn1(bool isWhite)  : ChessPiece(isWhite) {};
    virtual int getScore()   const { return isWhite ?  1  : -1;  }
    virtual char getLetter() const { return isWhite ? 'p' : 'P'; }
 };
 
-class Space : public ChessPiece
+class Space1 : public ChessPiece
 {
 public:
-   Space() : ChessPiece(false) {}
+   Space1() : ChessPiece(false) {}
    virtual int getScore()   const { return   0; }
    virtual char getLetter() const { return ' '; }
 };

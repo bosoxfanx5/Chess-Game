@@ -9,9 +9,9 @@
 #ifndef chesspiece_h
 #define chesspiece_h
 
-#include "piece.h"
+#include "piece1.h"
 
-class ChessPiece : public Piece
+class ChessPiece : public Piece1
 {
 public:
    ChessPiece(bool isWhiteIn) { isWhite = isWhiteIn;}

@@ -13,9 +13,7 @@
 		331673331C9B921E00487F21 /* position.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 331673321C9B921E00487F21 /* position.cpp */; };
 		331673361C9B923600487F21 /* move.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 331673351C9B923600487F21 /* move.cpp */; };
 		331673391C9B995400487F21 /* square.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 331673381C9B995400487F21 /* square.cpp */; };
-		846B6FB11C8D2D380067E829 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 846B6FB01C8D2D380067E829 /* main.cpp */; };
-		846B6FDC1C93BDD80067E829 /* chessboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 846B6FDB1C93BDD80067E829 /* chessboard.cpp */; };
-		846B6FE31C9669B50067E829 /* chessmove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 846B6FE21C9669B50067E829 /* chessmove.cpp */; };
+		846B6FE51C9BA66A0067E829 /* TODO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 846B6FE41C9BA66A0067E829 /* TODO.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,18 +41,7 @@
 		331673381C9B995400487F21 /* square.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = square.cpp; sourceTree = "<group>"; };
 		3316733A1C9B996100487F21 /* square.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = square.h; sourceTree = "<group>"; };
 		846B6FAD1C8D2D380067E829 /* Object Oriented Chess */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Object Oriented Chess"; sourceTree = BUILT_PRODUCTS_DIR; };
-		846B6FB01C8D2D380067E829 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = main.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
-		846B6FB71C8D2E450067E829 /* board.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = board.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		846B6FB81C8D2EF80067E829 /* chessboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = chessboard.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		846B6FB91C8D2F280067E829 /* piece.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = piece.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		846B6FBB1C8D30110067E829 /* location.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = location.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		846B6FBE1C8D30E00067E829 /* chesspieces.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = chesspieces.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		846B6FBF1C8D31030067E829 /* chesspiece.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = chesspiece.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		846B6FC01C8D33AD0067E829 /* move.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = move.h; sourceTree = "<group>"; };
-		846B6FC11C8D33D50067E829 /* chessmove.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = chessmove.h; sourceTree = "<group>"; };
-		846B6FDB1C93BDD80067E829 /* chessboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = chessboard.cpp; sourceTree = "<group>"; };
-		846B6FE11C93D8980067E829 /* chessboardsquare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = chessboardsquare.h; sourceTree = "<group>"; };
-		846B6FE21C9669B50067E829 /* chessmove.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = chessmove.cpp; sourceTree = "<group>"; };
+		846B6FE41C9BA66A0067E829 /* TODO.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TODO.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +69,7 @@
 				331673371C9B924E00487F21 /* move.h */,
 				331673381C9B995400487F21 /* square.cpp */,
 				3316733A1C9B996100487F21 /* square.h */,
+				846B6FE41C9BA66A0067E829 /* TODO.cpp */,
 			);
 			name = "New Chess Game";
 			sourceTree = "<group>";
@@ -90,7 +78,6 @@
 			isa = PBXGroup;
 			children = (
 				331673291C9B917300487F21 /* New Chess Game */,
-				846B6FAF1C8D2D380067E829 /* Object Oriented Chess */,
 				846B6FAE1C8D2D380067E829 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -101,25 +88,6 @@
 				846B6FAD1C8D2D380067E829 /* Object Oriented Chess */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		846B6FAF1C8D2D380067E829 /* Object Oriented Chess */ = {
-			isa = PBXGroup;
-			children = (
-				846B6FB01C8D2D380067E829 /* main.cpp */,
-				846B6FBB1C8D30110067E829 /* location.h */,
-				846B6FB91C8D2F280067E829 /* piece.h */,
-				846B6FB71C8D2E450067E829 /* board.h */,
-				846B6FB81C8D2EF80067E829 /* chessboard.h */,
-				846B6FDB1C93BDD80067E829 /* chessboard.cpp */,
-				846B6FC01C8D33AD0067E829 /* move.h */,
-				846B6FC11C8D33D50067E829 /* chessmove.h */,
-				846B6FE21C9669B50067E829 /* chessmove.cpp */,
-				846B6FBF1C8D31030067E829 /* chesspiece.h */,
-				846B6FBE1C8D30E00067E829 /* chesspieces.h */,
-				846B6FE11C93D8980067E829 /* chessboardsquare.h */,
-			);
-			path = "Object Oriented Chess";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,13 +148,11 @@
 			files = (
 				331673361C9B923600487F21 /* move.cpp in Sources */,
 				331673391C9B995400487F21 /* square.cpp in Sources */,
-				846B6FE31C9669B50067E829 /* chessmove.cpp in Sources */,
 				3316732D1C9B91E300487F21 /* board.cpp in Sources */,
 				331673301C9B920600487F21 /* piece.cpp in Sources */,
-				846B6FB11C8D2D380067E829 /* main.cpp in Sources */,
 				331673331C9B921E00487F21 /* position.cpp in Sources */,
 				3316732B1C9B919F00487F21 /* main.cpp in Sources */,
-				846B6FDC1C93BDD80067E829 /* chessboard.cpp in Sources */,
+				846B6FE51C9BA66A0067E829 /* TODO.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

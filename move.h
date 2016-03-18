@@ -26,7 +26,8 @@ public:
     // constructors
     Move();
     Move(const Move & rhs)                      { *this = rhs;             }
-    
+    Move(const string & rhs)                      { *this = rhs;             }
+   
     // a slew of getters.  All are const!
     const Position & getDes()             const { return dest;             }
     const Position & getSrc()             const { return source;           }
@@ -56,6 +57,7 @@ public:
         else
             castleQ = true;
     }
+   void execute();
     
     // display and prompt
     friend ostream & operator << (ostream & out, Move & rhs);
@@ -76,7 +78,7 @@ public:
     
 private:
     // this is the same as the parse function from Project 1
-    void read(const string & s) throw(string);
+    void parse(const string & s) throw(string);
     
     Position  source;    // where the move originated from
     Position  dest;      // where the move finished

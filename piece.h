@@ -9,6 +9,9 @@
 #ifndef piece_h
 #define piece_h
 
+#include <vector>
+#include <string>
+
 class Piece
 {
 public:
@@ -16,6 +19,11 @@ public:
     bool getIsWhite() const                { return isWhite; }
     virtual char getLetter() const = 0;
     virtual int getScore()   const = 0;
+    //virtual std::vector<std::string> getMoves() const = 0;//
+   
+   static bool fSimple;   // not starting off in Test mode
+   static int  currentMove;
+   
 protected:
     bool isWhite;
 };
@@ -23,19 +31,19 @@ protected:
 class Space : public Piece
 {
 public:
-    Space() : Piece(isWhite) {}
-    
-    virtual int getScore() const   { return 0;   }
-    virtual char getLetter() const { return ' '; }
-    
+   Space() : Piece(false) {}
+   virtual int getScore()   const { return   0; }
+   virtual char getLetter() const { return ' '; }
 };
 
 class King : public Piece
 {
 public:
+    bool fMoved;
     King(bool isWhite) : Piece(isWhite) {};
     char getLetter() const {return isWhite ? 'k' : 'K';}
     int getScore() const {return isWhite ? 100 : -100;}
+    std::vector<std::string> getMoves();
 };
 
 class Queen : public Piece
@@ -65,6 +73,7 @@ public:
 class Rook : public Piece
 {
 public:
+    bool fMoved;
     Rook(bool isWhite) : Piece(isWhite) {};
     char getLetter() const {return isWhite ? 'r' : 'R';}
     int getScore() const {return isWhite ? 1 : -1;}
@@ -74,6 +83,7 @@ public:
 class Pawn : public Piece
 {
 public:
+    bool fMoved;
     Pawn(bool isWhite) : Piece(isWhite) {};
     char getLetter() const {return isWhite ? 'p' : 'P';}
     int getScore() const {return isWhite ? 1 : -1;}

@@ -9,7 +9,7 @@
 #ifndef chessboard_h
 #define chessboard_h
 
-#include "board.h"
+#include "board1.h"
 #include "chessboardsquare.h"
 
 #ifndef chessmove_h
@@ -38,7 +38,7 @@
 //#define TEMP "board.tmp"// temporary storage for board // opted for vector
 
 
-class Chessboard : public Board
+class Chessboard : public Board1
 {
 public:
    Chessboard() {};

@@ -11,12 +11,12 @@
 
 #include "location.h"
 
-class Move
+class Move1
 {
 public:
    
-   Move() {};
-   Move(Location origin, Location destination) {};
+   Move1() {};
+   Move1(Location origin, Location destination) {};
 
    Location * origin;
    Location * destination;

@@ -10,6 +10,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "chessmove.h"
+#include "chesspieces.h"
 
 void ChessMove::parse()
 {
@@ -21,8 +22,18 @@ void ChessMove::parse()
    int destinationRow = destinationString[1] - 48;
    int destinationCol = destinationString[0] - 65;
    
-   origin      = &board->squares[originRow][originCol];
-   destination = &board->squares[destinationCol][destinationRow];
+   //origin->x = originRow;
+   //origin->y = originCol;
+   //origin->z = 0;
+   //destination->x = destinationRow;
+   //destination->y = destinationCol;
+   //destination->z = 0;
+   
+   ChessboardSquare * originSquare = &board->squares[originRow][originCol];
+   ChessboardSquare * destinationSquare = &board->squares[destinationRow][destinationCol];
+   
+   destinationSquare->piece = originSquare->piece;
+   originSquare->piece = new Space();
    
    //(ChessboardSquare)destination->piece = (ChessboardSquare)origin->piece;
 }

@@ -372,12 +372,12 @@ int main(int argc, const char * argv[])
    
    //std::cout << ".";
    
-   //while (board.interact())
-   //{
+   while (board.interact())
+   {
    //   std::cout << ".";
       board.drawTest();
-      board.draw();
-   //}
+      //board.draw();
+   }
    
    // insert code here...
    //std::cout << "Hello, World!\n";

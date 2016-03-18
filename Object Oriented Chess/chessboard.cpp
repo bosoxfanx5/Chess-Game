@@ -121,9 +121,9 @@ void Chessboard::load(std::string filename)
 bool Chessboard::interact()
 {
    char filename[256] = {'\0'};
-   char move[8] = { '\0' };
+   char moveOld[8] = { '\0' };
    
-   while (move[0] != 'q')
+   //while (moveOld[0] != 'q')
    {
       //prompt for a move
       if (history.size() % 2 == 0)
@@ -135,11 +135,12 @@ bool Chessboard::interact()
       std::cin >> moveString;
       
       ChessMove move(moveString, *this);
+      move.parse();
       
       //moves
       //if (move.origin move[0] >= 97 && move[0] <= 104) //first letter is a-h
-      if (move.validate()) //first letter is a-h
-         {
+      if (true)//move.validate()) //first letter is a-h
+      {
          history.push_back(moveString);
          move.execute();
          drawTest();
@@ -230,12 +231,14 @@ void Chessboard::draw()
  *******************/
 void Chessboard::drawTest()
 {
+   //std::cout << CLEAR;
    std::cout << "  abcdefgh" << std::endl;   // I prefer endl over '\0'.
    for (int r = 7; r >= 0; r--)
    {
       std::cout << r + 1 << " ";        //row headers
       for (int c = 0; c < 8; c++)
-         if (this->squares[r][c].piece->getLetter() != '\0')  //occupied if not null
+         //if (this->squares[r][c].piece->getLetter() != '\0')
+         if (this->squares[r][c].piece->getLetter() != ' ')  //occupied if not null
             std::cout << this->squares[r][c].getLetter();
             //std::cout << 'z';
          else                      //free

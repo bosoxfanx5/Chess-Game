@@ -19,6 +19,7 @@ int main()
    Board board = *new Board(); //default to clean board
    //board.load();     //
    board.init();
+   board.drawTest();
    board.interact();
    
    return 0;

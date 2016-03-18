@@ -13,8 +13,14 @@
 using namespace std;
 
 // Both of these define variables were part of Brother Helfrich's design
-#define NO_PIECE '*'   // There is no piece on this location of the board
+#define NO_PIECE ' '   // There is no piece on this location of the board
 #define INVALID 127    // invalid row or column value
+
+void Move::execute()
+{
+   board->squares[dest.getRow()][dest.getCol()] = board->squares[source.getRow()][source.getCol()];
+   board->squares[source.getRow()][source.getCol()] = new Space();
+}
 
 void Move::parse() throw(string)
 {
@@ -32,7 +38,7 @@ void Move::parse() throw(string)
 //   this->promote   = false;
    
    
-   Position source, dest;
+   //Position source, dest;
    source.setRow(INVALID);
    source.setCol(INVALID);    // where the move originated from
    
@@ -63,8 +69,9 @@ void Move::parse() throw(string)
       if (text[1] < '1' || text[1] > '8')
          throw string("Invalid format of source coordinates");
          
-         //flipping the board  :)
+   //flipping the board  :)
    source.setRow('8' - text[1]);
+   //source.setRow(text[1] - '1');
          assert(source.getRow() >= 0 && source.getRow() <= 7);
          
          // if there is nothing to move, we have an error

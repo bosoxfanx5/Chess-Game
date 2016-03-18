@@ -59,7 +59,7 @@ public:
         else
             castleQ = true;
     }
-   void execute() {};
+   void execute();
    
     // display and prompt
     friend ostream & operator << (ostream & out, Move & rhs);

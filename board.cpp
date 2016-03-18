@@ -17,7 +17,7 @@ using namespace std;
 // Two statics in the Piece class: the simple flag indicating that we
 //    have the Test board displayed instead of the colorful board, and
 //    the currentMove so each piece can tell if it's move was the last move
-bool Piece::fSimple = false;   // not starting off in Test mode
+bool Piece::fSimple = true;   // not starting off in Test mode
 int  Piece::currentMove = 0;   // starting at move 0
 
 /*************************************
@@ -181,6 +181,7 @@ void Board::load(std::string filename)
  **********************/
 bool Board::interact()
 {
+   bool isTestMode = false;
    char filename[256] = {'\0'};
    char moveOld[8] = { '\0' };
    
@@ -196,16 +197,17 @@ bool Board::interact()
       std::cin >> moveString;
       
       Move move(moveString, *this);
-      move.parse();
-      
+     
       //moves
-      //if (move.origin move[0] >= 97 && move[0] <= 104) //first letter is a-h
-      if (true)//move.validate()) //first letter is a-h
+      if (moveString[0] >= 97 && moveString[0] <= 104) //first letter is a-h
       {
+         move.parse();
+         //move.validate();
          history.push_back(moveString);
          move.execute();
          drawTest();
       }
+      
       //commands
       else
       {
@@ -227,7 +229,9 @@ bool Board::interact()
             }
                break;
             case 't' :         //test output
-               drawTest();
+               isTestMode = !isTestMode;
+               //drawTest();
+               draw();
                break;
             case 'l' :         //list moves in array
                //list(moveArray);
@@ -297,10 +301,10 @@ void Board::drawTest()
    for (int r = 7; r >= 0; r--)
    {
       std::cout << r + 1 << " ";        //row headers
-      for (int c = 0; c < 8; c++)
+      for (int c = 0; c <= 7; c++)
          //if (this->squares[r][c].piece->getLetter() != '\0')
-         if (this->squares[r][c]->getLetter() != ' ')  //occupied if not null
-            std::cout << this->squares[r][c]->getLetter();
+         if (this->squares[7-r][c]->getLetter() != ' ')  //occupied if not null
+            std::cout << this->squares[7-r][c]->getLetter();
       //std::cout << 'z';
          else                      //free
             std::cout << " ";
@@ -313,31 +317,16 @@ void Board::drawTest()
  ********************/
 void Board::init()
 {
-   //Black
-   this->squares[7][4] = new King(true);
-   this->squares[7][3] = new Queen(true);
-   this->squares[7][0] = new Rook(true); //Left
-   this->squares[7][7] = new Rook(true); //Right
-   this->squares[7][1] = new Knight(true);
-   this->squares[7][6] = new Knight(true);
-   this->squares[7][2] = new Bishop(true);
-   this->squares[7][5] = new Bishop(true);
-   
-   this->squares[6][0] = new Pawn(true);
-   this->squares[6][1] = new Pawn(true);
-   this->squares[6][2] = new Pawn(true);
-   this->squares[6][3] = new Pawn(true);
-   this->squares[6][4] = new Pawn(true);
-   this->squares[6][5] = new Pawn(true);
-   this->squares[6][6] = new Pawn(true);
-   this->squares[6][7] = new Pawn(true);
-   
-   //The great divide
-   for (int r = 5; r >= 2; r--)
-      for (int c = 0; c <= 7; c++)
-         this->squares[r][c] = new Space();
-   
    //White
+   this->squares[0][4] = new King(false); //true = isWhite
+   this->squares[0][3] = new Queen(false);
+   this->squares[0][0] = new Rook(false); //Left
+   this->squares[0][7] = new Rook(false); //Right
+   this->squares[0][1] = new Knight(false);
+   this->squares[0][6] = new Knight(false);
+   this->squares[0][2] = new Bishop(false);
+   this->squares[0][5] = new Bishop(false);
+   
    this->squares[1][0] = new Pawn(false);
    this->squares[1][1] = new Pawn(false);
    this->squares[1][2] = new Pawn(false);
@@ -347,14 +336,29 @@ void Board::init()
    this->squares[1][6] = new Pawn(false);
    this->squares[1][7] = new Pawn(false);
    
-   this->squares[0][0] = new Rook(false);
-   this->squares[0][7] = new Rook(false);
-   this->squares[0][1] = new Knight(false);
-   this->squares[0][6] = new Knight(false);
-   this->squares[0][2] = new Bishop(false);
-   this->squares[0][5] = new Bishop(false);
-   this->squares[0][3] = new Queen(false);
-   this->squares[0][4] = new King(false);
+   //The great divide
+   for (int r = 5; r >= 2; r--)
+      for (int c = 0; c <= 7; c++)
+         this->squares[r][c] = new Space();
+   
+   //Black
+   this->squares[6][0] = new Pawn(true);
+   this->squares[6][1] = new Pawn(true);
+   this->squares[6][2] = new Pawn(true);
+   this->squares[6][3] = new Pawn(true);
+   this->squares[6][4] = new Pawn(true);
+   this->squares[6][5] = new Pawn(true);
+   this->squares[6][6] = new Pawn(true);
+   this->squares[6][7] = new Pawn(true);
+   
+   this->squares[7][0] = new Rook(true);
+   this->squares[7][7] = new Rook(true);
+   this->squares[7][1] = new Knight(true);
+   this->squares[7][6] = new Knight(true);
+   this->squares[7][2] = new Bishop(true);
+   this->squares[7][5] = new Bishop(true);
+   this->squares[7][3] = new Queen(true);
+   this->squares[7][4] = new King(true);
 }
 
 

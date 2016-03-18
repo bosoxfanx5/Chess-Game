@@ -6,15 +6,7 @@
 //  Copyright © 2016 Dan McDaniel. All rights reserved.
 //
 
-/***********************************************************************
- * Program:
- *    Project 3, Chess with Objects
- *    Brother Helfrich, CS165
- * Author:
- *    Br. Helfrich
- * Summary:
- *    This file will keep track one move
- ************************************************************************/
+
 
 #ifndef _MOVE_
 #define _MOVE_

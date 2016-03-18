@@ -47,7 +47,7 @@ void Move::parse() throw(string)
    bool      castleQ   = false;      // queenside castle
    bool      isWhite   = false;      // white's move?
    
-   isWhite = board->history.size() % 2;
+   isWhite = !(board->history.size() % 2);
    
    //
    // from square

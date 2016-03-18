@@ -184,7 +184,7 @@ bool Board::interact()
    char filename[256] = {'\0'};
    char moveOld[8] = { '\0' };
    
-   //while (moveOld[0] != 'q')
+   while (moveOld[0] != 'q')
    {
       //prompt for a move
       if (history.size() % 2 == 0)

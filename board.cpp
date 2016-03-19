@@ -245,7 +245,9 @@ void Board::interact()
          char r, c = '\0';
          std::cin >> c >> r;
          
-         squares[r][c].piece.getMoves();
+         Move theMove(moveString);
+         theMove.parse
+         squares[r][c]->getMoves(this);
          
          std::cout << "Possible moves are:" << std::endl;
          

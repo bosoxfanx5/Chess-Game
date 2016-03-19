@@ -43,7 +43,7 @@ public:
    void init();
    void initk();
    void initq();
-   void load(std::string filename);
+   void load();
    void draw();
    void drawTest();
    //Piece getPieceAtLocation(Position location) {return squares[location.getRow()][location.getCol()];}

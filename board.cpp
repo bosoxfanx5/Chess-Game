@@ -49,77 +49,138 @@ inline void prompt(char prompt[256], char response[256])
    std::cout << prompt;
    std::cin  >> response;
 }
+//
+///********************
+// * Load - From File *
+// ********************/
+//void Board::load(std::string filename)
+//{
+//   //char move[8];
+//   std::string move;
+//   //Reset board
+//   init();
+//   
+//   //Reset move array
+//   history.empty();
+//   history.clear();
+//   
+//   std::ifstream fin(filename);
+//   
+//   if (!fin.fail())
+//      while (fin >> move)
+//      {
+//         bool errorFlag = true;
+//         std::string error = "";
+//         
+//         //Capture character
+//         char c = move[4];
+//         if (!(c == '\0' || c == 'p' || c == 'r' || c == 'n'
+//               || c == 'b' || c == 'q' || c == 'k'))
+//            error = "Unknown promotion piece specification";
+//         else
+//            if (move[0] >= 'a' && move[0] <= 'h')
+//               if (move[1] >= '0' && move[1] <= '8')
+//                  if (move[2] >= 'a' && move[2] <= 'h')
+//                     if (move[3] >= '0' && move[3] <= '8')
+//                     {
+//                        char p = squares[move[1] - 49][move[0] - 97]->getLetter();
+//                        
+//                        if (p == 'p' || p == 'r' || p == 'n' ||
+//                            p == 'b' || p == 'q' || p == 'k' ||
+//                            p == 'P' || p == 'R' || p == 'N' ||
+//                            p == 'B' || p == 'Q' || p == 'K')
+//                        {
+//                           errorFlag = false;
+//                           //makeMove(board, move);
+//                           //moveArray.push_back(move);
+//                           Move m(move, *this);
+//                           m.execute();
+//                        }
+//                        else error =
+//                           "No piece in the source coordinates position";
+//                     }
+//         //Errors below in styleChecker are unfounded.
+//                     else error = "Invalid format of destination coordinates";
+//                     else error =    "Invalid format of destination coordinates";
+//                     else error =       "Invalid format of source coordinates";
+//                     else error =          "Invalid format of source coordinates";
+//         
+//         if (errorFlag)
+//         {
+//            std::cout << "Error parsing file " << filename
+//            << " with move '"        << move
+//            << "': "                 << error       << std::endl;
+//            throw(error);
+//            return;
+//         }
+//      }
+//   else
+//      std::cout << "Unable to open file " << filename << " for input." << std::endl;
+//   
+//   //Close the file.
+//   fin.close();
+//}
 
-/********************
- * Load - From File *
- ********************/
-void Board::load(std::string filename)
+void Board::load()
 {
-   //char move[8];
-   std::string move;
-   //Reset board
-   init();
+   char fileName[256];
+   bool goodRead = true;
    
-   //Reset move array
-   history.empty();
+   // gotta clear that board and the vector before reading a new file!!!
+   init();
    history.clear();
    
-   std::ifstream fin(filename);
+   std::cout << "Filename: ";
+   std::cin  >> fileName;
    
-   if (!fin.fail())
-      while (fin >> move)
+   // open the file
+   std::ifstream fin(fileName);
+   if (fin.fail())
+   {
+      std::cout << "Unable to open file \'" << fileName
+      << "\' for input.\n";
+      return;
+   }
+   std::string moveString;
+   // read the file and try to parse, execute, and store the moves
+   // inside the vector.
+   while (fin >> moveString)
+   {
+      try
       {
-         bool errorFlag = true;
-         std::string error = "";
-         
-         //Capture character
-         char c = move[4];
-         if (!(c == '\0' || c == 'p' || c == 'r' || c == 'n'
-               || c == 'b' || c == 'q' || c == 'k'))
-            error = "Unknown promotion piece specification";
-         else
-            if (move[0] >= 'a' && move[0] <= 'h')
-               if (move[1] >= '0' && move[1] <= '8')
-                  if (move[2] >= 'a' && move[2] <= 'h')
-                     if (move[3] >= '0' && move[3] <= '8')
-                     {
-                        char p = squares[move[1] - 49][move[0] - 97]->getLetter();
-                        
-                        if (p == 'p' || p == 'r' || p == 'n' ||
-                            p == 'b' || p == 'q' || p == 'k' ||
-                            p == 'P' || p == 'R' || p == 'N' ||
-                            p == 'B' || p == 'Q' || p == 'K')
-                        {
-                           errorFlag = false;
-                           //makeMove(board, move);
-                           //moveArray.push_back(move);
-                           Move m(move, *this);
-                           m.execute();
-                        }
-                        else error =
-                           "No piece in the source coordinates position";
-                     }
-         //Errors below in styleChecker are unfounded.
-                     else error = "Invalid format of destination coordinates";
-                     else error =    "Invalid format of destination coordinates";
-                     else error =       "Invalid format of source coordinates";
-                     else error =          "Invalid format of source coordinates";
-         
-         if (errorFlag)
-         {
-            std::cout << "Error parsing file " << filename
-            << " with move '"        << move
-            << "': "                 << error       << std::endl;
-            throw(error);
-            return;
-         }
+         Move move(moveString, *this);
+         move.parse();
+         //move.validate();
+         move.execute();
+         history.push_back(moveString);
       }
-   else
-      std::cout << "Unable to open file " << filename << " for input." << std::endl;
+      catch (string fileError)
+      {
+         // catch the errors in parseMove if there are parsing errors
+         goodRead = false;
+         std::cout << "Error parsing file "
+         << fileName
+         << " with move \'"
+         << moveString
+         << "\': "
+         << fileError
+         << std::endl;
+      }
+   }
    
-   //Close the file.
    fin.close();
+   
+   // if not a goodRead then clear the vector and reset the board
+   if (!goodRead)
+   {
+      history.clear();
+      init();
+   }
+   // if all is good with the file read then display the board!
+   drawTest();
+   
 }
+
 
 
 //MEMBER FUNCTIONS//

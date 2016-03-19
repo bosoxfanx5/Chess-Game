@@ -44,6 +44,7 @@ public:
     char getLetter() const {return isWhite ? 'k' : 'K';}
     int getScore() const {return isWhite ? 100 : -100;}
     std::vector<std::string> getMoves();
+    
 };
 
 class Queen : public Piece

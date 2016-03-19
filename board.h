@@ -48,7 +48,7 @@ public:
    
    //Location Class //Array
    Piece * squares[8][8];
-   bool interact();// {std::cin; /*std::cin.ignore()*/; return true;}
+   void interact();// {std::cin; /*std::cin.ignore()*/; return true;}
    std::vector<std::string> history;
 };
 

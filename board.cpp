@@ -7,11 +7,15 @@
 //
 
 #include <iostream>
+#include <fstream>
+#include <string.h>
+#include <vector>
 #include "piece.h"
 #include "move.h"
 #include "position.h"
 #include "board.h"
-using namespace std;
+
+//using namespace std;
 
 
 // Two statics in the Piece class: the simple flag indicating that we
@@ -19,64 +23,6 @@ using namespace std;
 //    the currentMove so each piece can tell if it's move was the last move
 bool Piece::fSimple = true;   // not starting off in Test mode
 int  Piece::currentMove = 0;   // starting at move 0
-
-/*************************************
- * main
- **************************************/
-//int main3()
-//{
-//    // initialize the board
-//    Board board;
-//    
-//    // remove the white pawns
-//    Position pos;
-//    pos.setRow(1);
-//    for (pos.setCol(0); pos.isValid(); pos.adjustCol(1))
-//        board -= pos;    // this will remove a pice at position 'pos'
-//    
-//    // display the board, minus a few pawns
-//    cout << board;
-//    
-//    // prompt for a position
-//    cout << "What position do you want to probe? ";
-//    cin  >> pos;
-//    
-//    // display the piece at that position
-//    cout << "The piece at " << pos << " is " << board[pos] << endl;
-//    
-//    // display all the possible moves for a piece at that position
-//    if (board[pos] != ' ')
-//    {
-//        vector <Move> possibilities;
-//        cout << "Possible moves are:\n";
-//        board[pos].getMoves(possibilities, board);
-//        for (int i = 0; i < possibilities.size(); i++)
-//            cout << "\t" << possibilities[i] << endl;
-//    }
-//    
-//    return 0;
-//    
-//}
-
-
-//
-//  chessboard.cpp
-//  Object Oriented Chess
-//
-//  Created by Dan on 3/11/16.
-//  Copyright © 2016 Brooks, Dan and Tom. All rights reserved.
-//
-
-#include <stdio.h>
-#include <iostream>
-#include <fstream>
-#include <string.h>
-//#include <vector>
-//#include "chessmove.h"
-//#include "chessboard.h"
-//#include "chesspieces.h"
-//#include "chessboardsquare.h"
-
 
 //NON-MEMBER FUNCTIONS//
 
@@ -90,7 +36,9 @@ void showMenu()
    << " b2b4   Specify a move using the Smith Notation"      << std::endl
    << " read   Read a saved game from a file"                << std::endl
    << " test   Simple display for test purposes"             << std::endl
-   << " quit   Leave the game. You will be prompted to save" << std::endl;
+   << " quit   Leave the game. You will be prompted to save" << std::endl
+   << " help   Show valid moves for given piece"             << std::endl
+   << " rank   Compute the strenght of a given position"     << std::endl;
 }
 
 /**********
@@ -178,83 +126,151 @@ void Board::load(std::string filename)
 
 /**********************
  * Interact with User *
- **********************/
-bool Board::interact()
+// **********************/
+//bool Board::interact()
+//{
+//   bool isTestMode = false;
+//   char filename[256] = {'\0'};
+//   char moveOld[8] = { '\0' };
+//    
+//   
+//   
+//   while (moveOld[0] != 'q') // check for full word
+//   {
+//      //prompt for a move
+//      if (history.size() % 2 == 0)
+//         std::cout << "(White): ";
+//      else
+//         std::cout << "(Black): ";
+//      
+//      std::string moveString;
+//      std::cin >> moveString;
+//      
+//      Move move(moveString, *this);
+//     
+//      //moves
+//      if (moveString[0] >= 97 && moveString[0] <= 104) //first letter is a-h
+//      {
+//         move.parse();
+//         //move.validate();
+//         history.push_back(moveString);
+//         move.execute();
+//         drawTest();
+//      }
+//      
+//      //commands
+//      else
+//      {
+//         switch (moveString[0])
+//         {
+//            case '?' :         //help
+//               showMenu();
+//               break;
+//            case 'r' :         //read
+//               try
+//            {
+//               prompt((char *)"Filename: ", filename);
+//               load(filename);
+//               drawTest();
+//            }
+//               catch (std::string error)
+//            {
+//               std::cout << "";// "ERROR DETECTED";
+//            }
+//               break;
+//            case 't' :         //test output
+//               isTestMode = !isTestMode;
+//               //drawTest();
+//               draw();
+//               break;
+//            case 'l' :         //list moves in array
+//               //list(moveArray);
+//               break;
+//            case 'q' :
+//               return false;
+//               break;          //quit
+//            default:           //unknown input
+//               std::cout << "Error: Unknown Input"
+//               << "	Type ? for more options"               << std::endl;
+//               break;
+//         }
+//      }
+//   }
+//   std::cout << "To save a game, please specify the filename." << std::endl
+//   << "    To quit without saving a file, just press <enter>"  << std::endl;
+//   std::string response;
+//   response = std::cin.get();
+//   if (std::cin.get() != '\n');
+//   //save(response, moveArray);
+//   std::cin.ignore();
+//   return true;
+//}
+
+void Board::interact()
 {
    bool isTestMode = false;
-   char filename[256] = {'\0'};
-   char moveOld[8] = { '\0' };
+   bool quit = false;
    
-   while (moveOld[0] != 'q')
+   do
    {
-      //prompt for a move
-      if (history.size() % 2 == 0)
-         std::cout << "(White): ";
-      else
-         std::cout << "(Black): ";
+      // who's turn is it? yours or mine?
+      switch (history.size() % 2)
+      {
+         case 0:
+            std::cout << "(White): ";
+            break;
+         case 1:
+            std::cout << "(Black): ";
+            break;
+      }
       
       std::string moveString;
       std::cin >> moveString;
       
-      Move move(moveString, *this);
-     
-      //moves
-      if (moveString[0] >= 97 && moveString[0] <= 104) //first letter is a-h
-      {
-         move.parse();
-         //move.validate();
-         history.push_back(moveString);
-         move.execute();
-         drawTest();
-      }
-      
-      //commands
+      if (moveString == "?")
+         showMenu();
+      else if (moveString == "read")
+         std::cout << "read" << std::endl;
+         //readFile(moveHistory, board, testMode);
+      else if (moveString == "test")
+         {
+            isTestMode = !isTestMode;
+            //display(board, testMode);
+         }
+      else if (moveString == "quit")
+         quit = true;
+      else if(moveString == "help")
+         std::cout << "Help" << std::endl;
+      else if(moveString == "rank")
+         std::cout << "This feature is not available" << std::endl;
       else
       {
-         switch (moveString[0])
+         try
          {
-            case '?' :         //help
-               showMenu();
-               break;
-            case 'r' :         //read
-               try
-            {
-               prompt((char *)"Filename: ", filename);
-               load(filename);
-               drawTest();
-            }
-               catch (std::string error)
-            {
-               std::cout << "";// "ERROR DETECTED";
-            }
-               break;
-            case 't' :         //test output
-               isTestMode = !isTestMode;
-               //drawTest();
-               draw();
-               break;
-            case 'l' :         //list moves in array
-               //list(moveArray);
-               break;
-            case 'q' :
-               return false;
-               break;          //quit
-            default:           //unknown input
-               std::cout << "Error: Unknown Input"
-               << "	Type ? for more options"               << std::endl;
-               break;
+            // take users input as an attempt to make a move on the
+            // board
+            Move move(moveString, *this);
+            move.parse();
+            //move.validate();
+            move.execute();
+            history.push_back(moveString);
+            drawTest();
+         }
+         catch (std::string error)
+         {
+            std::cout << "Error in move \'" << moveString << "\': " << error << std::endl;
+            std::cout << "      Type ? for more options\n";
          }
       }
    }
-   std::cout << "To save a game, please specify the filename." << std::endl
-   << "    To quit without saving a file, just press <enter>"  << std::endl;
-   std::string response;
-   response = std::cin.get();
-   if (std::cin.get() != '\n');
-   //save(response, moveArray);
-   std::cin.ignore();
-   return true;
+   while (quit == false);
+   
+   //writeFile(moveHistory);
+   
+   return;
+   
 }
+
 
 
 /**************

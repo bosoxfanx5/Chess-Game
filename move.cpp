@@ -25,18 +25,6 @@ void Move::execute()
 void Move::parse() throw(string)
 {
    string text = this->moveString;
-//   // initialize the this->  What we know up to this point is... nothing!
-//   this->piece    =  NO_PIECE;
-//   this->capture   = false;
-//   this->source.r  = INVALID;
-//   this->source.c  = INVALID;
-//   this->dest.r    = INVALID;
-//   this->dest.c    = INVALID;
-//   this->enpassant = false;
-//   this->castleK   = false;
-//   this->castleQ   = false;
-//   this->promote   = false;
-   
    
    //Position source, dest;
    source.setRow(INVALID);
@@ -69,9 +57,8 @@ void Move::parse() throw(string)
       if (text[1] < '1' || text[1] > '8')
          throw string("Invalid format of source coordinates");
          
-   //flipping the board  :)
-   source.setRow('8' - text[1]);
-   //source.setRow(text[1] - '1');
+         //flipping the board  :)
+         source.setRow('8' - text[1]);
          assert(source.getRow() >= 0 && source.getRow() <= 7);
          
          // if there is nothing to move, we have an error
@@ -164,45 +151,3 @@ void Move::parse() throw(string)
    
    return;
 }
-
-/*************************************
- * main
- **************************************/
-//int main4()
-//{
-//    Move move1;
-//    Move move2;
-//    
-//    try
-//    {
-//        cout << "Enter a move: ";
-//        cin  >> move1;
-//        cout << "    You entered: " << move1 << endl;
-//    }
-//    catch (string s)
-//    {
-//        cout << "Error reading first move: " << s << endl;
-//    }
-//    
-//    try
-//    {
-//        cout << "Enter another move: ";
-//        cin  >> move2;
-//        cout << "You entered: " << move2 << endl;
-//    }
-//    catch (string s)
-//    {
-//        cout << "Error reading second move: " << s << endl;
-//    }
-//    
-//    if (move1 == move2)
-//        cout << "They are the same!\n";
-//    else
-//        cout << "They are different!\n";
-//    
-//    move1 = move2;
-//    cout << "After move1 = move2, then: " << move1 << " " << move2 << endl;
-//    
-//    return 0;
-//    
-//}

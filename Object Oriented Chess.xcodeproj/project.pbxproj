@@ -12,7 +12,6 @@
 		331673301C9B920600487F21 /* piece.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3316732F1C9B920600487F21 /* piece.cpp */; };
 		331673331C9B921E00487F21 /* position.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 331673321C9B921E00487F21 /* position.cpp */; };
 		331673361C9B923600487F21 /* move.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 331673351C9B923600487F21 /* move.cpp */; };
-		331673391C9B995400487F21 /* square.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 331673381C9B995400487F21 /* square.cpp */; };
 		846B6FE51C9BA66A0067E829 /* TODO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 846B6FE41C9BA66A0067E829 /* TODO.cpp */; };
 /* End PBXBuildFile section */
 
@@ -38,8 +37,6 @@
 		331673341C9B922800487F21 /* position.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = position.h; sourceTree = "<group>"; };
 		331673351C9B923600487F21 /* move.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = move.cpp; sourceTree = "<group>"; };
 		331673371C9B924E00487F21 /* move.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = move.h; sourceTree = "<group>"; };
-		331673381C9B995400487F21 /* square.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = square.cpp; sourceTree = "<group>"; };
-		3316733A1C9B996100487F21 /* square.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = square.h; sourceTree = "<group>"; };
 		846B6FAD1C8D2D380067E829 /* Object Oriented Chess */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Object Oriented Chess"; sourceTree = BUILT_PRODUCTS_DIR; };
 		846B6FE41C9BA66A0067E829 /* TODO.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TODO.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,8 +64,6 @@
 				331673321C9B921E00487F21 /* position.cpp */,
 				331673371C9B924E00487F21 /* move.h */,
 				331673351C9B923600487F21 /* move.cpp */,
-				3316733A1C9B996100487F21 /* square.h */,
-				331673381C9B995400487F21 /* square.cpp */,
 				846B6FE41C9BA66A0067E829 /* TODO.cpp */,
 			);
 			name = "New Chess Game";
@@ -147,7 +142,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				331673361C9B923600487F21 /* move.cpp in Sources */,
-				331673391C9B995400487F21 /* square.cpp in Sources */,
 				3316732D1C9B91E300487F21 /* board.cpp in Sources */,
 				331673301C9B920600487F21 /* piece.cpp in Sources */,
 				331673331C9B921E00487F21 /* position.cpp in Sources */,

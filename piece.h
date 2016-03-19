@@ -35,7 +35,7 @@ protected:
 class Space : public Piece
 {
 public:
-   Space() : Piece(false) {}
+   Space() : Piece(false) {};
    virtual int getScore()   const { return   0; }
    virtual char getLetter() const { return ' '; }
    void getMoves(Board & board, Position & position) {};

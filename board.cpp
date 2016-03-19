@@ -206,8 +206,8 @@ void Board::writeFile()
    // store the moves from the vector in the file
    for (int i = 0; i < history.size(); i++)
    {
-      fout << history[i] << std::endl;
-      if (i % 2 == 0)
+      fout << history[i];
+      if (i % 2 != 0)
          fout << std::endl;
       else
          fout << " ";

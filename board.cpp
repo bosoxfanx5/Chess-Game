@@ -291,8 +291,7 @@ void Board::interact()
       if (moveString == "?")
          showMenu();
       else if (moveString == "read")
-         std::cout << "read" << std::endl;
-         //readFile(moveHistory, board, testMode);
+         load();
       else if (moveString == "test")
          {
             isTestMode = !isTestMode;

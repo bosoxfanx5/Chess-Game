@@ -22,7 +22,7 @@ public:
    bool getIsWhite() const                { return isWhite; }
    virtual char getLetter() const = 0;
    virtual int getScore()   const = 0;
-   virtual void getMoves(Board & board, Position & position) const = 0;   //
+   virtual void getMoves(Board & board, Position & position) = 0;   //
    std::vector<std::string> posMoves;   //
    
    //static bool fSimple;   // not starting off in Test mode
@@ -38,7 +38,7 @@ public:
    Space() : Piece(false) {};
    virtual int getScore()   const { return   0; }
    virtual char getLetter() const { return ' '; }
-   void getMoves(Board & board, Position & position) {};
+   void getMoves(Board & board, Position & position);// {};
 };
 
 class King : public Piece

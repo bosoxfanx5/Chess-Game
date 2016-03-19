@@ -44,6 +44,13 @@ public:
         setRow(r);
         setCol(c);
     }
+   
+   Position(char r, char c) : r(0), c(0), invalid(false)
+   {
+      setRow(r - '1');
+      setCol(c - 97);
+   }
+   
     Position(const Position & rhs, const Delta & delta) : invalid(false)
     {
         set(rhs.r + delta.dRow, rhs.c + delta.dCol);

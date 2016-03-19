@@ -37,6 +37,10 @@ std::vector<std::string> getLinearMoves(Board & board, Position & position)
 
 //Member Functions
 
+void Space::getMoves(Board & board, Position & position)
+{
+}
+
 void King::getMoves(Board & board, Position & position)
 {
    //Tom:  Your code goes here.

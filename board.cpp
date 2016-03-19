@@ -248,7 +248,9 @@ void Board::interact()
          
          
          Position origin(r, c);
-         squares[r][c]->getMoves(*this, origin);
+         King k = squares[r][c];
+         k.getMoves(*this, origin);
+         //squares[r][c]->getMoves(*this, origin);
          
          std::cout << "Possible moves are:" << std::endl;
          
@@ -339,8 +341,8 @@ void Board::drawTest()
       std::cout << r + 1 << " ";        //row headers
       for (int c = 0; c <= 7; c++)
          //if (this->squares[r][c].piece->getLetter() != '\0')
-         if (this->squares[7-r][c]->getLetter() != ' ')  //occupied if not null
-            std::cout << this->squares[7-r][c]->getLetter();
+         if (this->squares[r][c]->getLetter() != ' ')  //occupied if not null
+            std::cout << this->squares[r][c]->getLetter();
       //std::cout << 'z';
          else                      //free
             std::cout << " ";
@@ -354,23 +356,23 @@ void Board::drawTest()
 void Board::init()
 {
    //White
-   this->squares[0][4] = new King(false); //true = isWhite
-   this->squares[0][3] = new Queen(false);
-   this->squares[0][0] = new Rook(false); //Left
-   this->squares[0][7] = new Rook(false); //Right
-   this->squares[0][1] = new Knight(false);
-   this->squares[0][6] = new Knight(false);
-   this->squares[0][2] = new Bishop(false);
-   this->squares[0][5] = new Bishop(false);
+   this->squares[0][4] = new King(true); //true = isWhite
+   this->squares[0][3] = new Queen(true);
+   this->squares[0][0] = new Rook(true); //Left
+   this->squares[0][7] = new Rook(true); //Right
+   this->squares[0][1] = new Knight(true);
+   this->squares[0][6] = new Knight(true);
+   this->squares[0][2] = new Bishop(true);
+   this->squares[0][5] = new Bishop(true);
    
-   this->squares[1][0] = new Pawn(false);
-   this->squares[1][1] = new Pawn(false);
-   this->squares[1][2] = new Pawn(false);
-   this->squares[1][3] = new Pawn(false);
-   this->squares[1][4] = new Pawn(false);
-   this->squares[1][5] = new Pawn(false);
-   this->squares[1][6] = new Pawn(false);
-   this->squares[1][7] = new Pawn(false);
+   this->squares[1][0] = new Pawn(true);
+   this->squares[1][1] = new Pawn(true);
+   this->squares[1][2] = new Pawn(true);
+   this->squares[1][3] = new Pawn(true);
+   this->squares[1][4] = new Pawn(true);
+   this->squares[1][5] = new Pawn(true);
+   this->squares[1][6] = new Pawn(true);
+   this->squares[1][7] = new Pawn(true);
    
    //The great divide
    for (int r = 5; r >= 2; r--)
@@ -378,23 +380,23 @@ void Board::init()
          this->squares[r][c] = new Space();
    
    //Black
-   this->squares[6][0] = new Pawn(true);
-   this->squares[6][1] = new Pawn(true);
-   this->squares[6][2] = new Pawn(true);
-   this->squares[6][3] = new Pawn(true);
-   this->squares[6][4] = new Pawn(true);
-   this->squares[6][5] = new Pawn(true);
-   this->squares[6][6] = new Pawn(true);
-   this->squares[6][7] = new Pawn(true);
+   this->squares[6][0] = new Pawn(false);
+   this->squares[6][1] = new Pawn(false);
+   this->squares[6][2] = new Pawn(false);
+   this->squares[6][3] = new Pawn(false);
+   this->squares[6][4] = new Pawn(false);
+   this->squares[6][5] = new Pawn(false);
+   this->squares[6][6] = new Pawn(false);
+   this->squares[6][7] = new Pawn(false);
    
-   this->squares[7][0] = new Rook(true);
-   this->squares[7][7] = new Rook(true);
-   this->squares[7][1] = new Knight(true);
-   this->squares[7][6] = new Knight(true);
-   this->squares[7][2] = new Bishop(true);
-   this->squares[7][5] = new Bishop(true);
-   this->squares[7][3] = new Queen(true);
-   this->squares[7][4] = new King(true);
+   this->squares[7][0] = new Rook(false);
+   this->squares[7][7] = new Rook(false);
+   this->squares[7][1] = new Knight(false);
+   this->squares[7][6] = new Knight(false);
+   this->squares[7][2] = new Bishop(false);
+   this->squares[7][5] = new Bishop(false);
+   this->squares[7][3] = new Queen(false);
+   this->squares[7][4] = new King(false);
 }
 
 

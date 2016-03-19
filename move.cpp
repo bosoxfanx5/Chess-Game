@@ -56,9 +56,8 @@ void Move::parse() throw(string)
       // row: 1-8
       if (text[1] < '1' || text[1] > '8')
          throw string("Invalid format of source coordinates");
-         
-         //flipping the board  :)
-         source.setRow('8' - text[1]);
+   
+         source.setRow(text[1] - '1');
          assert(source.getRow() >= 0 && source.getRow() <= 7);
          
          // if there is nothing to move, we have an error
@@ -88,9 +87,8 @@ void Move::parse() throw(string)
                      // row: 1-8
                      if (text[3] < '1' || text[3] > '8')
                         throw string("Invalid format of destination coordinates");
-                        
-                        //flipping the board  :)
-                        dest.setRow('8' - text[3]);
+   
+                        dest.setRow(text[3] - '1');
                         assert(dest.getRow() >= 0 && dest.getRow() <= 7);
                         
                         // if destination piece belongs to current player, we have an error

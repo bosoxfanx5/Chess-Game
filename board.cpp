@@ -181,6 +181,42 @@ void Board::load()
    
 }
 
+/**********************
+ * Board::writeFile *
+ **********************/
+void Board::writeFile()
+{
+   char newFile[256];
+   // if you don't want save the game, just press enter
+   std::cout << "To save a game, please specify the filename.\n"
+   << "    To quit without saving a file, just press <enter>\n";
+   
+   std::cin.ignore();
+   std::cin.getline(newFile, 256);
+   
+   // open the new file
+   std::ofstream fout(newFile);
+   
+   if (fout.fail())
+      return;
+   
+   if (newFile[0] == '\0')
+      return;
+   
+   // store the moves from the vector in the file
+   for (int i = 0; i < history.size(); i++)
+   {
+      fout << history[i] << std::endl;
+      if (i % 2 == 0)
+         fout << std::endl;
+      else
+         fout << " ";
+   }
+   fout.close();
+   
+   return;
+}
+
 
 
 //MEMBER FUNCTIONS//
@@ -360,7 +396,7 @@ void Board::interact()
    }
    while (quit == false);
    
-   //writeFile(moveHistory);
+   writeFile();
    
    return;
    

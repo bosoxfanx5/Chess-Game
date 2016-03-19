@@ -154,55 +154,58 @@ void Rook::getMoves(Board & board, Position & position)
 
 void Pawn::getMoves(Board & board, Position & position)
 {
-    int r = position.getRow();
-    int c = position.getCol();
-    bool w = isWhite;
+    int r = position.getRow();  // index of source row
+    int c = position.getCol();  // index of source col
+    //bool w = isWhite;
     string l = "";
-    int move1 = 0;
-    int move2 = 0;
+    int dest1_index = 0;   // row index of 1 square move
+    int dest1_display = 0; // row display of 1 square move
+    int dest2_index = 0;   // row index of 2 square move
+    int dest2_display = 0; // row display of 2 square move
     string validMove;
     bool enPassant = true;
 
-    move1 = isWhite ? r + 1 : r - 1;
-    move2 = isWhite ? r + 2 : r - 2;
-    
+    dest1_index = isWhite ? r + 1 : r - 1;
+    dest2_index = isWhite ? r + 2 : r - 2;
+    dest1_display = dest1_index + 1;
+    dest2_display = dest2_index + 1;
     // A Pawn can only move to 4 possible squares
     // 1 & 2) either of the two squares directly in front of it
     // 3 & 4) either of the two squares diagonally in front of it
     
     // first: can the pawn move 1 square forward
-    if (board.squares[move1][c]->getLetter() == ' ')
+    if (board.squares[dest1_index][c]->getLetter() == ' ')
     {
-        validMove = getCol(c) + std::to_string(r) + getCol(c) + std::to_string(move1);
+        validMove = getCol(c) + std::to_string(r + 1) + getCol(c) + std::to_string(dest1_display);
         posMoves.push_back(validMove);
     }
     
     // second: has the pawn moved - can the pawn move 2 squares
     if (!board.squares[r][c]->fMoved)  // Pawn has not moved
     {
-        if ((board.squares[move1][c]->getLetter() == ' ') && (board.squares[move2][c]->getLetter() == ' '))
+        if ((board.squares[dest1_index][c]->getLetter() == ' ') && (board.squares[dest2_index][c]->getLetter() == ' '))
         {
-            validMove = getCol(c) + std::to_string(r) + getCol(c) + std::to_string(move2);
+            validMove = getCol(c) + std::to_string(r + 1) + getCol(c) + std::to_string(dest2_display);
             posMoves.push_back(validMove);
         }
     }
  
     // third: can the pawn attack to the left
-    if (!(board.squares[move1][c - 1]->getLetter() == ' '))
+    if (!(board.squares[dest1_index][c - 1]->getLetter() == ' ') && c > 0)
     {
-        validMove = getCol(c) + std::to_string(r) + getCol(c - 1) + std::to_string(move1);
+        validMove = getCol(c) + std::to_string(r + 1) + getCol(c - 1) + std::to_string(dest1_display);
         posMoves.push_back(validMove);
     }
 
     // fourth: can the pawn attack to the right
-    if (!(board.squares[move1][c + 1]->getLetter() == ' '))
+    if (!(board.squares[dest1_index][c + 1]->getLetter() == ' ') && c < 7)
     {
-        validMove = getCol(c) + std::to_string(r) + getCol(c + 1) + std::to_string(move1);
+        validMove = getCol(c) + std::to_string(r + 1) + getCol(c + 1) + std::to_string(dest1_display);
         posMoves.push_back(validMove);
     }
 
     // fifth: can the pawn do an en passant
     if (board.history.size() >= 1 )
-        std::cout << board.history[board.history.size()] << std::endl;
+        std::cout << board.history[board.history.size() - 1] << std::endl;
 }
 

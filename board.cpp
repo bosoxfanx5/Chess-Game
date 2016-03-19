@@ -245,18 +245,19 @@ void Board::interact()
          char r, c = '\0';
          std::cin >> c >> r;
          
-         Move theMove(moveString);
-         theMove.parse
-         squares[r][c]->getMoves(this);
+         
+         
+         Position origin(r, c);
+         squares[r][c]->getMoves(*this, origin);
          
          std::cout << "Possible moves are:" << std::endl;
          
          int count = 0;
-         for (std::vector<std::string>::iterator it = squares[r][c].piece.posMoves.begin();
-              it != squares[r][c].piece.posMoves.end();
+         for (std::vector<std::string>::iterator it = squares[r][c]->posMoves.begin();
+              it != squares[r][c]->posMoves.end();
               ++it)
          {
-            std::cout << squares[r][c].piece.posMoves[count++] << std::endl;
+            std::cout << squares[r][c]->posMoves[count++] << std::endl;
          }
       }
       

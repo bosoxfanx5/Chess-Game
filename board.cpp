@@ -235,7 +235,7 @@ void Board::interact()
       else if (moveString == "test")
          {
             isTestMode = !isTestMode;
-            //display(board, testMode);
+            //draw(board, testMode);
          }
       else if (moveString == "quit")
          quit = true;

@@ -18,7 +18,12 @@ using namespace std;
 
 void Move::execute()
 {
+   // Set destination square equal to the source square - this gets all the attributes of the
+   // source square with the piece
    board->squares[dest.getRow()][dest.getCol()] = board->squares[source.getRow()][source.getCol()];
+   // set fMoved to true - regardless of what piece it is
+   board->squares[dest.getRow()][dest.getCol()]->fMoved = true;
+   // Set the source square to an empty square
    board->squares[source.getRow()][source.getCol()] = new Space();
 }
 

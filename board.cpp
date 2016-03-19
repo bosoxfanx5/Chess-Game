@@ -246,21 +246,23 @@ void Board::interact()
          std::cin >> c >> r;
          
          
-         
          Position origin(r, c);
          //King k = squares[r][c];
          //k.getMoves(*this, origin);
+         squares[origin.getRow()][origin.getCol()]->posMoves.clear();
          squares[origin.getRow()][origin.getCol()]->getMoves(*this, origin);
          
          std::cout << "Possible moves are:" << std::endl;
          
          int count = 0;
+         
          for (std::vector<std::string>::iterator it = squares[origin.getRow()][origin.getCol()]->posMoves.begin();
               it != squares[origin.getRow()][origin.getCol()]->posMoves.end();
               ++it)
          {
             std::cout << squares[origin.getRow()][origin.getCol()]->posMoves[count++] << std::endl;
          }
+         
           
       }
       

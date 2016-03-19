@@ -75,7 +75,10 @@ void King::getMoves(Board & board, Position & position)
    bool w = isWhite;
    string l = "";
    string validMove;
+   bool qCastle = true;
+   bool kCastle = true;
    
+    // Validate squares immediately around the King
    for (int i = r - 1; i <= r + 1; i++)
       if (i >= 0 && i < 8)
       {
@@ -85,13 +88,47 @@ void King::getMoves(Board & board, Position & position)
                l = board.squares[i][j]->getLetter();
                if (l == " " || w != board.squares[i][j]->getIsWhite())
                {
-                  //posMoves.push_back(&"" [ (r * 1000 + c * 100 + i * 10 + j)] + l);
-                   validMove = getCol(c + 1) + std::to_string(r + 1) + getCol(j + 1) + std::to_string(i + 1) + l;
+                  validMove = getCol(c) + std::to_string(r + 1) + getCol(j) + std::to_string(i + 1) + l;
                   posMoves.push_back(validMove);
-                   //std::cout << "c" << j << "r" << i << " is valid" << std::endl;
+                  //std::cout << "c" << j << "r" << i << " is valid" << std::endl;
                }
             }
       }
+   // Check for castle move
+    // syntax for castle move e1g1c (e8g1c) -> King Side, e1c1C (e8c1C) -> Queen Side
+   if (!board.squares[r][c]->fMoved)    //King has NOT moved
+   {
+       if (!board.squares[r][0]->fMoved)  // Queen Side Rook has NOT moved
+       {
+           for (int i = 1; i < 4; i++)
+               if (!(board.squares[r][i]->getLetter() == ' '))
+               {
+                   qCastle = false;
+                   break;
+               }
+           if (qCastle)
+           {
+               validMove = getCol(c) + std::to_string(r + 1) + 'c' + std::to_string(r + 1) + 'C';
+               posMoves.push_back(validMove);
+           }
+       }
+
+       if (!board.squares[r][7]->fMoved)  // King Side Rook has NOT moved
+       {
+           for (int i = 5; i < 7; i++)
+               if (!(board.squares[r][i]->getLetter() == ' '))
+               {
+                   kCastle = false;
+                   break;
+               }
+           if (kCastle)
+           {
+               validMove = getCol(c) + std::to_string(r + 1) + 'g' + std::to_string(r + 1) + 'c';
+               posMoves.push_back(validMove);
+           }
+       }
+
+   }
 }
 
 void Queen::getMoves(Board & board, Position & position)

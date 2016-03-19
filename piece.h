@@ -18,6 +18,7 @@ class Board; //Forward declaration (prototype)
 class Piece
 {
 public:
+   bool fMoved;
    Piece(bool isWhite) : isWhite(isWhite) {};
    bool getIsWhite() const                { return isWhite; }
    virtual char getLetter() const = 0;
@@ -44,7 +45,7 @@ public:
 class King : public Piece
 {
 public:
-   bool fMoved;
+   
    King(bool isWhite) : Piece(isWhite) {};
    char getLetter() const {return isWhite ? 'k' : 'K';}
    int getScore() const {return isWhite ? 100 : -100;}

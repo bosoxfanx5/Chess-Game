@@ -14,7 +14,7 @@
 #include "position.h"
 #include "board.h"
 
-class Board;
+class Board; //Forward declaration (prototype)
 class Piece
 {
 public:

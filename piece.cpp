@@ -97,7 +97,7 @@ void King::getMoves(Board & board, Position & position)
                }
                 else
                 {
-                    std::cout << "c" << j << "r" << i << " is valid" << std::endl;
+                    std::cout << "c" << j << "r" << i << " is not valid" << std::endl;
                 }
             }
           else

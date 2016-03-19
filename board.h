@@ -46,6 +46,7 @@ public:
    void load();
    void draw();
    void drawTest();
+   void writeFile();
    //Piece getPieceAtLocation(Position location) {return squares[location.getRow()][location.getCol()];}
    
    //Location Class //Array

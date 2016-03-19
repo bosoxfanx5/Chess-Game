@@ -41,6 +41,7 @@ private:
 public:
    //Chessboard() {};
    void init();
+   void initk();
    void load(std::string filename);
    void draw();
    void drawTest();

@@ -239,9 +239,14 @@ void Board::interact()
          }
       else if (moveString == "quit")
          quit = true;
+      else if (moveString == "initk")
+      {
+         initk();
+         drawTest();
+      }
       else if(moveString == "help")
       {
-         std::cout << "What piece would you like to find the moves for?" << std::endl;
+         std::cout << "What piece would you like to find the moves for? ";
          char r, c = '\0';
          std::cin >> c >> r;
          
@@ -401,5 +406,54 @@ void Board::init()
    this->squares[7][3] = new Queen(false);
    this->squares[7][4] = new King(false);
 }
+
+void Board::initk()
+{
+   //The great divide
+   for (int r = 8; r >= 0; r--)
+      for (int c = 0; c <= 7; c++)
+         this->squares[r][c] = new Space();
+   
+   //White
+   this->squares[0][4] = new King(true); //true = isWhite
+   //this->squares[0][3] = new Queen(true);
+   this->squares[0][0] = new Rook(true); //Left
+   this->squares[0][7] = new Rook(true); //Right
+   //this->squares[0][1] = new Knight(true);
+   //this->squares[0][6] = new Knight(true);
+   //this->squares[0][2] = new Bishop(true);
+   //this->squares[0][5] = new Bishop(true);
+   
+   this->squares[1][0] = new Pawn(true);
+   this->squares[1][1] = new Pawn(true);
+   this->squares[1][2] = new Pawn(true);
+   this->squares[1][3] = new Pawn(true);
+   this->squares[1][4] = new Pawn(true);
+   this->squares[1][5] = new Pawn(true);
+   this->squares[1][6] = new Pawn(true);
+   this->squares[1][7] = new Pawn(true);
+   
+
+   
+   //Black
+   this->squares[6][0] = new Pawn(false);
+   this->squares[6][1] = new Pawn(false);
+   this->squares[6][2] = new Pawn(false);
+   this->squares[6][3] = new Pawn(false);
+   this->squares[6][4] = new Pawn(false);
+   this->squares[6][5] = new Pawn(false);
+   this->squares[6][6] = new Pawn(false);
+   this->squares[6][7] = new Pawn(false);
+   
+   this->squares[7][0] = new Rook(false);
+   this->squares[7][7] = new Rook(false);
+   //this->squares[7][1] = new Knight(false);
+   //this->squares[7][6] = new Knight(false);
+   //this->squares[7][2] = new Bishop(false);
+   //this->squares[7][5] = new Bishop(false);
+   //this->squares[7][3] = new Queen(false);
+   this->squares[7][4] = new King(false);
+}
+
 
 

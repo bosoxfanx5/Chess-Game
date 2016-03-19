@@ -32,8 +32,12 @@ std::vector<std::string> getLinearMoves(Board & board, Position & position)
    return posMoves;
 }
 
-
-
+char getCol(int c)
+{
+    char columns[9] = {"abcdefgh"};
+    
+    return columns[c];
+}
 
 //Member Functions
 
@@ -45,17 +49,7 @@ void King::getMoves(Board & board, Position & position)
 {
    //Tom:  Your code goes here.
 //   King
-//   Get Possible moves from current position if board was empty
-//      Min row/col = 0
-//      Max row/col = 7
-//      Get standard possible moves
-//      For r = piece.r - 1 to piece.r + 1
-//       IF r >= 0 && r < 8
-//        For c = piece.c -1 to piece.c + 1
-//         IF c >= 0 && c < 8
-//          IF board[r][c].piece(isWhite) !=  source.piece(isWhite)
-//           possibleMove = rc
-//   
+//
 //      
 //      2. with a rook that has already moved.
 //      ***Add variable to King and Rook Classes: bool hasMoved
@@ -80,6 +74,7 @@ void King::getMoves(Board & board, Position & position)
    int c = position.getCol();
    bool w = isWhite;
    string l = "";
+   string validMove;
    
    for (int i = r - 1; i <= r + 1; i++)
       if (i >= 0 && i < 8)
@@ -91,25 +86,11 @@ void King::getMoves(Board & board, Position & position)
                if (l == " " || w != board.squares[i][j]->getIsWhite())
                {
                   //posMoves.push_back(&"" [ (r * 1000 + c * 100 + i * 10 + j)] + l);
-                  posMoves.push_back("valid");
-                   std::cout << "c" << j << "r" << i << " is valid" << std::endl;
+                   validMove = getCol(c + 1) + std::to_string(r + 1) + getCol(j + 1) + std::to_string(i + 1) + l;
+                  posMoves.push_back(validMove);
+                   //std::cout << "c" << j << "r" << i << " is valid" << std::endl;
                }
-                else
-                {
-                    posMoves.push_back("Not valid");
-                    std::cout << "c" << j << "r" << i << " is not valid" << std::endl;
-                }
             }
-          else
-          {
-              posMoves.push_back("Not valid");
-              std::cout << "c" << j << " is not on the board" << std::endl;
-          }
-      }
-      else
-      {
-          posMoves.push_back("Not valid");
-          std::cout << "r" << i << " is not on the board" << std::endl;
       }
 }
 

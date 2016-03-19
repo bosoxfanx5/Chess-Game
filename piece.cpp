@@ -6,10 +6,10 @@
 //  Copyright © 2016 Dan McDaniel. All rights reserved.
 //
 
-#include <stdio.h>
 #include "piece.h"
 #include "board.h"
 #include <vector>
+#include <iostream>
 //#include "position.h"
 
 //Non-Member Functions
@@ -89,10 +89,22 @@ void King::getMoves(Board & board, Position & position)
             {
                l = board.squares[i][j]->getLetter();
                if (l == " " || w != board.squares[i][j]->getIsWhite())
-                  posMoves.push_back(&"" [ (r * 1000 + c * 100 + i * 10 + j)] + l);
-                  posMoves.push_back("rcijl");
+               {
+                  //posMoves.push_back(&"" [ (r * 1000 + c * 100 + i * 10 + j)] + l);
+                  //posMoves.push_back("rcijl");
+                   std::cout << "c" << j << "r" << i << " is valid" << std::endl;
+
+               }
+                else
+                {
+                    std::cout << "c" << j << "r" << i << " is valid" << std::endl;
+                }
             }
+          else
+              std::cout << "c" << j << " is not on the board" << std::endl;
       }
+      else
+          std::cout << "r" << i << " is not on the board" << std::endl;
 }
 
 void Queen::getMoves(Board & board, Position & position)

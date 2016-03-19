@@ -91,20 +91,26 @@ void King::getMoves(Board & board, Position & position)
                if (l == " " || w != board.squares[i][j]->getIsWhite())
                {
                   //posMoves.push_back(&"" [ (r * 1000 + c * 100 + i * 10 + j)] + l);
-                  //posMoves.push_back("rcijl");
+                  posMoves.push_back("valid");
                    std::cout << "c" << j << "r" << i << " is valid" << std::endl;
-
                }
                 else
                 {
+                    posMoves.push_back("Not valid");
                     std::cout << "c" << j << "r" << i << " is not valid" << std::endl;
                 }
             }
           else
+          {
+              posMoves.push_back("Not valid");
               std::cout << "c" << j << " is not on the board" << std::endl;
+          }
       }
       else
+      {
+          posMoves.push_back("Not valid");
           std::cout << "r" << i << " is not on the board" << std::endl;
+      }
 }
 
 void Queen::getMoves(Board & board, Position & position)

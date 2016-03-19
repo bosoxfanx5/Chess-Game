@@ -253,15 +253,15 @@ void Board::interact()
          squares[origin.getRow()][origin.getCol()]->getMoves(*this, origin);
          
          std::cout << "Possible moves are:" << std::endl;
-         /*
+         
          int count = 0;
-         for (std::vector<std::string>::iterator it = squares[r][c]->posMoves.begin();
-              it != squares[r][c]->posMoves.end();
+         for (std::vector<std::string>::iterator it = squares[origin.getRow()][origin.getCol()]->posMoves.begin();
+              it != squares[origin.getRow()][origin.getCol()]->posMoves.end();
               ++it)
          {
-            std::cout << squares[r][c]->posMoves[count++] << std::endl;
+            std::cout << squares[origin.getRow()][origin.getCol()]->posMoves[count++] << std::endl;
          }
-          */
+          
       }
       
       else if(moveString == "rank")

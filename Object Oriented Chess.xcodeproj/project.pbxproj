@@ -12,7 +12,7 @@
 		331673301C9B920600487F21 /* piece.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3316732F1C9B920600487F21 /* piece.cpp */; };
 		331673331C9B921E00487F21 /* position.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 331673321C9B921E00487F21 /* position.cpp */; };
 		331673361C9B923600487F21 /* move.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 331673351C9B923600487F21 /* move.cpp */; };
-		846B6FE51C9BA66A0067E829 /* TODO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 846B6FE41C9BA66A0067E829 /* TODO.cpp */; };
+		846B6FE51C9BA66A0067E829 /* NOTES.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 846B6FE41C9BA66A0067E829 /* NOTES.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,7 +38,7 @@
 		331673351C9B923600487F21 /* move.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = move.cpp; sourceTree = "<group>"; };
 		331673371C9B924E00487F21 /* move.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = move.h; sourceTree = "<group>"; };
 		846B6FAD1C8D2D380067E829 /* Object Oriented Chess */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Object Oriented Chess"; sourceTree = BUILT_PRODUCTS_DIR; };
-		846B6FE41C9BA66A0067E829 /* TODO.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TODO.cpp; sourceTree = "<group>"; };
+		846B6FE41C9BA66A0067E829 /* NOTES.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NOTES.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +64,7 @@
 				331673321C9B921E00487F21 /* position.cpp */,
 				331673371C9B924E00487F21 /* move.h */,
 				331673351C9B923600487F21 /* move.cpp */,
-				846B6FE41C9BA66A0067E829 /* TODO.cpp */,
+				846B6FE41C9BA66A0067E829 /* NOTES.cpp */,
 			);
 			name = "New Chess Game";
 			sourceTree = "<group>";
@@ -146,7 +146,7 @@
 				331673301C9B920600487F21 /* piece.cpp in Sources */,
 				331673331C9B921E00487F21 /* position.cpp in Sources */,
 				3316732B1C9B919F00487F21 /* main.cpp in Sources */,
-				846B6FE51C9BA66A0067E829 /* TODO.cpp in Sources */,
+				846B6FE51C9BA66A0067E829 /* NOTES.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

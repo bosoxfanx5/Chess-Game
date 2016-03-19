@@ -45,6 +45,11 @@ void Space::getMoves(Board & board, Position & position)
 {
 }
 
+/*******************************************
+* King::getMoves
+* This gets all of the valid moves for the king.
+* It modifies the piece's possible moves vector.
+*******************************************/
 void King::getMoves(Board & board, Position & position)
 {
    //Tom:  Your code goes here.
@@ -59,9 +64,7 @@ void King::getMoves(Board & board, Position & position)
 //      If (!Rook2.hasMoved)
 //      Do more checks
 //      
-//      There are only two spots a King can move to when castling: 2 squares to the left or 2 squares to the right.
-//      All squares between the King and the Rook must be empty
-//      For c = 1 to 3  // Queenside Castle; R = Row of King (either 0 or 7)
+
 //      IF (!board[R][c].piece = EMPTY)
 //      qCastle = false
 //      IF c > 1  && qCastle = true  // check if space is
@@ -96,38 +99,48 @@ void King::getMoves(Board & board, Position & position)
       }
    // Check for castle move
     // syntax for castle move e1g1c (e8g1c) -> King Side, e1c1C (e8c1C) -> Queen Side
-   if (!board.squares[r][c]->fMoved)    //King has NOT moved
+    //      There are only two spots a King can move to when castling: 2 squares to the left or 2 squares to the right.
+    //      All squares between the King and the Rook must be empty
+
+    // If the King has moved, Castling is NOT allowed.
+    if (!board.squares[r][c]->fMoved)    //King has NOT moved
    {
+       // If the Queen side Rook has moved, Queen side castling is NOT allowed
        if (!board.squares[r][0]->fMoved)  // Queen Side Rook has NOT moved
        {
            for (int i = 1; i < 4; i++)
+               // If there are pieces between the King and the Rook,
+               // Castling is NOT allowed
                if (!(board.squares[r][i]->getLetter() == ' '))
                {
-                   qCastle = false;
+                   qCastle = false;  // can NOT Queen side Castle
                    break;
                }
+           // If qCastle = true, we CAN Queen side castle
            if (qCastle)
            {
                validMove = getCol(c) + std::to_string(r + 1) + 'c' + std::to_string(r + 1) + 'C';
                posMoves.push_back(validMove);
            }
        }
-
+       // If the King side Rook has moved, King side castling is NOT allowed
        if (!board.squares[r][7]->fMoved)  // King Side Rook has NOT moved
        {
            for (int i = 5; i < 7; i++)
+               // If there are pieces between the King and the Rook,
+               // Castling is NOT allowed
                if (!(board.squares[r][i]->getLetter() == ' '))
                {
-                   kCastle = false;
+                   kCastle = false;  // can NOT King side Castle
                    break;
                }
+           // If kCastle = true, we CAN King side castle
            if (kCastle)
            {
                validMove = getCol(c) + std::to_string(r + 1) + 'g' + std::to_string(r + 1) + 'c';
                posMoves.push_back(validMove);
            }
        }
-
    }
 }
 

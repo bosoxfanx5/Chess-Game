@@ -21,8 +21,8 @@
 // Two statics in the Piece class: the simple flag indicating that we
 //    have the Test board displayed instead of the colorful board, and
 //    the currentMove so each piece can tell if it's move was the last move
-bool Piece::fSimple = true;   // not starting off in Test mode
-int  Piece::currentMove = 0;   // starting at move 0
+//bool Piece::fSimple = true;   // not starting off in Test mode
+//int  Piece::currentMove = 0;   // starting at move 0
 
 //NON-MEMBER FUNCTIONS//
 
@@ -240,7 +240,24 @@ void Board::interact()
       else if (moveString == "quit")
          quit = true;
       else if(moveString == "help")
-         std::cout << "Help" << std::endl;
+      {
+         std::cout << "What piece would you like to find the moves for?" << std::endl;
+         char r, c = '\0';
+         std::cin >> c >> r;
+         
+         squares[r][c].piece.getMoves();
+         
+         std::cout << "Possible moves are:" << std::endl;
+         
+         int count = 0;
+         for (std::vector<std::string>::iterator it = squares[r][c].piece.posMoves.begin();
+              it != squares[r][c].piece.posMoves.end();
+              ++it)
+         {
+            std::cout << squares[r][c].piece.posMoves[count++] << std::endl;
+         }
+      }
+      
       else if(moveString == "rank")
          std::cout << "This feature is not available" << std::endl;
       else

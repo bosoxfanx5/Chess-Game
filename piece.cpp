@@ -83,8 +83,8 @@ void King::getMoves(Board & board, Position & position)
          for (int j = c - 1; j <= c + 1; j++)
             if (j >= 0 && j < 8)
             {
-               l = board.squares[i][j].Piece.getLetter();
-               if (l == " " || w != board.squares[i][j].Piece.isWhite)
+               l = board.squares[i][j]->getLetter();
+               if (l == " " || w != board.squares[i][j]->getIsWhite())
                   posMoves.push_back(&"" [ (r * 1000 + c * 100 + i * 10 + j)] + l);
                   posMoves.push_back("rcijl");
             }

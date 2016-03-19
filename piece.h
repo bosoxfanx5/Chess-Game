@@ -14,6 +14,7 @@
 #include "position.h"
 #include "board.h"
 
+class Board;
 class Piece
 {
 public:

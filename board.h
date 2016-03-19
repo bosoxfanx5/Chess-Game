@@ -27,7 +27,7 @@
 #define BW    "\E[0m"     // black background, white lettering
 //#define TEMP "board.tmp"// temporary storage for board // opted for vector
 
-
+class Piece;
 class Board
 {
 public:

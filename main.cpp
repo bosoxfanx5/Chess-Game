@@ -1,15 +1,12 @@
-//
-//  main.cpp
-//  Object Oriented Chess
-//
-//  Created by Brooks Robison on 3/17/16.
-//  Copyright © 2016 Dan McDaniel. All rights reserved.
-//
-
-/************************************************************
- * Extra Credit:
- *     1.  Undo feature is available by typing in 'undo'
- ************************************************************/
+/***************************************************************************
+ * Program:
+ *    Project 3, Object Oriented Chess
+ *    Brother McCracken, CS165
+ * Authors:
+ *    Dan McDaniel, Brooks Robison, Thomas Woodworth
+ * File Summary:
+ *    Main.cpp creates a new board and starts a new game.
+ ***************************************************************************/
 
 #include <iostream>
 #include <fstream>
@@ -19,6 +16,11 @@
 
 using namespace std;
 
+/************************************************************
+ * MAIN
+ *     This function starts a new game and prompts the user
+ * for input through the interact function.
+ ************************************************************/
 int main()
 {
    Board board = *new Board(); //default to clean board

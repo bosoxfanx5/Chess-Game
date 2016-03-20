@@ -7,7 +7,8 @@
 # Summary: 
 #    
 # Extra Credit:
-#    
+#    1.  Undo feature is available by typing in 'undo'
+#
 # Group Names and Contribution:
 #    Dan McDaniel     = 33.3%
 #    Brooks Robison   = 33.3%

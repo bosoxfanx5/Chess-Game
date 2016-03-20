@@ -357,26 +357,26 @@ void Board::interact()
          char r, c = '\0';
          std::cin >> c >> r;
          
-         // Add validation of coordinates
-         
          Position origin(r, c);
-         //King k = squares[r][c];
-         //k.getMoves(*this, origin);
-         squares[origin.getRow()][origin.getCol()]->posMoves.clear();
-         squares[origin.getRow()][origin.getCol()]->getMoves(*this, origin);
-         
-         std::cout << "Possible moves are:" << std::endl;
-         
-         int count = 0;
-         
-         for (std::vector<std::string>::iterator it = squares[origin.getRow()][origin.getCol()]->posMoves.begin();
-              it != squares[origin.getRow()][origin.getCol()]->posMoves.end();
-              ++it)
+         if (origin.getRow() >= 0 && origin.getRow() <= 7 && origin.getCol() >= 0 && origin.getCol() <= 7)
          {
-            std::cout << squares[origin.getRow()][origin.getCol()]->posMoves[count++] << std::endl;
+            squares[origin.getRow()][origin.getCol()]->posMoves.clear();
+            squares[origin.getRow()][origin.getCol()]->getMoves(*this, origin);
+            
+            std::cout << "Possible moves are:" << std::endl;
+            
+            int count = 0;
+            
+            for (std::vector<std::string>::iterator it = squares[origin.getRow()][origin.getCol()]->posMoves.begin();
+                 it != squares[origin.getRow()][origin.getCol()]->posMoves.end();
+                 ++it)
+            {
+               std::cout << squares[origin.getRow()][origin.getCol()]->posMoves[count++] << std::endl;
+            }
          }
+         else
+            std::cout << "Error: Invalid specification of coordinates" << std::endl;
          
-          
       }
       
       else if(moveString == "rank")
@@ -617,18 +617,22 @@ void Board::undo()
 {
    init();
    
+   std::string practice;
+   
    // store the moves from the vector in the file
    for (int i = 0; i < history.size() - 1; i++)
    {
-     std::cout << history[i];
-     Move move(history[i], *this);
+     practice = history[i];
+     std::cout << practice;
+     Move move(practice, *this);
      move.parse();
      move.execute();
+     drawTest();
    }
    
    history.pop_back();
    
-   drawTest();
+  
    
    return;
 }

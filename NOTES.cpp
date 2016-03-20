@@ -1,12 +1,10 @@
 /*
 Complete the following:
- getMoves for Pawn - valid promotion moves have not been done.
- promote 
- verify user friendly board
- errors
+ Capture (remove) opponents pawn on enpassant
+ verify user friendly board (Linux)
+ errors (testBed)
  comment all code
-
- Validate source of Help Coordinates
+ Fix UNDO
  
  
 Notes:

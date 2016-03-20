@@ -367,6 +367,7 @@ void Pawn::getMoves(Board & board, Position & position)
 {
     int r = position.getRow();  // index of source row
     int c = position.getCol();  // index of source col
+    int lastRow;
     bool w = isWhite;
     string l = "";
     int dest1_index = 0;   // row index of 1 square move
@@ -374,7 +375,7 @@ void Pawn::getMoves(Board & board, Position & position)
     int dest2_index = 0;   // row index of 2 square move
     int dest2_display = 0; // row display of 2 square move
     string validMove;
-    //bool enPassant = true;
+    char posPromotions[] = {"QRBN"};
 
     dest1_index = isWhite ? r + 1 : r - 1;
     dest2_index = isWhite ? r + 2 : r - 2;
@@ -384,11 +385,26 @@ void Pawn::getMoves(Board & board, Position & position)
     // 1 & 2) either of the two squares directly in front of it
     // 3 & 4) either of the two squares diagonally in front of it
     
+    // get last row
+    lastRow = w ? 7 : 0;
+    
     // first: can the pawn move 1 square forward
     if (board.squares[dest1_index][c]->getLetter() == ' ')
     {
-        validMove = getCol(c) + std::to_string(r + 1) + getCol(c) + std::to_string(dest1_display);
-        posMoves.push_back(validMove);
+        // Check if move is into the last row
+        if (dest1_index == lastRow)  // Promotion
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                validMove = getCol(c) + std::to_string(r + 1) + getCol(c) + std::to_string(dest1_display) + posPromotions[i];
+                posMoves.push_back(validMove);
+            }
+        }
+        else
+        {
+            validMove = getCol(c) + std::to_string(r + 1) + getCol(c) + std::to_string(dest1_display);
+            posMoves.push_back(validMove);
+        }
     }
     
     // second: has the pawn moved - can the pawn move 2 squares
@@ -407,8 +423,21 @@ void Pawn::getMoves(Board & board, Position & position)
     {
         if (w != (board.squares[dest1_index][c - 1]->getIsWhite()))
         {
-            validMove = getCol(c) + std::to_string(r + 1) + getCol(c - 1) + std::to_string(dest1_display) + l;
-            posMoves.push_back(validMove);
+            // Check if move is into the last row
+            if (dest1_index == lastRow)  // Promotion
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    validMove = getCol(c) + std::to_string(r + 1) + getCol(c - 1) + std::to_string(dest1_display) + posPromotions[i] + l;
+                    posMoves.push_back(validMove);
+                }
+            }
+            else
+            {
+                //Check if the move is into the last row for promotion
+                validMove = getCol(c) + std::to_string(r + 1) + getCol(c - 1) + std::to_string(dest1_display) + l;
+                posMoves.push_back(validMove);
+            }
         }
     }
 
@@ -418,8 +447,20 @@ void Pawn::getMoves(Board & board, Position & position)
     {
         if (w != (board.squares[dest1_index][c + 1]->getIsWhite()))
         {
-        validMove = getCol(c) + std::to_string(r + 1) + getCol(c + 1) + std::to_string(dest1_display) + l;
-        posMoves.push_back(validMove);
+            // Check if move is into the last row
+            if (dest1_index == lastRow)  // Promotion
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    validMove = getCol(c) + std::to_string(r + 1) + getCol(c + 1) + std::to_string(dest1_display) + posPromotions[i] + l;
+                    posMoves.push_back(validMove);
+                }
+            }
+            else
+            {
+                validMove = getCol(c) + std::to_string(r + 1) + getCol(c + 1) + std::to_string(dest1_display) + l;
+                posMoves.push_back(validMove);
+            }
         }
     }
 
@@ -439,13 +480,13 @@ void Pawn::getMoves(Board & board, Position & position)
             {
                 if (pCol == (c - 1) && (w != (board.squares[pRow][pCol]->getIsWhite()))) // Check left side
                 {
-                    validMove = getCol(c) + std::to_string(r + 1) + getCol(c - 1) + std::to_string(dest1_display) + 'e';
+                    validMove = getCol(c) + std::to_string(r + 1) + getCol(c - 1) + std::to_string(dest1_display) + 'E';
                     posMoves.push_back(validMove);
 
                 }
                 else if (pCol == (c + 1) && (w != (board.squares[pRow][pCol]->getIsWhite()))) // Check right side
                 {
-                    validMove = getCol(c) + std::to_string(r + 1) + getCol(c + 1) + std::to_string(dest1_display) + 'e';
+                    validMove = getCol(c) + std::to_string(r + 1) + getCol(c + 1) + std::to_string(dest1_display) + 'E';
                     posMoves.push_back(validMove);
                 }
             }

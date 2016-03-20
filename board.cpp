@@ -1,10 +1,23 @@
-//
-//  board.cpp
-//  Object Oriented Chess
-//
-//  Created by Brooks Robison on 3/17/16.
-//  Copyright © 2016 Dan McDaniel. All rights reserved.
-//
+/***************************************************************************
+ * Program:
+ *    Project 3, Object Oriented Chess
+ *    Brother McCracken, CS165
+ * Authors:
+ *    Dan McDaniel, Brooks Robison, Thomas Woodworth
+ * File Summary:
+ *    Board.cpp contains the following functions for interacting with the board.
+ *    1: showMenu
+ *    2: prompt
+ *    3: Board::load
+ *    4: Board::writeFile
+ *    5: Board::interact
+ *    6: Board::draw
+ *    7: Board::init
+ *    8: Board::initk
+ *    9: Board::initq
+ *   10: Board::undo
+ *
+ ***************************************************************************/
 
 #include <iostream>
 #include <fstream>
@@ -18,17 +31,12 @@
 //using namespace std;
 
 
-// Two statics in the Piece class: the simple flag indicating that we
-//    have the Test board displayed instead of the colorful board, and
-//    the currentMove so each piece can tell if it's move was the last move
-//bool Piece::fSimple = true;   // not starting off in Test mode
-//int  Piece::currentMove = 0;   // starting at move 0
-
 //NON-MEMBER FUNCTIONS//
 
-/*************
- * Draw Menu *
- *************/
+/***************************************************
+ * SHOWMENU
+ *    This function displays the menu to the screen.
+ ***************************************************/
 void showMenu()
 {
    std::cout << "Options:"                                   << std::endl
@@ -41,86 +49,27 @@ void showMenu()
    << " rank   Compute the strenght of a given position"     << std::endl;
 }
 
-/**********
- * Prompt *
- **********/
+/***************************************************
+ * PROMPT
+ *    This function receives two character arrays.
+ * The first receives the message to be displayed, and
+ * the second will store the users response.
+ ***************************************************/
 inline void prompt(char prompt[256], char response[256])
 {
    std::cout << prompt;
    std::cin  >> response;
 }
-//
-///********************
-// * Load - From File *
-// ********************/
-//void Board::load(std::string filename)
-//{
-//   //char move[8];
-//   std::string move;
-//   //Reset board
-//   init();
-//   
-//   //Reset move array
-//   history.empty();
-//   history.clear();
-//   
-//   std::ifstream fin(filename);
-//   
-//   if (!fin.fail())
-//      while (fin >> move)
-//      {
-//         bool errorFlag = true;
-//         std::string error = "";
-//         
-//         //Capture character
-//         char c = move[4];
-//         if (!(c == '\0' || c == 'p' || c == 'r' || c == 'n'
-//               || c == 'b' || c == 'q' || c == 'k'))
-//            error = "Unknown promotion piece specification";
-//         else
-//            if (move[0] >= 'a' && move[0] <= 'h')
-//               if (move[1] >= '0' && move[1] <= '8')
-//                  if (move[2] >= 'a' && move[2] <= 'h')
-//                     if (move[3] >= '0' && move[3] <= '8')
-//                     {
-//                        char p = squares[move[1] - 49][move[0] - 97]->getLetter();
-//                        
-//                        if (p == 'p' || p == 'r' || p == 'n' ||
-//                            p == 'b' || p == 'q' || p == 'k' ||
-//                            p == 'P' || p == 'R' || p == 'N' ||
-//                            p == 'B' || p == 'Q' || p == 'K')
-//                        {
-//                           errorFlag = false;
-//                           //makeMove(board, move);
-//                           //moveArray.push_back(move);
-//                           Move m(move, *this);
-//                           m.execute();
-//                        }
-//                        else error =
-//                           "No piece in the source coordinates position";
-//                     }
-//         //Errors below in styleChecker are unfounded.
-//                     else error = "Invalid format of destination coordinates";
-//                     else error =    "Invalid format of destination coordinates";
-//                     else error =       "Invalid format of source coordinates";
-//                     else error =          "Invalid format of source coordinates";
-//         
-//         if (errorFlag)
-//         {
-//            std::cout << "Error parsing file " << filename
-//            << " with move '"        << move
-//            << "': "                 << error       << std::endl;
-//            throw(error);
-//            return;
-//         }
-//      }
-//   else
-//      std::cout << "Unable to open file " << filename << " for input." << std::endl;
-//   
-//   //Close the file.
-//   fin.close();
-//}
 
+/***************************************************
+ * BOARD::LOAD
+ *    This function loads a game from a user submitted
+ * file.  If the file is valid, the moves will be stored
+ * in a vector and the board will be updated with all
+ * the moves from the file.  If the file cannot be
+ * read, the function will display an error and load a
+ * clean board.
+ ***************************************************/
 void Board::load()
 {
    char fileName[256];
@@ -183,9 +132,12 @@ void Board::load()
    
 }
 
-/**********************
- * Board::writeFile *
- **********************/
+/***************************************************
+ * BOARD::WRITEFILE
+ *    This function asks the user if they want to
+ * save the game.  If yes, the moves of the game will
+ * be written to a user designated file and saved.
+ ***************************************************/
 void Board::writeFile()
 {
    char newFile[256];
@@ -223,6 +175,12 @@ void Board::writeFile()
 
 //MEMBER FUNCTIONS//
 
+/***************************************************
+ * BOARD::INTERACT
+ *    This function allows for the playing of the game.
+ * All interaction with the game will be done through
+ * this function.
+ ***************************************************/
 void Board::interact()
 {
    bool quit = false;
@@ -320,9 +278,13 @@ void Board::interact()
 
 
 
-/**************
- * Draw Board *
- **************/
+/***************************************************
+ * BOARD::DRAW
+ *    This function draws the board to the screen.
+ * There are two versions, black and white, or colored.
+ * Before drawing the board to the screen, the screen
+ * will be cleared.
+ ***************************************************/
 void Board::draw()
 {
    std::cout << CLEAR;
@@ -404,9 +366,12 @@ void Board::draw()
 //   }
 //}
 
-/********************
- * Initialize Board *
- ********************/
+/***************************************************
+ * BOARD::INIT
+ *    This function initializes the board with all 
+ * the pieces in their original position for a new
+ * game.
+ ***************************************************/
 void Board::init()
 {
    //White
@@ -453,6 +418,14 @@ void Board::init()
    this->squares[7][4] = new King(false);
 }
 
+/***************************************************
+ * BOARD::INITK
+ *         *** TEST PURPOSES ONLY ****
+ *
+ *    This function is for testing purposes only.  It
+ * will start the board with the pieces in position
+ * to make testing the King movements easier/quicker.
+ ***************************************************/
 void Board::initk()
 {
    //Clear all spaces
@@ -501,6 +474,14 @@ void Board::initk()
    this->squares[7][4] = new King(false);
 }
 
+/***************************************************
+ * BOARD::INITQ
+ *         *** TEST PURPOSES ONLY ****
+ *
+ *    This function is for testing purposes only.  It
+ * will start the board with the pieces in position
+ * to make testing the Queen movements easier/quicker.
+ ***************************************************/
 void Board::initq()
 {
    //Clear all spaces
@@ -549,6 +530,12 @@ void Board::initq()
    //this->squares[7][4] = new King(false);
 }
 
+/***************************************************
+ * BOARD::UNDO
+ *         *** EXTRA CREDIT ****
+ *
+ *    This function will undo the last move made.
+ ***************************************************/
 void Board::undo()
 {
    init();

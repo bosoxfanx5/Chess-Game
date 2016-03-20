@@ -333,6 +333,10 @@ void Board::interact()
             isTestMode = !isTestMode;
             //draw(board, testMode);
          }
+      else if (moveString == "undo")
+      {
+         undo();
+      }
       else if (moveString == "quit")
          quit = true;
       else if (moveString == "initk")
@@ -602,6 +606,26 @@ void Board::initq()
    this->squares[7][5] = new Bishop(false);
    this->squares[7][3] = new Queen(false);
    //this->squares[7][4] = new King(false);
+}
+
+void Board::undo()
+{
+   init();
+   
+   // store the moves from the vector in the file
+   for (int i = 0; i < history.size() - 1; i++)
+   {
+     std::cout << history[i];
+     Move move(history[i], *this);
+     move.parse();
+     move.execute();
+   }
+   
+   history.pop_back();
+   
+   drawTest();
+   
+   return;
 }
 
 

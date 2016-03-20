@@ -60,6 +60,7 @@ public:
             castleQ = true;
     }
    void execute();
+   bool validate() throw(string);
    
     // display and prompt
     friend ostream & operator << (ostream & out, Move & rhs);

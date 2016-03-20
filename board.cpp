@@ -150,9 +150,11 @@ void Board::load()
       {
          Move move(moveString, *this);
          move.parse();
-         //move.validate();
-         move.execute();
-         history.push_back(moveString);
+         if (move.validate())
+         {
+            move.execute();
+            history.push_back(moveString);
+         }
       }
       catch (string fileError)
       {
@@ -249,7 +251,7 @@ void Board::writeFile()
 //      if (moveString[0] >= 97 && moveString[0] <= 104) //first letter is a-h
 //      {
 //         move.parse();
-//         //move.validate();
+//         //move.();
 //         history.push_back(moveString);
 //         move.execute();
 //         drawTest();
@@ -286,7 +288,7 @@ void Board::writeFile()
 //            case 'q' :
 //               return false;
 //               break;          //quit
-//            default:           //unknown input
+//            default:           //unkboard->squares[source.getRow()][source.getCol()]->getMoves(*board, source);known input
 //               std::cout << "Error: Unknown Input"
 //               << "	Type ? for more options"               << std::endl;
 //               break;
@@ -387,10 +389,12 @@ void Board::interact()
             // board
             Move move(moveString, *this);
             move.parse();
-            //move.validate();
-            move.execute();
-            history.push_back(moveString);
-            drawTest();
+            if (move.validate())
+            {
+               move.execute();
+               history.push_back(moveString);
+               drawTest();
+            }
          }
          catch (std::string error)
          {

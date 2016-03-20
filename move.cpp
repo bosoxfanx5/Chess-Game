@@ -154,3 +154,18 @@ void Move::parse() throw(string)
    
    return;
 }
+
+bool Move::validate() throw(string)
+{
+   std::vector<std::string> temp;
+   board->squares[source.getRow()][source.getCol()]->getMoves(*board, source);
+   temp = board->squares[source.getRow()][source.getCol()]->posMoves;
+   
+   for (int i = 0; i < temp.size(); i++)
+   {
+      if (moveString == temp[i])
+          return true;
+   }
+   throw string("Illegal move.  The piece cannot move to this location.");
+   return false;
+}

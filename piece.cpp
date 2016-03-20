@@ -10,6 +10,7 @@
 #include "board.h"
 #include <vector>
 #include <iostream>
+#include <cctype>
 //#include "position.h"
 
 //Non-Member Functions
@@ -206,6 +207,32 @@ void Pawn::getMoves(Board & board, Position & position)
 
     // fifth: can the pawn do an en passant
     if (board.history.size() >= 1 )
-        std::cout << board.history[board.history.size() - 1] << std::endl;
+    {
+        std::string lastMove = board.history[board.history.size() - 1];
+        //std::cout << lastMove << std::endl;
+        int pRow = lastMove[3] - '1'; // previous move Row Destination (Index)
+        int pCol = lastMove[2] - 97;  // previous move Col Destination (Index)
+        int pSourceRow = lastMove[1] - '1'; // previous move Row Destination (Index)
+        //int pSourceCol = lastMove[0] - 97;  // previous move Col Destination (Index)
+        
+        if (tolower(board.squares[pRow][pCol]->getLetter()) == 'p')
+        {
+            if (pRow == r && (!((pSourceRow - pRow) % 2)))
+            {
+                if (pCol == (c - 1)) // Check left side
+                {
+                    validMove = getCol(c) + std::to_string(r + 1) + getCol(c - 1) + std::to_string(dest1_display) + 'e';
+                    posMoves.push_back(validMove);
+
+                }
+                else if (pCol == (c + 1)) // Check right side
+                {
+                    validMove = getCol(c) + std::to_string(r + 1) + getCol(c + 1) + std::to_string(dest1_display) + 'e';
+                    posMoves.push_back(validMove);
+                }
+            }
+        }
+    }
+    
 }
 

@@ -351,6 +351,7 @@ void Board::interact()
          char r, c = '\0';
          std::cin >> c >> r;
          
+         // Add validation of coordinates
          
          Position origin(r, c);
          //King k = squares[r][c];

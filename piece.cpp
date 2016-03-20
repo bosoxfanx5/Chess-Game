@@ -480,13 +480,13 @@ void Pawn::getMoves(Board & board, Position & position)
             {
                 if (pCol == (c - 1) && (w != (board.squares[pRow][pCol]->getIsWhite()))) // Check left side
                 {
-                    validMove = getCol(c) + std::to_string(r + 1) + getCol(c - 1) + std::to_string(dest1_display) + 'e';
+                    validMove = getCol(c) + std::to_string(r + 1) + getCol(c - 1) + std::to_string(dest1_display) + 'E';
                     posMoves.push_back(validMove);
 
                 }
                 else if (pCol == (c + 1) && (w != (board.squares[pRow][pCol]->getIsWhite()))) // Check right side
                 {
-                    validMove = getCol(c) + std::to_string(r + 1) + getCol(c + 1) + std::to_string(dest1_display) + 'e';
+                    validMove = getCol(c) + std::to_string(r + 1) + getCol(c + 1) + std::to_string(dest1_display) + 'E';
                     posMoves.push_back(validMove);
                 }
             }

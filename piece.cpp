@@ -15,10 +15,17 @@
 
 //Non-Member Functions
 
+char getCol(int c)
+{
+    char columns[9] = {"abcdefgh"};
+    
+    return columns[c];
+}
+
 std::vector<std::string> getDiagMoves(Board & board, Position & position)
 {
    std::vector<std::string> posMoves;
-   
+    
    //Tom:  Your code goes here.
    
    return posMoves;
@@ -26,19 +33,101 @@ std::vector<std::string> getDiagMoves(Board & board, Position & position)
 
 std::vector<std::string> getLinearMoves(Board & board, Position & position)
 {
-   std::vector<std::string> posMoves;
-   
+    int r = position.getRow();
+    int c = position.getCol();
+    string l = "";
+    string validMove;
+    bool w = board.squares[r][c]->getIsWhite();
+    
+    std::vector<std::string> posMoves;
+    
+    // Check moves to the left
+    for (int col = c - 1; col >= 0; col--)
+    {
+        l = tolower(board.squares[r][col]->getLetter());
+        if (l == " ")
+        {
+            validMove = getCol(c) + std::to_string(r + 1) + getCol(col) + std::to_string(r + 1);
+            posMoves.push_back(validMove);
+        }
+        else
+        {
+            if (w != (board.squares[r][col]->getIsWhite()))
+            {
+            validMove = getCol(c) + std::to_string(r + 1) + getCol(col) + std::to_string(r + 1) + l;
+            posMoves.push_back(validMove);
+            }
+            break;
+        }
+    }
+
+    // Check moves to the right
+    for (int col = c + 1; col < 8; col++)
+    {
+        l = tolower(board.squares[r][col]->getLetter());
+        if (l == " ")
+        {
+            validMove = getCol(c) + std::to_string(r + 1) + getCol(col) + std::to_string(r + 1);
+            posMoves.push_back(validMove);
+        }
+        else
+        {
+            if (w != (board.squares[r][col]->getIsWhite()))
+            {
+            validMove = getCol(c) + std::to_string(r + 1) + getCol(col) + std::to_string(r + 1) + l;
+            posMoves.push_back(validMove);
+            }
+            break;
+        }
+    }
+  
+    // Check moves to the top
+    for (int row = r + 1; row < 8; row++)
+    {
+        l = tolower(board.squares[row][c]->getLetter());
+        if (l == " ")
+        {
+            validMove = getCol(c) + std::to_string(r + 1) + getCol(c) + std::to_string(row + 1);
+            posMoves.push_back(validMove);
+        }
+        else
+        {
+            if (w != (board.squares[row][c]->getIsWhite()))
+            {
+            validMove = getCol(c) + std::to_string(r + 1) + getCol(c) + std::to_string(row + 1) + l;
+            posMoves.push_back(validMove);
+            }
+            break;
+        }
+    }
+ 
+    
+    // Check moves to the bottom
+    for (int row = r - 1; row >= 0; row--)
+    {
+        l = tolower(board.squares[row][c]->getLetter());
+        if (l == " ")
+        {
+            validMove = getCol(c) + std::to_string(r + 1) + getCol(c) + std::to_string(row + 1);
+            posMoves.push_back(validMove);
+        }
+        else
+        {
+            if (w != (board.squares[row][c]->getIsWhite()))
+            {
+            validMove = getCol(c) + std::to_string(r + 1) + getCol(c) + std::to_string(row + 1) + l;
+            posMoves.push_back(validMove);
+            }
+            break;
+        }
+    }
+    
+    //posMoves.push_back("a2a3");
    //Tom:  Your code goes here.
    
    return posMoves;
 }
 
-char getCol(int c)
-{
-    char columns[9] = {"abcdefgh"};
-    
-    return columns[c];
-}
 
 //Member Functions
 
@@ -127,15 +216,20 @@ void King::getMoves(Board & board, Position & position)
 
 void Queen::getMoves(Board & board, Position & position)
 {
-   
-   //Tom:  Your code goes here.
+    std::vector<std::string> linear;
+    std::vector<std::string> diagonal;
+    linear = getLinearMoves(board, position);
+    diagonal = getDiagMoves(board, position);
+    posMoves.insert(posMoves.end(), linear.begin(), linear.end());
+    posMoves.insert(posMoves.end(), diagonal.begin(), diagonal.end());
 
 }
 
 void Bishop::getMoves(Board & board, Position & position)
 {
-   
-   //Tom:  Your code goes here.
+    std::vector<std::string> diagonal;
+    diagonal = getDiagMoves(board, position);
+    posMoves.insert(posMoves.end(), diagonal.begin(), diagonal.end());
    
 }
 
@@ -148,23 +242,23 @@ void Knight::getMoves(Board & board, Position & position)
 
 void Rook::getMoves(Board & board, Position & position)
 {
-   
-   //Tom:  Your code goes here.
-   
+    std::vector<std::string> linear;
+    linear = getLinearMoves(board, position);
+    posMoves.insert(posMoves.end(), linear.begin(), linear.end());
 }
 
 void Pawn::getMoves(Board & board, Position & position)
 {
     int r = position.getRow();  // index of source row
     int c = position.getCol();  // index of source col
-    //bool w = isWhite;
+    bool w = isWhite;
     string l = "";
     int dest1_index = 0;   // row index of 1 square move
     int dest1_display = 0; // row display of 1 square move
     int dest2_index = 0;   // row index of 2 square move
     int dest2_display = 0; // row display of 2 square move
     string validMove;
-    bool enPassant = true;
+    //bool enPassant = true;
 
     dest1_index = isWhite ? r + 1 : r - 1;
     dest2_index = isWhite ? r + 2 : r - 2;
@@ -192,17 +286,25 @@ void Pawn::getMoves(Board & board, Position & position)
     }
  
     // third: can the pawn attack to the left
-    if (!(board.squares[dest1_index][c - 1]->getLetter() == ' ') && c > 0)
+    l = board.squares[dest1_index][c - 1]->getLetter();
+    if (!(l == " ") && c > 0)
     {
-        validMove = getCol(c) + std::to_string(r + 1) + getCol(c - 1) + std::to_string(dest1_display);
-        posMoves.push_back(validMove);
+        if (w != (board.squares[dest1_index][c - 1]->getIsWhite()))
+        {
+            validMove = getCol(c) + std::to_string(r + 1) + getCol(c - 1) + std::to_string(dest1_display) + l;
+            posMoves.push_back(validMove);
+        }
     }
 
     // fourth: can the pawn attack to the right
-    if (!(board.squares[dest1_index][c + 1]->getLetter() == ' ') && c < 7)
+    l = board.squares[dest1_index][c + 1]->getLetter();
+    if (!(l == " ") && c < 7)
     {
-        validMove = getCol(c) + std::to_string(r + 1) + getCol(c + 1) + std::to_string(dest1_display);
+        if (w != (board.squares[dest1_index][c + 1]->getIsWhite()))
+        {
+        validMove = getCol(c) + std::to_string(r + 1) + getCol(c + 1) + std::to_string(dest1_display) + l;
         posMoves.push_back(validMove);
+        }
     }
 
     // fifth: can the pawn do an en passant
@@ -219,13 +321,13 @@ void Pawn::getMoves(Board & board, Position & position)
         {
             if (pRow == r && (!((pSourceRow - pRow) % 2)))
             {
-                if (pCol == (c - 1)) // Check left side
+                if (pCol == (c - 1) && (w != (board.squares[pRow][pCol]->getIsWhite()))) // Check left side
                 {
                     validMove = getCol(c) + std::to_string(r + 1) + getCol(c - 1) + std::to_string(dest1_display) + 'e';
                     posMoves.push_back(validMove);
 
                 }
-                else if (pCol == (c + 1)) // Check right side
+                else if (pCol == (c + 1) && (w != (board.squares[pRow][pCol]->getIsWhite()))) // Check right side
                 {
                     validMove = getCol(c) + std::to_string(r + 1) + getCol(c + 1) + std::to_string(dest1_display) + 'e';
                     posMoves.push_back(validMove);

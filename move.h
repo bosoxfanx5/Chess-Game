@@ -33,7 +33,7 @@ public:
     const Position & getDes()             const { return dest;             }
     const Position & getSrc()             const { return source;           }
     string getText()                      const;
-    char getPromotion()                   const { return piece;            }
+    bool getPromote()                     const { return promote;            }
     char getCapture()                     const { return capture;          }
     bool getEnPassant()                   const { return enpassant;        }
     bool getCastleK()                     const { return castleK;          }
@@ -51,7 +51,7 @@ public:
     void setSrc(const Position & src)       { source     = src;             }
     void setDes(const Position & des)       { dest       = des;             }
     void setEnPassant()                     { enpassant  = true;            }
-    void setPromote(char letter)            { piece      = letter;          }
+    void setPromote()                       { promote    = true;          }
     void setCastle(bool isKing)
     {
         if (isKing)
@@ -94,6 +94,7 @@ private:
     bool      castleK;   // kingside castle
     bool      castleQ;   // queenside castle
     bool      isWhite;   // white's move?
+    bool      promote;   // is this a promotion?
     string    error;     // if in error state, what was the bug?
     
 };

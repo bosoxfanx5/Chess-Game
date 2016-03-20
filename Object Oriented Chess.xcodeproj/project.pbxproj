@@ -64,10 +64,10 @@
 				331673311C9B921100487F21 /* piece.h */,
 				3316732F1C9B920600487F21 /* piece.cpp */,
 				331673341C9B922800487F21 /* position.h */,
+				846B6FE41C9BA66A0067E829 /* NOTES.cpp */,
 				331673321C9B921E00487F21 /* position.cpp */,
 				331673371C9B924E00487F21 /* move.h */,
 				331673351C9B923600487F21 /* move.cpp */,
-				846B6FE41C9BA66A0067E829 /* NOTES.cpp */,
 			);
 			name = "New Chess Game";
 			sourceTree = "<group>";

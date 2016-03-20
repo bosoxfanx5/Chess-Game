@@ -2,11 +2,9 @@
 Complete the following:
  getMoves for Pawn - valid promotion moves have not been done.
  promote 
- verify user friendly board
- errors
+ verify user friendly board (Linux)
+ errors (testBed)
  comment all code
-
- Validate source of Help Coordinates
  
  
 Notes:

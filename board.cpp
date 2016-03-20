@@ -357,26 +357,26 @@ void Board::interact()
          char r, c = '\0';
          std::cin >> c >> r;
          
-         // Add validation of coordinates
-         
-         Position origin(r, c);
-         //King k = squares[r][c];
-         //k.getMoves(*this, origin);
-         squares[origin.getRow()][origin.getCol()]->posMoves.clear();
-         squares[origin.getRow()][origin.getCol()]->getMoves(*this, origin);
-         
-         std::cout << "Possible moves are:" << std::endl;
-         
-         int count = 0;
-         
-         for (std::vector<std::string>::iterator it = squares[origin.getRow()][origin.getCol()]->posMoves.begin();
-              it != squares[origin.getRow()][origin.getCol()]->posMoves.end();
-              ++it)
+         if (r < 'a' && r > 'h' && c < '1' && c > '8')
          {
-            std::cout << squares[origin.getRow()][origin.getCol()]->posMoves[count++] << std::endl;
+            Position origin(r, c);
+            squares[origin.getRow()][origin.getCol()]->posMoves.clear();
+            squares[origin.getRow()][origin.getCol()]->getMoves(*this, origin);
+            
+            std::cout << "Possible moves are:" << std::endl;
+            
+            int count = 0;
+            
+            for (std::vector<std::string>::iterator it = squares[origin.getRow()][origin.getCol()]->posMoves.begin();
+                 it != squares[origin.getRow()][origin.getCol()]->posMoves.end();
+                 ++it)
+            {
+               std::cout << squares[origin.getRow()][origin.getCol()]->posMoves[count++] << std::endl;
+            }
          }
+         else
+            std::cout << "Error: Invalid specification of coordinates" << std::endl;
          
-          
       }
       
       else if(moveString == "rank")

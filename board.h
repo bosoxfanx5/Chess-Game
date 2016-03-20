@@ -1,10 +1,14 @@
-//
-//  board.h
-//  Object Oriented Chess
-//
-//  Created by Brooks Robison on 3/17/16...
-//  Copyright © 2016 Dan McDaniel. All rights reserved.
-//
+/***************************************************************************
+ * Program:
+ *    Project 3, Object Oriented Chess
+ *    Brother McCracken, CS165
+ * Authors:
+ *    Dan McDaniel, Brooks Robison, Thomas Woodworth
+ * File Summary:
+ *    Board.h contains the board class.  Because the class has a variable
+ * of type Piece, and the piece class has a variable of type Board, we have
+ * used 'Forward Declaration' to make this work.
+ ***************************************************************************/
 
 #ifndef board_h
 #define board_h
@@ -27,7 +31,18 @@
 #define BW    "\E[0m"     // black background, white lettering
 //#define TEMP "board.tmp"// temporary storage for board // opted for vector
 
+/********************************************************
+ * PIECE CLASS
+ *    This class is added here for Forward Declaration.
+ * It will not be defined here because it is defined the 
+ * piece.h file.
+ ********************************************************/
 class Piece; //Forward declaration (prototype)
+
+
+/********************************************************
+ * BOARD CLASS
+ ********************************************************/
 class Board
 {
 public:

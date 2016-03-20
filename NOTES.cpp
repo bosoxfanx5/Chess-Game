@@ -1,14 +1,15 @@
 /*
 Complete the following:
- getMoves for each piece
+ getMoves for Pawn - valid promotion moves have not been done.
+ getMoves for Knight
+ getMoves for Bishop
+ getMoves for Queen - linear is done
  validate move against possible moves
  verify user friendly board
- readFile and saveFile
  errors
  comment all code
  promote
- castle // ingore check condition
- enpassant
+ Validate source of Help Coordinates
  
  
 Notes:

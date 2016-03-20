@@ -54,6 +54,7 @@ public:
    Piece * squares[8][8];
    void interact();// {std::cin; /*std::cin.ignore()*/; return true;}
    std::vector<std::string> history;
+    bool isTestMode = false;
 };
 
 #endif /* board_h */

@@ -179,7 +179,7 @@ void Board::load()
       init();
    }
    // if all is good with the file read then display the board!
-   drawTest();
+   draw();
    
 }
 
@@ -223,91 +223,8 @@ void Board::writeFile()
 
 //MEMBER FUNCTIONS//
 
-/**********************
- * Interact with User *
-// **********************/
-//bool Board::interact()
-//{
-//   bool isTestMode = false;
-//   char filename[256] = {'\0'};
-//   char moveOld[8] = { '\0' };
-//    
-//   
-//   
-//   while (moveOld[0] != 'q') // check for full word
-//   {
-//      //prompt for a move
-//      if (history.size() % 2 == 0)
-//         std::cout << "(White): ";
-//      else
-//         std::cout << "(Black): ";
-//      
-//      std::string moveString;
-//      std::cin >> moveString;
-//      
-//      Move move(moveString, *this);
-//     
-//      //moves
-//      if (moveString[0] >= 97 && moveString[0] <= 104) //first letter is a-h
-//      {
-//         move.parse();
-//         //move.();
-//         history.push_back(moveString);
-//         move.execute();
-//         drawTest();
-//      }
-//      
-//      //commands
-//      else
-//      {
-//         switch (moveString[0])
-//         {
-//            case '?' :         //help
-//               showMenu();
-//               break;
-//            case 'r' :         //read
-//               try
-//            {
-//               prompt((char *)"Filename: ", filename);
-//               load(filename);
-//               drawTest();
-//            }
-//               catch (std::string error)
-//            {
-//               std::cout << "";// "ERROR DETECTED";
-//            }
-//               break;
-//            case 't' :         //test output
-//               isTestMode = !isTestMode;
-//               //drawTest();
-//               draw();
-//               break;
-//            case 'l' :         //list moves in array
-//               //list(moveArray);
-//               break;
-//            case 'q' :
-//               return false;
-//               break;          //quit
-//            default:           //unkboard->squares[source.getRow()][source.getCol()]->getMoves(*board, source);known input
-//               std::cout << "Error: Unknown Input"
-//               << "	Type ? for more options"               << std::endl;
-//               break;
-//         }
-//      }
-//   }
-//   std::cout << "To save a game, please specify the filename." << std::endl
-//   << "    To quit without saving a file, just press <enter>"  << std::endl;
-//   std::string response;
-//   response = std::cin.get();
-//   if (std::cin.get() != '\n');
-//   //save(response, moveArray);
-//   std::cin.ignore();
-//   return true;
-//}
-
 void Board::interact()
 {
-   bool isTestMode = false;
    bool quit = false;
    
    do
@@ -331,26 +248,16 @@ void Board::interact()
       else if (moveString == "read")
          load();
       else if (moveString == "test")
-         {
-            isTestMode = !isTestMode;
-            //draw(board, testMode);
-         }
+      {
+         isTestMode = !isTestMode;
+         draw();
+      }
       else if (moveString == "undo")
       {
          undo();
       }
       else if (moveString == "quit")
          quit = true;
-      else if (moveString == "initk")
-      {
-         initk();
-         drawTest();
-      }
-      else if (moveString == "initq")
-      {
-         initq();
-         drawTest();
-      }
       else if(moveString == "help")
       {
          std::cout << "What piece would you like to find the moves for? ";
@@ -393,7 +300,7 @@ void Board::interact()
             {
                move.execute();
                history.push_back(moveString);
-               drawTest();
+               draw();
             }
          }
          catch (std::string error)
@@ -419,54 +326,83 @@ void Board::interact()
 void Board::draw()
 {
    std::cout << CLEAR;
-   std::cout << "   a  b  c  d  e  f  g  h " << std::endl; // I prefer endl.
-   bool white = true; //for checkerboard pattern
-   for (int r = 7; r >= 0; r--)
+   
+   if (isTestMode)
    {
-      std::cout << r + 1 << " "; //row headers
-      for (int c = 0; c < 8; c++)
+      std::cout << "  abcdefgh" << std::endl;   // I prefer endl over '\0'.
+      for (int r = 7; r >= 0; r--)
       {
-         //Formatting Board - false styleChecker errors on these lines, too...
-         if (white) std::cout << ((this->squares[r][c]->getLetter() > 97) ? WW : WB); //white/black piece
-         else       std::cout << ((this->squares[r][c]->getLetter() > 97) ? RW : RB); //white/black piece
-         
-         //Output
-         //ChessPiece piece = squares[r][c].getPiece();
-         if (this->squares[r][c]->getLetter() != '\0') //occupied if not null
-            std::cout << " " << this->squares[r][c]->getLetter() << " ";
-         else                     //free
-            std::cout << "   ";
-         std::cout << BW;              //reset formatting
-         
-         //Flip the color bit
-         white = !white; // When is white now white?  Now.
+         std::cout << r + 1 << " ";        //row headers
+         for (int c = 0; c <= 7; c++)
+            //if (this->squares[r][c].piece->getLetter() != '\0')
+            if (this->squares[r][c]->getLetter() != ' ')  //occupied if not null
+               std::cout << this->squares[r][c]->getLetter();
+         //std::cout << 'z';
+            else                      //free
+               std::cout << " ";
+         std::cout << std::endl;
       }
-      white = !white;    // And now, too.
-      std::cout << std::endl;
+   }
+   else
+   {
+      std::cout << "   a  b  c  d  e  f  g  h " << std::endl; // I prefer endl.
+      bool white = true; //for checkerboard pattern
+      for (int r = 7; r >= 0; r--)
+      {
+         std::cout << r + 1 << " "; //row headers
+         for (int c = 0; c < 8; c++)
+         {
+            //Formatting Board - false styleChecker errors on these lines, too...
+            if (white) std::cout << ((this->squares[r][c]->getLetter() > 97) ? WW : WB); //white/black piece
+            else       std::cout << ((this->squares[r][c]->getLetter() > 97) ? RW : RB); //white/black piece
+            
+            char tempPiece = tolower(this->squares[r][c]->getLetter());
+            std::string backRow = "rnbqk ";
+            //Output
+            if (tempPiece != '\0') //occupied if not null
+            {
+               //std::cout << " " << tempPiece << " ";
+               if (tempPiece == 'p')
+                  std::cout << " " << (char)tolower(tempPiece) << " ";
+               else if (backRow.find(tempPiece) + 1)
+                  std::cout << " " << (char)toupper(tempPiece) << " ";
+            }
+            
+            
+            std::cout << BW;              //reset formatting
+            
+            //Flip the color bit
+            white = !white; // When is white now white?  Now.
+         }
+         white = !white;    // And now, too.
+         std::cout << " " << r + 1 << std::endl;
+         
+      }
+      std::cout << "   a  b  c  d  e  f  g  h " << std::endl;
    }
 }
 //*/
 
-/*******************
- * Draw Test Board *
- *******************/
-void Board::drawTest()
-{
-   //std::cout << CLEAR;
-   std::cout << "  abcdefgh" << std::endl;   // I prefer endl over '\0'.
-   for (int r = 7; r >= 0; r--)
-   {
-      std::cout << r + 1 << " ";        //row headers
-      for (int c = 0; c <= 7; c++)
-         //if (this->squares[r][c].piece->getLetter() != '\0')
-         if (this->squares[r][c]->getLetter() != ' ')  //occupied if not null
-            std::cout << this->squares[r][c]->getLetter();
-      //std::cout << 'z';
-         else                      //free
-            std::cout << " ";
-      std::cout << std::endl;
-   }
-}
+///*******************
+// * Draw Test Board *
+// *******************/
+//void Board::drawTest()
+//{
+//   std::cout << CLEAR;
+//   std::cout << "  abcdefgh" << std::endl;   // I prefer endl over '\0'.
+//   for (int r = 7; r >= 0; r--)
+//   {
+//      std::cout << r + 1 << " ";        //row headers
+//      for (int c = 0; c <= 7; c++)
+//         //if (this->squares[r][c].piece->getLetter() != '\0')
+//         if (this->squares[r][c]->getLetter() != ' ')  //occupied if not null
+//            std::cout << this->squares[r][c]->getLetter();
+//      //std::cout << 'z';
+//         else                      //free
+//            std::cout << " ";
+//      std::cout << std::endl;
+//   }
+//}
 
 /********************
  * Initialize Board *
@@ -627,7 +563,7 @@ void Board::undo()
      Move move(practice, *this);
      move.parse();
      move.execute();
-     drawTest();
+     draw();
    }
    
    history.pop_back();

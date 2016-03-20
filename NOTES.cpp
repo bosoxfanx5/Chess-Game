@@ -1,7 +1,6 @@
 /*
 Complete the following:
  Capture (remove) opponents pawn on enpassant
- verify user friendly board (Linux)
  errors (testBed)
  comment all code
  Fix UNDO

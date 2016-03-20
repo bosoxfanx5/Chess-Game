@@ -357,7 +357,7 @@ void Board::interact()
          char r, c = '\0';
          std::cin >> c >> r;
          
-         if (r < 'a' && r > 'h' && c < '1' && c > '8')
+         if (r <= '8' && r >= '1' && c <= 'h' && c >= 'a')
          {
             Position origin(r, c);
             squares[origin.getRow()][origin.getCol()]->posMoves.clear();
@@ -617,18 +617,22 @@ void Board::undo()
 {
    init();
    
+   std::string practice;
+   
    // store the moves from the vector in the file
    for (int i = 0; i < history.size() - 1; i++)
    {
-     std::cout << history[i];
-     Move move(history[i], *this);
+     practice = history[i];
+     std::cout << practice;
+     Move move(practice, *this);
      move.parse();
      move.execute();
+     drawTest();
    }
    
    history.pop_back();
    
-   drawTest();
+  
    
    return;
 }

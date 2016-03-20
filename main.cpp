@@ -6,6 +6,11 @@
 //  Copyright © 2016 Dan McDaniel. All rights reserved.
 //
 
+/************************************************************
+ * Extra Credit:
+ *     1.  Undo feature is available by typing in 'undo'
+ ************************************************************/
+
 #include <iostream>
 #include <fstream>
 #include <string>

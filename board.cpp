@@ -357,9 +357,9 @@ void Board::interact()
          char r, c = '\0';
          std::cin >> c >> r;
          
-         if (r <= '8' && r >= '1' && c <= 'h' && c >= 'a')
+         Position origin(r, c);
+         if (origin.getRow() >= 0 && origin.getRow() <= 7 && origin.getCol() >= 0 && origin.getCol() <= 7)
          {
-            Position origin(r, c);
             squares[origin.getRow()][origin.getCol()]->posMoves.clear();
             squares[origin.getRow()][origin.getCol()]->getMoves(*this, origin);
             

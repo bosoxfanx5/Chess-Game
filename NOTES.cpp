@@ -3,7 +3,7 @@ Complete the following:
  Capture (remove) opponents pawn on enpassant
  errors (testBed)
  comment all code
- Fix UNDO
+ Fix UNDO //save it to a temp file and reload it from the temp file
  
  
 Notes:

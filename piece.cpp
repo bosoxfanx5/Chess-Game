@@ -1,10 +1,24 @@
-//
-//  piece.cpp
-//  Object Oriented Chess
-//
-//  Created by Brooks Robison on 3/17/16.
-//  Copyright © 2016 Dan McDaniel. All rights reserved.
-//
+/***************************************************************************
+ * Program:
+ *    Project 3, Object Oriented Chess
+ *    Brother McCracken, CS165
+ * Authors:
+ *    Dan McDaniel, Brooks Robison, Thomas Woodworth
+ * File Summary:
+ *    Piece.cpp contains the following NON-MEMBER functions
+ *    1: getCol
+ *    2: getDiagMoves
+ *    3: getLinearMoves
+ *
+ *    Piece.cpp contains the following MEMBER functions
+ *    4: Space::getMoves
+ *    5: King::getMoves
+ *    6: Queen::getMoves
+ *    7: Bishop::getMoves
+ *    8: Knight::getMoves
+ *    9: Rook::getMoves
+ *   10: Pawn::getMoves
+ ***************************************************************************/
 
 #include "piece.h"
 #include "board.h"
@@ -15,6 +29,12 @@
 
 //Non-Member Functions
 
+/*******************************************
+ * GETCOL
+ *    This function converts the numerical 
+ * column value to the equivalent alhpa value
+ * for the column on the board.
+ *******************************************/
 char getCol(int c)
 {
     char columns[9] = {"abcdefgh"};
@@ -22,6 +42,12 @@ char getCol(int c)
     return columns[c];
 }
 
+/*******************************************
+ * GETDIAGMOVES
+ *    This function gets all the diagonal moves
+ * possible for the Queen or Bishop and returns
+ * them in a vector.
+ *******************************************/
 std::vector<std::string> getDiagMoves(Board & board, Position & position)
 {
     int r = position.getRow();
@@ -112,6 +138,12 @@ std::vector<std::string> getDiagMoves(Board & board, Position & position)
    return posMoves;
 }
 
+/*******************************************
+ * GETLINEARMOVES
+ *    This function gets all the linear moves
+ * possible for the Queen or Rook and returns
+ * them in a vector.
+ *******************************************/
 std::vector<std::string> getLinearMoves(Board & board, Position & position)
 {
     int r = position.getRow();
@@ -210,11 +242,11 @@ void Space::getMoves(Board & board, Position & position)
 {
 }
 
-/*******************************************
-* King::getMoves
-* This gets all of the valid moves for the king.
+/***************************************************
+* King::GETMOVES
+* This gets all of the valid moves for the KING.
 * It modifies the piece's possible moves vector.
-*******************************************/
+***************************************************/
 void King::getMoves(Board & board, Position & position)
 {
   
@@ -289,6 +321,11 @@ void King::getMoves(Board & board, Position & position)
    }
 }
 
+/***************************************************
+ * QUEEN::GETMOVES
+ * This gets all of the valid moves for the QUEEN.
+ * It modifies the piece's possible moves vector.
+ ***************************************************/
 void Queen::getMoves(Board & board, Position & position)
 {
     std::vector<std::string> linear;
@@ -300,6 +337,11 @@ void Queen::getMoves(Board & board, Position & position)
 
 }
 
+/***************************************************
+ * BISHOP::GETMOVES
+ * This gets all of the valid moves for the BISHOP.
+ * It modifies the piece's possible moves vector.
+ ***************************************************/
 void Bishop::getMoves(Board & board, Position & position)
 {
     std::vector<std::string> diagonal;
@@ -308,6 +350,11 @@ void Bishop::getMoves(Board & board, Position & position)
    
 }
 
+/***************************************************
+ * KNIGHT::GETMOVES
+ * This gets all of the valid moves for the KNIGHT.
+ * It modifies the piece's possible moves vector.
+ ***************************************************/
 void Knight::getMoves(Board & board, Position & position)
 {
     int r = position.getRow();
@@ -356,6 +403,11 @@ void Knight::getMoves(Board & board, Position & position)
    
 }
 
+/***************************************************
+ * ROOK::GETMOVES
+ * This gets all of the valid moves for the ROOK.
+ * It modifies the piece's possible moves vector.
+ ***************************************************/
 void Rook::getMoves(Board & board, Position & position)
 {
     std::vector<std::string> linear;
@@ -363,6 +415,11 @@ void Rook::getMoves(Board & board, Position & position)
     posMoves.insert(posMoves.end(), linear.begin(), linear.end());
 }
 
+/***************************************************
+ * PAWN::GETMOVES
+ * This gets all of the valid moves for the PAWN.
+ * It modifies the piece's possible moves vector.
+ ***************************************************/
 void Pawn::getMoves(Board & board, Position & position)
 {
     int r = position.getRow();  // index of source row
@@ -385,7 +442,7 @@ void Pawn::getMoves(Board & board, Position & position)
     // 1 & 2) either of the two squares directly in front of it
     // 3 & 4) either of the two squares diagonally in front of it
     
-    // get last row
+    // get last row based on color
     lastRow = w ? 7 : 0;
     
     // first: can the pawn move 1 square forward

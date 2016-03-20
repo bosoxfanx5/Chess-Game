@@ -1,10 +1,23 @@
-//
-//  piece.h
-//  Object Oriented Chess
-//
-//  Created by Brooks Robison on 3/17/16.
-//  Copyright © 2016 Dan McDaniel. All rights reserved.
-//
+/***************************************************************************
+ * Program:
+ *    Project 3, Object Oriented Chess
+ *    Brother McCracken, CS165
+ * Authors:
+ *    Dan McDaniel, Brooks Robison, Thomas Woodworth
+ * File Summary:
+ *    Because the class has a variable of type Board, and the board class 
+ * has a variable of type Piece, we have used 'Forward Declaration' to 
+ * make this work.
+ *    Piece.h contains the following piece classes:
+ *    1: Piece
+ *    2: Space
+ *    3: King
+ *    4: Queen
+ *    5: Bishop
+ *    6: Knight
+ *    7: Rook
+ *    8: Pawn
+ ***************************************************************************/
 
 #ifndef piece_h
 #define piece_h
@@ -14,7 +27,24 @@
 #include "position.h"
 #include "board.h"
 
+/********************************************************
+ * BOARD CLASS
+ *    This class is added here for Forward Declaration.
+ * It will not be defined here because it is defined the
+ * board.h file.
+ ********************************************************/
 class Board; //Forward declaration (prototype)
+
+/********************************************************
+ * PIECE CLASS
+ *    This class is the main class that all the other pieces
+ * are derived from.
+ * It contains the following pure virtual functions that 
+ * MUST be redefined in each derived class:
+ *    1. getLetter
+ *    2. getScore
+ *    3. getMoves
+ ********************************************************/
 class Piece
 {
 public:
@@ -33,6 +63,12 @@ protected:
    bool isWhite;
 };
 
+/********************************************************
+ * SPACE CLASS
+ *    This class is for each square on the board that
+ * contains nothing.  Because each piece must have a color,
+ * we decided that Spaces would be BLACK.
+ ********************************************************/
 class Space : public Piece
 {
 public:
@@ -42,6 +78,9 @@ public:
    void getMoves(Board & board, Position & position);// {};
 };
 
+/********************************************************
+ * KING CLASS
+ ********************************************************/
 class King : public Piece
 {
 public:
@@ -52,6 +91,9 @@ public:
    void getMoves(Board & board, Position & position);
 };
 
+/********************************************************
+ * QUEEN CLASS
+ ********************************************************/
 class Queen : public Piece
 {
 public:
@@ -61,6 +103,9 @@ public:
    void getMoves(Board & board, Position & position);
 };
 
+/********************************************************
+ * BISHOP CLASS
+ ********************************************************/
 class Bishop : public Piece
 {
 public:
@@ -70,6 +115,9 @@ public:
    void getMoves(Board & board, Position & position);
 };
 
+/********************************************************
+ * KNIGHT CLASS
+ ********************************************************/
 class Knight : public Piece
 {
 public:
@@ -79,6 +127,9 @@ public:
    void getMoves(Board & board, Position & position);
 };
 
+/********************************************************
+ * ROOK CLASS
+ ********************************************************/
 class Rook : public Piece
 {
 public:
@@ -89,7 +140,9 @@ public:
    void getMoves(Board & board, Position & position);
 };
 
-
+/********************************************************
+ * PAWN CLASS
+ ********************************************************/
 class Pawn : public Piece
 {
 public:

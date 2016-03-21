@@ -46,15 +46,9 @@ class Piece; //Forward declaration (prototype)
 class Board
 {
 public:
-   Board() {};
-   
-private:
-   float length = 0;
-   float width  = 0;
-   float height = 0;
-   
+    Board() {isTestMode = false;}
+ 
 public:
-   //Chessboard() {};
    void init();
    void initk();
    void initq();
@@ -63,13 +57,12 @@ public:
    void undo();
    void drawTest();
    void writeFile();
-   //Piece getPieceAtLocation(Position location) {return squares[location.getRow()][location.getCol()];}
    
    //Location Class //Array
    Piece * squares[8][8];
-   void interact();// {std::cin; /*std::cin.ignore()*/; return true;}
+   void interact();
    std::vector<std::string> history;
-    bool isTestMode = false;
+    bool isTestMode;
 };
 
 #endif /* board_h */

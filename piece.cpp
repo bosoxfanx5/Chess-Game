@@ -79,12 +79,22 @@ std::vector<std::string> getDiagMoves(Board & board, Position & position)
       l = tolower(board.squares[row][col]->getLetter());
       if (l == ' ')
       {
-         validMove = getCol(c) + getRowAlpha(r + 1) + getCol(col) + getRowAlpha(row + 1);
-         posMoves.push_back(validMove);
+         //validMove = getCol(c) + getRowAlpha(r + 1) + getCol(col) + getRowAlpha(row + 1);
+         validMove = "";
+         validMove += getCol(c);
+         validMove += getRowAlpha(r + 1);
+         validMove += getCol(col);
+         validMove += getRowAlpha(row + 1);
       }
       else if (w != (board.squares[row][col]->getIsWhite()))
       {
-         validMove = getCol(c) + getRowAlpha(r + 1) + getCol(col) + getRowAlpha(row + 1) + l;
+         //validMove = getCol(c) + getRowAlpha(r + 1) + getCol(col) + getRowAlpha(row + 1) + l;
+         validMove = "";
+         validMove += getCol(c);
+         validMove += getRowAlpha(r + 1);
+         validMove += getCol(col);
+         validMove += getRowAlpha(row + 1);
+         validMove += l;
          posMoves.push_back(validMove);
          break;
       }
@@ -96,12 +106,23 @@ std::vector<std::string> getDiagMoves(Board & board, Position & position)
       l = tolower(board.squares[row][col]->getLetter());
       if (l == ' ')
       {
-         validMove = getCol(c) + getRowAlpha(r + 1) + getCol(col) + getRowAlpha(row + 1);
+         //validMove = getCol(c) + getRowAlpha(r + 1) + getCol(col) + getRowAlpha(row + 1);
+         validMove = "";
+         validMove += getCol(c);
+         validMove += getRowAlpha(r + 1);
+         validMove += getCol(col);
+         validMove += getRowAlpha(row + 1);
          posMoves.push_back(validMove);
       }
       else if (w != (board.squares[row][col]->getIsWhite()))
       {
-         validMove = getCol(c) + getRowAlpha(r + 1) + getCol(col) + getRowAlpha(row + 1) + l;
+         //validMove = getCol(c) + getRowAlpha(r + 1) + getCol(col) + getRowAlpha(row + 1) + l;
+         validMove = "";
+         validMove += getCol(c);
+         validMove += getRowAlpha(r + 1);
+         validMove += getCol(col);
+         validMove += getRowAlpha(row + 1);
+         validMove += l;
          posMoves.push_back(validMove);
          break;
       }
@@ -113,14 +134,25 @@ std::vector<std::string> getDiagMoves(Board & board, Position & position)
       l = tolower(board.squares[row][col]->getLetter());
       if (l == ' ')
       {
-         validMove = getCol(c) + getRowAlpha(r + 1) + getCol(col) + getRowAlpha(row + 1);
+         //validMove = getCol(c) + getRowAlpha(r + 1) + getCol(col) + getRowAlpha(row + 1);
+         validMove = "";
+         validMove += getCol(c);
+         validMove += getRowAlpha(r + 1);
+         validMove += getCol(col);
+         validMove += getRowAlpha(row + 1);
          posMoves.push_back(validMove);
       }
       else
       {
          if (w != (board.squares[row][col]->getIsWhite()))
          {
-            validMove = getCol(c) + getRowAlpha(r + 1) + getCol(col) + getRowAlpha(row + 1) + l;
+            //validMove = getCol(c) + getRowAlpha(r + 1) + getCol(col) + getRowAlpha(row + 1) + l;
+            validMove = "";
+            validMove += getCol(c);
+            validMove += getRowAlpha(r + 1);
+            validMove += getCol(col);
+            validMove += getRowAlpha(row + 1);
+            validMove += l;
             posMoves.push_back(validMove);
          }
          break;
@@ -133,14 +165,25 @@ std::vector<std::string> getDiagMoves(Board & board, Position & position)
       l = tolower(board.squares[row][col]->getLetter());
       if (l == ' ')
       {
-         validMove = getCol(c) + getRowAlpha(r + 1) + getCol(col) + getRowAlpha(row + 1);
+         //validMove = getCol(c) + getRowAlpha(r + 1) + getCol(col) + getRowAlpha(row + 1);
+         validMove = "";
+         validMove += getCol(c);
+         validMove += getRowAlpha(r + 1);
+         validMove += getCol(col);
+         validMove += getRowAlpha(row + 1);
          posMoves.push_back(validMove);
       }
       else
       {
          if (w != (board.squares[row][col]->getIsWhite()))
          {
-            validMove = getCol(c) + getRowAlpha(r + 1) + getCol(col) + getRowAlpha(row + 1) + l;
+            //validMove = getCol(c) + getRowAlpha(r + 1) + getCol(col) + getRowAlpha(row + 1) + l;
+            validMove = "";
+            validMove += getCol(c);
+            validMove += getRowAlpha(r + 1);
+            validMove += getCol(col);
+            validMove += getRowAlpha(row + 1);
+            validMove += l;
             posMoves.push_back(validMove);
          }
          break;
@@ -173,12 +216,23 @@ std::vector<std::string> getLinearMoves(Board & board, Position & position)
       l = tolower(board.squares[r][col]->getLetter());
       if (l == ' ')
       {
-         validMove = getCol(c) + getRowAlpha(r + 1) + getCol(col) + getRowAlpha(r + 1);
+         //validMove = getCol(c) + getRowAlpha(r + 1) + getCol(col) + getRowAlpha(r + 1);
+         validMove = "";
+         validMove += getCol(c);
+         validMove += getRowAlpha(r + 1);
+         validMove += getCol(col);
+         validMove += getRowAlpha(r + 1);
          posMoves.push_back(validMove);
       }
       else if (w != (board.squares[r][col]->getIsWhite()))
       {
-         validMove = getCol(c) + getRowAlpha(r + 1) + getCol(col) + getRowAlpha(r + 1) + l;
+         //validMove = getCol(c) + getRowAlpha(r + 1) + getCol(col) + getRowAlpha(r + 1) + l;
+         validMove = "";
+         validMove += getCol(c);
+         validMove += getRowAlpha(r + 1);
+         validMove += getCol(col);
+         validMove += getRowAlpha(r + 1);
+         validMove += l;
          posMoves.push_back(validMove);
          break;
       }
@@ -190,12 +244,23 @@ std::vector<std::string> getLinearMoves(Board & board, Position & position)
       l = tolower(board.squares[r][col]->getLetter());
       if (l == ' ')
       {
-         validMove = getCol(c) + getRowAlpha(r + 1) + getCol(col) + getRowAlpha(r + 1);
+         //validMove = getCol(c) + getRowAlpha(r + 1) + getCol(col) + getRowAlpha(r + 1);
+         validMove = "";
+         validMove += getCol(c);
+         validMove += getRowAlpha(r + 1);
+         validMove += getCol(col);
+         validMove += getRowAlpha(r + 1);
          posMoves.push_back(validMove);
       }
       else if (w != (board.squares[r][col]->getIsWhite()))
       {
-         validMove = getCol(c) + getRowAlpha(r + 1) + getCol(col) + getRowAlpha(r + 1) + l;
+         //validMove = getCol(c) + getRowAlpha(r + 1) + getCol(col) + getRowAlpha(r + 1) + l;
+         validMove = "";
+         validMove += getCol(c);
+         validMove += getRowAlpha(r + 1);
+         validMove += getCol(col);
+         validMove += getRowAlpha(r + 1);
+         validMove += l;
          posMoves.push_back(validMove);
          break;
       }
@@ -207,14 +272,25 @@ std::vector<std::string> getLinearMoves(Board & board, Position & position)
       l = tolower(board.squares[row][c]->getLetter());
       if (l == ' ')
       {
-         validMove = getCol(c) + getRowAlpha(r + 1) + getCol(c) + getRowAlpha(row + 1);
+         //validMove = getCol(c) + getRowAlpha(r + 1) + getCol(c) + getRowAlpha(row + 1);
+         validMove = "";
+         validMove += getCol(c);
+         validMove += getRowAlpha(r + 1);
+         validMove += getCol(c);
+         validMove += getRowAlpha(row + 1);
          posMoves.push_back(validMove);
       }
       else
       {
          if (w != (board.squares[row][c]->getIsWhite()))
          {
-            validMove = getCol(c) + getRowAlpha(r + 1) + getCol(c) + getRowAlpha(row + 1) + l;
+            //validMove = getCol(c) + getRowAlpha(r + 1) + getCol(c) + getRowAlpha(row + 1) + l;
+            validMove = "";
+            validMove += getCol(c);
+            validMove += getRowAlpha(r + 1);
+            validMove += getCol(c);
+            validMove += getRowAlpha(row + 1);
+            validMove += l;
             posMoves.push_back(validMove);
          }
          break;
@@ -228,14 +304,25 @@ std::vector<std::string> getLinearMoves(Board & board, Position & position)
       l = tolower(board.squares[row][c]->getLetter());
       if (l == ' ')
       {
-         validMove = getCol(c) + getRowAlpha(r + 1) + getCol(c) + getRowAlpha(row + 1);
+         //validMove = getCol(c) + getRowAlpha(r + 1) + getCol(c) + getRowAlpha(row + 1);
+         validMove = "";
+         validMove += getCol(c);
+         validMove += getRowAlpha(r + 1);
+         validMove += getCol(c);
+         validMove += getRowAlpha(row + 1);
          posMoves.push_back(validMove);
       }
       else
       {
          if (w != (board.squares[row][c]->getIsWhite()))
          {
-            validMove = getCol(c) + getRowAlpha(r + 1) + getCol(c) + getRowAlpha(row + 1) + l;
+            //validMove = getCol(c) + getRowAlpha(r + 1) + getCol(c) + getRowAlpha(row + 1) + l;
+            validMove = "";
+            validMove += getCol(c);
+            validMove += getRowAlpha(r + 1);
+            validMove += getCol(c);
+            validMove += getRowAlpha(row + 1);
+            validMove += l;
             posMoves.push_back(validMove);
          }
          break;
@@ -281,7 +368,13 @@ void King::getMoves(Board & board, Position & position)
                l = tolower(board.squares[i][j]->getLetter());
                if (l == ' ' || w != board.squares[i][j]->getIsWhite())
                {
-                  validMove = getCol(c) + getRowAlpha(r + 1) + getCol(j) + getRowAlpha(i + 1) + l;
+                  //validMove = getCol(c) + getRowAlpha(r + 1) + getCol(j) + getRowAlpha(i + 1) + l;
+                  validMove = "";
+                  validMove += getCol(c);
+                  validMove += getRowAlpha(r + 1);
+                  validMove += getCol(j);
+                  validMove += getRowAlpha(i + 1);
+                  validMove += l;
                   posMoves.push_back(validMove);
                   //std::cout << "c" << j << "r" << i << " is valid" << std::endl;
                }
@@ -309,7 +402,13 @@ void King::getMoves(Board & board, Position & position)
          // If qCastle = true, we CAN Queen side castle
          if (qCastle)
          {
-            validMove = getCol(c) + getRowAlpha(r + 1) + 'c' + getRowAlpha(r + 1) + 'C';
+            //validMove = getCol(c) + getRowAlpha(r + 1) + 'c' + getRowAlpha(r + 1) + 'C';
+            validMove = "";
+            validMove += getCol(c);
+            validMove += getRowAlpha(r + 1);
+            validMove += 'c';
+            validMove += getRowAlpha(r + 1);
+            validMove += 'C';
             posMoves.push_back(validMove);
          }
       }
@@ -327,7 +426,13 @@ void King::getMoves(Board & board, Position & position)
          // If kCastle = true, we CAN King side castle
          if (kCastle)
          {
-            validMove = getCol(c) + getRowAlpha(r + 1) + 'g' + getRowAlpha(r + 1) + 'c';
+            //validMove = getCol(c) + getRowAlpha(r + 1) + 'g' + getRowAlpha(r + 1) + 'c';
+            validMove = "";
+            validMove += getCol(c);
+            validMove += getRowAlpha(r + 1);
+            validMove += 'g';
+            validMove += getRowAlpha(r + 1);
+            validMove += 'c';
             posMoves.push_back(validMove);
          }
       }
@@ -402,12 +507,23 @@ void Knight::getMoves(Board & board, Position & position)
          l = tolower(board.squares[row][col]->getLetter());
          if (l == ' ')
          {
-            validMove = getCol(c) + getRowAlpha(r + 1) + getCol(col) + getRowAlpha(row + 1);
+            //validMove = getCol(c) + getRowAlpha(r + 1) + getCol(col) + getRowAlpha(row + 1);
+            validMove = "";
+            validMove += getCol(c);
+            validMove += getRowAlpha(r + 1);
+            validMove += getCol(col);
+            validMove += getRowAlpha(row + 1);
             posMoves.push_back(validMove);
          }
          else if (w != (board.squares[row][col]->getIsWhite()))
          {
-            validMove = getCol(c) + getRowAlpha(r + 1) + getCol(col) + getRowAlpha(row + 1) + l;
+            //validMove = getCol(c) + getRowAlpha(r + 1) + getCol(col) + getRowAlpha(row + 1) + l;
+            validMove = "";
+            validMove += getCol(c);
+            validMove += getRowAlpha(r + 1);
+            validMove += getCol(col);
+            validMove += getRowAlpha(row + 1);
+            validMove += l;
             posMoves.push_back(validMove);
          }
       }

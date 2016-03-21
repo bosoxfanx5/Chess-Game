@@ -5,8 +5,8 @@
  * Authors:
  *    Dan McDaniel, Brooks Robison, Thomas Woodworth
  * File Summary:
- *    Because the class has a variable of type Board, and the board class 
- * has a variable of type Piece, we have used 'Forward Declaration' to 
+ *    Because the class has a variable of type Board, and the board class
+ * has a variable of type Piece, we have used 'Forward Declaration' to
  * make this work.
  *    Piece.h contains the following piece classes:
  *    1: Piece
@@ -39,7 +39,7 @@ class Board; //Forward declaration (prototype)
  * PIECE CLASS
  *    This class is the main class that all the other pieces
  * are derived from.
- * It contains the following pure virtual functions that 
+ * It contains the following pure virtual functions that
  * MUST be redefined in each derived class:
  *    1. getLetter
  *    2. getScore

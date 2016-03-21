@@ -34,7 +34,7 @@
 /********************************************************
  * PIECE CLASS
  *    This class is added here for Forward Declaration.
- * It will not be defined here because it is defined the 
+ * It will not be defined here because it is defined the
  * piece.h file.
  ********************************************************/
 class Piece; //Forward declaration (prototype)
@@ -47,21 +47,23 @@ class Board
 {
 public:
     Board() {isTestMode = false;}
- 
+    
 public:
-   void init();
-   void initk();
-   void initq();
-   void load();
-   void draw();
-   void undo();
-   void drawTest();
-   void writeFile();
-   
-   //Location Class //Array
-   Piece * squares[8][8];
-   void interact();
-   std::vector<std::string> history;
+    //Chessboard() {};
+    void init();
+    void initk();
+    void initq();
+    void load();
+    void draw();
+    void undo();
+    void drawTest();
+    void writeFile();
+    //Piece getPieceAtLocation(Position location) {return squares[location.getRow()][location.getCol()];}
+    
+    //Location Class //Array
+    Piece * squares[8][8];
+    void interact();// {std::cin; /*std::cin.ignore()*/; return true;}
+    std::vector<std::string> history;
     bool isTestMode;
 };
 

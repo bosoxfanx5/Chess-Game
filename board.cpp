@@ -32,6 +32,20 @@
 
 
 //NON-MEMBER FUNCTIONS//
+#ifndef TRIM
+#define TRIM
+/*******************************************
+ * TRIM
+ *    This function will strip out all unneeded
+ *    spaces.
+ *******************************************/
+std::string trim(std::string& str)
+{
+   size_t first = str.find_first_not_of(' ');
+   size_t last = str.find_last_not_of(' ');
+   return str.substr(first, (last-first+1));
+}
+#endif
 
 /***************************************************
  * SHOWMENU
@@ -43,10 +57,10 @@ void showMenu()
    << " ?      Display these options"                        << std::endl
    << " b2b4   Specify a move using the Smith Notation"      << std::endl
    << " read   Read a saved game from a file"                << std::endl
+   << " help   Display all possible moves for a given piece" << std::endl
    << " test   Simple display for test purposes"             << std::endl
-   << " quit   Leave the game. You will be prompted to save" << std::endl
-   << " help   Show valid moves for given piece"             << std::endl
-   << " rank   Compute the strenght of a given position"     << std::endl;
+   << " rank   Who is winning?  What is the rank"     << std::endl
+   << " quit   Leave the game. You will be prompted to save" << std::endl;
 }
 
 /***************************************************
@@ -128,7 +142,8 @@ void Board::load()
       init();
    }
    // if all is good with the file read then display the board!
-   draw();
+   else
+      draw();
    
 }
 
@@ -218,7 +233,7 @@ void Board::interact()
          quit = true;
       else if(moveString == "help")
       {
-         std::cout << "What piece would you like to find the moves for? ";
+         std::cout << "Which piece would you like to find the moves for? ";
          char r, c = '\0';
          std::cin >> c >> r;
          
@@ -228,7 +243,7 @@ void Board::interact()
             squares[origin.getRow()][origin.getCol()]->posMoves.clear();
             squares[origin.getRow()][origin.getCol()]->getMoves(*this, origin);
             
-            std::cout << "Possible moves are:" << std::endl;
+            std::cout << "Possible moves are: " << std::endl;
             
             int count = 0;
             
@@ -236,7 +251,7 @@ void Board::interact()
                  it != squares[origin.getRow()][origin.getCol()]->posMoves.end();
                  ++it)
             {
-               std::cout << squares[origin.getRow()][origin.getCol()]->posMoves[count++] << std::endl;
+               std::cout << "\t" << trim(squares[origin.getRow()][origin.getCol()]->posMoves[count++]) << std::endl;
             }
          }
          else
@@ -264,7 +279,7 @@ void Board::interact()
          catch (std::string error)
          {
             std::cout << "Error in move \'" << moveString << "\': " << error << std::endl;
-            std::cout << "      Type ? for more options\n";
+            std::cout << "\tType ? for more options\n";
          }
       }
    }
@@ -287,7 +302,7 @@ void Board::interact()
  ***************************************************/
 void Board::draw()
 {
-   std::cout << CLEAR;
+   
    
    if (isTestMode)
    {
@@ -307,6 +322,7 @@ void Board::draw()
    }
    else
    {
+      std::cout << CLEAR;
       std::cout << "   a  b  c  d  e  f  g  h " << std::endl; // I prefer endl.
       bool white = true; //for checkerboard pattern
       for (int r = 7; r >= 0; r--)
@@ -368,7 +384,7 @@ void Board::draw()
 
 /***************************************************
  * BOARD::INIT
- *    This function initializes the board with all 
+ *    This function initializes the board with all
  * the pieces in their original position for a new
  * game.
  ***************************************************/
@@ -452,7 +468,7 @@ void Board::initk()
    this->squares[1][6] = new Pawn(true);
    this->squares[1][7] = new Pawn(true);
    
-
+   
    
    //Black
    this->squares[6][0] = new Pawn(false);
@@ -501,9 +517,9 @@ void Board::initq()
    
    this->squares[1][0] = new Pawn(true);
    this->squares[1][1] = new Pawn(true);
-//   this->squares[1][2] = new Pawn(true);
-//   this->squares[1][3] = new Pawn(true);
-//   this->squares[1][4] = new Pawn(true);
+   //   this->squares[1][2] = new Pawn(true);
+   //   this->squares[1][3] = new Pawn(true);
+   //   this->squares[1][4] = new Pawn(true);
    this->squares[1][5] = new Pawn(true);
    this->squares[1][6] = new Pawn(true);
    this->squares[1][7] = new Pawn(true);
@@ -513,9 +529,9 @@ void Board::initq()
    //Black
    this->squares[6][0] = new Pawn(false);
    this->squares[6][1] = new Pawn(false);
-//   this->squares[6][2] = new Pawn(false);
-//   this->squares[6][3] = new Pawn(false);
-//   this->squares[6][4] = new Pawn(false);
+   //   this->squares[6][2] = new Pawn(false);
+   //   this->squares[6][3] = new Pawn(false);
+   //   this->squares[6][4] = new Pawn(false);
    this->squares[6][5] = new Pawn(false);
    this->squares[6][6] = new Pawn(false);
    this->squares[6][7] = new Pawn(false);
@@ -545,17 +561,17 @@ void Board::undo()
    // store the moves from the vector in the file
    for (int i = 0; i < history.size() - 1; i++)
    {
-     practice = history[i];
-     std::cout << practice;
-     Move move(practice, *this);
-     move.parse();
-     move.execute();
-     draw();
+      practice = history[i];
+      std::cout << practice;
+      Move move(practice, *this);
+      move.parse();
+      move.execute();
+      draw();
    }
    
    history.pop_back();
    
-  
+   
    
    return;
 }

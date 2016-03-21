@@ -28,7 +28,7 @@ public:
     Move();
     Move(const Move & rhs)                      { *this = rhs;             }
     Move(const string & s, Board & b)           { moveString = s; board = &b;               }
-   
+    
     // a slew of getters.  All are const!
     const Position & getDes()             const { return dest;             }
     const Position & getSrc()             const { return source;           }
@@ -44,7 +44,7 @@ public:
     bool operator == (const Move & rhs)   const;
     bool operator != (const Move & rhs)   const { return !(*this == rhs); }
     string moveString;
-   
+    
     // setters.  Since properties are the same as data, these are trivial
     void setCapture(char letter)            { capture    = tolower(letter); }
     void setWhiteMove(bool f)               { isWhite    = f;               }
@@ -59,9 +59,9 @@ public:
         else
             castleQ = true;
     }
-   void execute();
-   bool validate() throw(string);
-   
+    void execute();
+    bool validate() throw(string);
+    
     // display and prompt
     friend ostream & operator << (ostream & out, Move & rhs);
     friend istream & operator >> (istream & in,  Move & rhs) throw (string);
@@ -78,13 +78,13 @@ public:
         parse();
         return *this;
     }
-   
-   Board * board;
-
+    
+    Board * board;
+    
     // this is the same as the parse function from Project 1
     void parse() throw(string);
-   
-   
+    
+    
 private:
     Position  source;    // where the move originated from
     Position  dest;      // where the move finished

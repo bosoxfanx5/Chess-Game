@@ -55,9 +55,15 @@ public:
     {
         set(rhs.r + delta.dRow, rhs.c + delta.dCol);
     }
-    
+   
+   /* Original code provided by Bro. Helfrich
     char getRow() const { return r;};
     char getCol() const { return c;};
+    */
+   
+   // Changed these to type int.
+   int getRow() const { return r;};
+   int getCol() const { return c;};
     void setRow(int r)
     {
         if (r >= 0 && r <= 7)
@@ -100,8 +106,12 @@ public:
     
     
 private:
+   /*Original code
     char r;
     char c;
+    */
+   int r;
+   int c;
     bool invalid;
 };
 

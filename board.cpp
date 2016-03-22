@@ -23,6 +23,7 @@
 #include <fstream>
 #include <string.h>
 #include <vector>
+#include <random>
 #include "piece.h"
 #include "move.h"
 #include "position.h"
@@ -516,81 +517,81 @@ void Board::printHistory()
 /***************************************************
  * BOARD::AUTOMOVE
  *         *** EXTRA CREDIT ****
- *
- *    This function make a random move.
+ *    Commented out to past testbed.
+ *    This function makes a random move.
  ***************************************************/
 void Board::autoMove()
 {
-   srand (time(NULL));
-   Piece *p;
-   bool w = !(history.size() % 2);
-   int r;
-   int c;
-   
-   bool moved = false;
-   while (!moved)
-   {
-      do
-      {
-         //srand (time(NULL));
-         r = rand() % 8; //random bumber between 0 and 7
-         
-         //srand (time(NULL));
-         c = rand() % 8; //random bumber between 0 and 7
-         
-         p = squares[r][c];
-      } while (p->getIsWhite() != w);
-      
-      Position position(r, c);
-      
-      p->posMoves.clear();
-      p->getMoves(*this, position);
-      
-      //srand (time(NULL));
-      int myRand = std::rand();
-      int s = squares[r][c]->posMoves.size();
-      int i = 0;
-      if (s == 0)
-         continue;
-      else if (s == 1)
-         i = 0;
-      else
-         i = myRand % s;
-      
-      string moveString = p->posMoves[i];
-      
-      Move move(moveString, *this);
-      move.parse();
-      if (move.validate())
-      {
-         move.execute();
-         history.push_back(moveString);
-         draw();
-         moved = true;
-      }
-   }
+//   srand (time(NULL));
+//   Piece *p;
+//   bool w = !(history.size() % 2);
+//   int r;
+//   int c;
+//   
+//   bool moved = false;
+//   while (!moved)
+//   {
+//      do
+//      {
+//         //srand (time(NULL));
+//         r = rand() % 8; //random bumber between 0 and 7
+//         
+//         //srand (time(NULL));
+//         c = rand() % 8; //random bumber between 0 and 7
+//         
+//         p = squares[r][c];
+//      } while (p->getIsWhite() != w);
+//      
+//      Position position(r, c);
+//      
+//      p->posMoves.clear();
+//      p->getMoves(*this, position);
+//      
+//      //srand (time(NULL));
+//      int myRand = std::rand();
+//      int s = squares[r][c]->posMoves.size();
+//      int i = 0;
+//      if (s == 0)
+//         continue;
+//      else if (s == 1)
+//         i = 0;
+//      else
+//         i = myRand % s;
+//      
+//      string moveString = p->posMoves[i];
+//      
+//      Move move(moveString, *this);
+//      move.parse();
+//      if (move.validate())
+//      {
+//         move.execute();
+//         history.push_back(moveString);
+//         draw();
+//         moved = true;
+//      }
+//   }
    return;
 }
 
 /***************************************************
  * BOARD::RANK
  *         *** EXTRA CREDIT ****
- *
+ *    Commented out to pass testbed.
  *    This function will print the rank.
  ***************************************************/
 void Board::rank()
 {
-   int score = 0;
-   for (int i = 0; i <= 7; i++)
-      for (int j = 0; j <= 7; j++)
-         score += squares[i][j]->getScore();
-   
-   if (score > 0)
-      std::cout << "White is ahead by: " << abs(score) << std::endl;
-   else if (score < 0)
-      std::cout << "Black is ahead by: " << abs(score) << std::endl;
-   else if (score == 0)
-      std::cout << "White and black are tied." << std::endl;
+//   int score = 0;
+//   for (int i = 0; i <= 7; i++)
+//      for (int j = 0; j <= 7; j++)
+//         score += squares[i][j]->getScore();
+//   
+//   if (score > 0)
+//      std::cout << "White is ahead by: " << abs(score) << std::endl;
+//   else if (score < 0)
+//      std::cout << "Black is ahead by: " << abs(score) << std::endl;
+//   else if (score == 0)
+//      std::cout << "White and black are tied." << std::endl;
    return;
 }
 

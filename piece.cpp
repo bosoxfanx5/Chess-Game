@@ -387,10 +387,10 @@ void King::getMoves(Board & board, Position & position)
     bool kCastle = true;
     
     // Validate squares immediately around the King
-    for (int i = r - 1; i <= r + 1; i++)
+    for (int i = r + 1; i <= r - 1; i--)
         if (i >= 0 && i < 8)
         {
-            for (int j = c - 1; j <= c + 1; j++)
+            for (int j = c + 1; j <= c - 1; j--)
                 if (j >= 0 && j < 8)
                 {
                     l = tolower(board.squares[i][j]->getLetter());
@@ -629,8 +629,43 @@ void Pawn::getMoves(Board & board, Position & position)
             posMoves.push_back(validMove);
         }
     }
-    
-    // second: has the pawn moved - can the pawn move 2 squares
+
+   // second: can the pawn attack to the left
+   l = tolower(board.squares[dest1_index][c - 1]->getLetter());
+   if (!(l == ' ') && c > 0)
+   {
+      if (w != (board.squares[dest1_index][c - 1]->getIsWhite()))
+      {
+         // Check if move is into the last row
+         if (dest1_index == lastRow)  // Promotion
+         {
+            for (int i = 0; i < 4; i++)
+            {
+               validMove = "";
+               validMove += getCol(c);
+               validMove += getRowAlpha(r + 1);
+               validMove += getCol(c - 1);
+               validMove += getRowAlpha(dest1_display);
+               validMove += posPromotions[i];
+               validMove += l;
+               posMoves.push_back(validMove);
+            }
+         }
+         else
+         {
+            //No Promotion - you failed the interview  :)
+            validMove = "";
+            validMove += getCol(c);
+            validMove += getRowAlpha(r + 1);
+            validMove += getCol(c - 1);
+            validMove += getRowAlpha(dest1_display);
+            validMove += l;
+            posMoves.push_back(validMove);
+         }
+      }
+   }
+   
+    // third: has the pawn moved - can the pawn move 2 squares
     if (!board.squares[r][c]->fMoved)  // Pawn has not moved
     {
         if ((board.squares[dest1_index][c]->getLetter() == ' ') && (board.squares[dest2_index][c]->getLetter() == ' '))
@@ -644,40 +679,7 @@ void Pawn::getMoves(Board & board, Position & position)
         }
     }
     
-    // third: can the pawn attack to the left
-    l = tolower(board.squares[dest1_index][c - 1]->getLetter());
-    if (!(l == ' ') && c > 0)
-    {
-        if (w != (board.squares[dest1_index][c - 1]->getIsWhite()))
-        {
-            // Check if move is into the last row
-            if (dest1_index == lastRow)  // Promotion
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    validMove = "";
-                    validMove += getCol(c);
-                    validMove += getRowAlpha(r + 1);
-                    validMove += getCol(c - 1);
-                    validMove += getRowAlpha(dest1_display);
-                    validMove += posPromotions[i];
-                    validMove += l;
-                    posMoves.push_back(validMove);
-                }
-            }
-            else
-            {
-                //No Promotion - you failed the interview  :)
-                validMove = "";
-                validMove += getCol(c);
-                validMove += getRowAlpha(r + 1);
-                validMove += getCol(c - 1);
-                validMove += getRowAlpha(dest1_display);
-                validMove += l;
-                posMoves.push_back(validMove);
-            }
-        }
-    }
+
     
     // fourth: can the pawn attack to the right
     l = tolower(board.squares[dest1_index][c + 1]->getLetter());

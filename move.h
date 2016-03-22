@@ -27,7 +27,15 @@ public:
     // constructors
     Move();
     Move(const Move & rhs)                      { *this = rhs;             }
-    Move(const string & s, Board & b)           { moveString = s; board = &b;               }
+    Move(const string & s, Board & b)
+   {
+      moveString = s;
+      board = &b;
+      enpassant = false;
+      castleK = false;
+      castleQ = false;
+      promote = false;
+   }
     
     // a slew of getters.  All are const!
     const Position & getDes()             const { return dest;             }

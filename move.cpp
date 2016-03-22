@@ -27,29 +27,10 @@ void Move::execute()
     board->squares[dest.getRow()][dest.getCol()]->fMoved = true;
     // Set the source square to an empty square
     board->squares[source.getRow()][source.getCol()] = new Space();
-    if (promote)
+    if (getPromote())
     {
         switch (moveString[4])
         {
-            case 'c':  // short castling or kings castle
-            {
-                board->squares[dest.getRow()][5] = board->squares[source.getRow()][7];
-                board->squares[source.getRow()][7] = new Space();
-                break;
-            }
-            case 'C':  // long castling or queen castle
-            {
-                board->squares[dest.getRow()][3] = board->squares[source.getRow()][0];
-                board->squares[source.getRow()][0] = new Space();
-                break;
-            }
-            case 'E':  // En-passant
-            {
-                string lastMove = board->history[board->history.size() - 1];
-                Position posLastMove(lastMove[2], lastMove[3]);
-                board->squares[posLastMove.getRow()][posLastMove.getCol()] = new Space();
-                break;
-            }
             case 'N':  // Promote to knight
                 board->squares[dest.getRow()][dest.getCol()] = new Knight(isWhite);
                 break;
@@ -64,6 +45,22 @@ void Move::execute()
                 break;
         }
     }
+    else if(getEnPassant())
+   {
+      string lastMove = board->history[board->history.size() - 1];
+      Position posLastMove(lastMove[2], lastMove[3]);
+      board->squares[posLastMove.getRow()][posLastMove.getCol()] = new Space();
+   }
+   else if(getCastleK())
+   {
+      board->squares[dest.getRow()][5] = board->squares[source.getRow()][7];
+      board->squares[source.getRow()][7] = new Space();
+   }
+   else if(getCastleQ())
+   {
+      board->squares[dest.getRow()][3] = board->squares[source.getRow()][0];
+      board->squares[source.getRow()][0] = new Space();
+   }
 }
 
 void Move::parse() throw(string)
@@ -79,10 +76,10 @@ void Move::parse() throw(string)
     
     char      piece     = NO_PIECE;   // piece to be promoted to
     char      capture   = false;      // Piece to capture
-    char      promote   = false;      // Piece to promote to
-    bool      enpassant = false;      // Enpassant pawn capture
-    bool      castleK   = false;      // kingside castle
-    bool      castleQ   = false;      // queenside castle
+    //char      promote   = false;      // Piece to promote to
+    //bool      enpassant = false;      // Enpassant pawn capture
+    //bool      castleK   = false;      // kingside castle
+    //bool      castleQ   = false;      // queenside castle
     bool      isWhite   = false;      // white's move?
     
     isWhite = !(board->history.size() % 2);
@@ -162,17 +159,17 @@ void Move::parse() throw(string)
             case 'r':   // capture a rook
             case 'q':   // capture a queen
             case 'k':   // !! you can't capture a king you silly!
-                capture = true;
+                //capture = true;
                 break;
                 
             case 'c':  // short castling or kings castle
-                castleK = true;
+                setCastle(true);
                 break;
             case 'C':  // long castling or queen castle
-                castleQ = true;
+                setCastle(false);
                 break;
             case 'E':  // En-passant
-                enpassant = true;
+                setEnPassant();
                 break;
                 
             case 'N':  // Promote to knight

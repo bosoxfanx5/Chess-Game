@@ -211,7 +211,7 @@ std::vector<std::string> getDiagMoves(Board & board, Position & position)
             break;
         }
     }
-    
+   
     return posMoves;
 }
 
@@ -733,7 +733,7 @@ void Pawn::getMoves(Board & board, Position & position)
                     validMove += getRowAlpha(r + 1);
                     validMove += getCol(c - 1);
                     validMove += getRowAlpha(dest1_display);
-                    validMove += 'E';
+                    validMove += (w) ? 'E' : 'e';
                     posMoves.push_back(validMove);
                     
                 }
@@ -744,7 +744,7 @@ void Pawn::getMoves(Board & board, Position & position)
                     validMove += getRowAlpha(r + 1);
                     validMove += getCol(c + 1);
                     validMove += getRowAlpha(dest1_display);
-                    validMove += 'E';
+                    validMove += (w) ? 'E' : 'e';
                     posMoves.push_back(validMove);
                 }
             }

@@ -643,75 +643,87 @@ void Pawn::getMoves(Board & board, Position & position)
     }
     
     // third: can the pawn attack to the left
-    l = tolower(board.squares[dest1_index][c - 1]->getLetter());
-    if (!(l == ' ') && c > 0)
-    {
-        if (w != (board.squares[dest1_index][c - 1]->getIsWhite()))
-        {
+   int colMoveLeft;
+   int colMoveRight;
+   colMoveLeft = (w) ? (c - 1) : (c + 1);
+   //colMoveLeft = c - 1;
+   if (colMoveLeft >= 0 && colMoveLeft < 8)
+   {
+      l = tolower(board.squares[dest1_index][colMoveLeft]->getLetter());
+      if (!(l == ' ') && c > 0)
+      {
+         if (w != (board.squares[dest1_index][colMoveLeft]->getIsWhite()))
+         {
             // Check if move is into the last row
             if (dest1_index == lastRow)  // Promotion
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    validMove = "";
-                    validMove += getCol(c);
-                    validMove += getRowAlpha(r + 1);
-                    validMove += getCol(c - 1);
-                    validMove += getRowAlpha(dest1_display);
-                    validMove += posPromotions[i];
-                    validMove += l;
-                    posMoves.push_back(validMove);
-                }
+               for (int i = 0; i < 4; i++)
+               {
+                  validMove = "";
+                  validMove += getCol(c);
+                  validMove += getRowAlpha(r + 1);
+                  validMove += getCol(colMoveLeft);
+                  validMove += getRowAlpha(dest1_display);
+                  validMove += posPromotions[i];
+                  validMove += l;
+                  posMoves.push_back(validMove);
+               }
             }
             else
             {
-                //No Promotion - you failed the interview  :)
-                validMove = "";
-                validMove += getCol(c);
-                validMove += getRowAlpha(r + 1);
-                validMove += getCol(c - 1);
-                validMove += getRowAlpha(dest1_display);
-                validMove += l;
-                posMoves.push_back(validMove);
+               //No Promotion - you failed the interview  :)
+               validMove = "";
+               validMove += getCol(c);
+               validMove += getRowAlpha(r + 1);
+               validMove += getCol(colMoveLeft);
+               validMove += getRowAlpha(dest1_display);
+               validMove += l;
+               posMoves.push_back(validMove);
             }
-        }
-    }
-    
+         }
+      }
+   }
+   
     // fourth: can the pawn attack to the right
-    l = tolower(board.squares[dest1_index][c + 1]->getLetter());
-    if (!(l == ' ') && c < 7)
-    {
-        if (w != (board.squares[dest1_index][c + 1]->getIsWhite()))
-        {
+    colMoveRight = (w) ? (c + 1) : (c - 1);
+    //colMoveRight = c + 1;
+   if (colMoveRight >= 0 && colMoveRight < 8)
+   {
+      l = tolower(board.squares[dest1_index][colMoveRight]->getLetter());
+      if (!(l == ' ') && c < 7)
+      {
+         if (w != (board.squares[dest1_index][colMoveRight]->getIsWhite()))
+         {
             // Check if move is into the last row
             if (dest1_index == lastRow)  // Promotion
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    validMove = "";
-                    validMove += getCol(c);
-                    validMove += getRowAlpha(r + 1);
-                    validMove += getCol(c + 1);
-                    validMove += getRowAlpha(dest1_display);
-                    validMove += posPromotions[i];
-                    validMove += l;
-                    posMoves.push_back(validMove);
-                }
+               for (int i = 0; i < 4; i++)
+               {
+                  validMove = "";
+                  validMove += getCol(c);
+                  validMove += getRowAlpha(r + 1);
+                  validMove += getCol(colMoveRight);
+                  validMove += getRowAlpha(dest1_display);
+                  validMove += posPromotions[i];
+                  validMove += l;
+                  posMoves.push_back(validMove);
+               }
             }
             else
             {
-                //No Promotion - you failed the interview  :)
-                validMove = "";
-                validMove += getCol(c);
-                validMove += getRowAlpha(r + 1);
-                validMove += getCol(c + 1);
-                validMove += getRowAlpha(dest1_display);
-                validMove += l;
-                posMoves.push_back(validMove);
+               //No Promotion - you failed the interview  :)
+               validMove = "";
+               validMove += getCol(c);
+               validMove += getRowAlpha(r + 1);
+               validMove += getCol(colMoveRight);
+               validMove += getRowAlpha(dest1_display);
+               validMove += l;
+               posMoves.push_back(validMove);
             }
-        }
-    }
-    
+         }
+      }
+   }
+   
     // fifth: can the pawn do an en passant
     if (board.history.size() >= 1 )
     {

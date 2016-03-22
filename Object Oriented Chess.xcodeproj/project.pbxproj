@@ -41,6 +41,13 @@
 		846B6FAD1C8D2D380067E829 /* Object Oriented Chess */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Object Oriented Chess"; sourceTree = BUILT_PRODUCTS_DIR; };
 		846B6FE41C9BA66A0067E829 /* NOTES.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NOTES.cpp; sourceTree = "<group>"; };
 		84AE81E71C9E822A0058C793 /* makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; };
+		84AE81E91CA0DCFE0058C793 /* prj1a.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = prj1a.txt; sourceTree = "<group>"; };
+		84AE81EA1CA0DCFE0058C793 /* prj1b.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = prj1b.txt; sourceTree = "<group>"; };
+		84AE81EB1CA0DCFE0058C793 /* prj1c.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = prj1c.txt; sourceTree = "<group>"; };
+		84AE81EC1CA0DCFE0058C793 /* prj1d.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = prj1d.txt; sourceTree = "<group>"; };
+		84AE81ED1CA0DCFE0058C793 /* prj1e.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = prj1e.txt; sourceTree = "<group>"; };
+		84AE81EE1CA0DCFE0058C793 /* prj1f.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = prj1f.txt; sourceTree = "<group>"; };
+		84AE81EF1CA0DCFE0058C793 /* prj1g.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = prj1g.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +64,13 @@
 		331673291C9B917300487F21 /* New Chess Game */ = {
 			isa = PBXGroup;
 			children = (
+				84AE81E91CA0DCFE0058C793 /* prj1a.txt */,
+				84AE81EA1CA0DCFE0058C793 /* prj1b.txt */,
+				84AE81EB1CA0DCFE0058C793 /* prj1c.txt */,
+				84AE81EC1CA0DCFE0058C793 /* prj1d.txt */,
+				84AE81ED1CA0DCFE0058C793 /* prj1e.txt */,
+				84AE81EE1CA0DCFE0058C793 /* prj1f.txt */,
+				84AE81EF1CA0DCFE0058C793 /* prj1g.txt */,
 				84AE81E71C9E822A0058C793 /* makefile */,
 				3316732A1C9B919F00487F21 /* main.cpp */,
 				3316732E1C9B91F200487F21 /* board.h */,

@@ -229,6 +229,10 @@ void Board::interact()
       {
          undo();
       }
+      else if (moveString == "history")
+      {
+         printHistory();
+      }
       else if (moveString == "quit")
          quit = true;
       else if(moveString == "help")
@@ -554,25 +558,100 @@ void Board::initq()
  ***************************************************/
 void Board::undo()
 {
-   init();
+//   init();
+//
+//   for (int i = 0; i < history.size() - 1; i++)
+//   {
+//      Move move(history[i], *this);
+//      move.parse();
+//      move.execute();
+//   }
+//   draw();
+//   history.pop_back();
+//   return;
    
-   std::string practice;
+   // open the new file
+   std::ofstream fout("temp.txt");
+   
+   if (fout.fail())
+      return;
    
    // store the moves from the vector in the file
    for (int i = 0; i < history.size() - 1; i++)
    {
-      practice = history[i];
-      std::cout << practice;
-      Move move(practice, *this);
-      move.parse();
-      move.execute();
-      draw();
+      fout << history[i];
+      if (i % 2 != 0)
+         fout << std::endl;
+      else
+         fout << " ";
+   }
+   fout.close();
+   
+   //
+   
+   bool goodRead = true;
+   
+   // gotta clear that board and the vector before reading a new file!!!
+   init();
+   history.clear();
+
+   // open the file
+   std::ifstream fin("temp.txt");
+   std::string moveString;
+   // read the file and try to parse, execute, and store the moves
+   // inside the vector.
+   while (fin >> moveString)
+   {
+      try
+      {
+         Move move(moveString, *this);
+         move.parse();
+         if (move.validate())
+         {
+            move.execute();
+            history.push_back(moveString);
+         }
+      }
+      catch (string fileError)
+      {
+         // catch the errors in parseMove if there are parsing errors
+         goodRead = false;
+         std::cout << "Error parsing undo file with move \'"
+         << moveString
+         << "\': "
+         << fileError
+         << std::endl;
+      }
    }
    
-   history.pop_back();
+   fin.close();
    
+   // if not a goodRead then clear the vector and reset the board
+   if (!goodRead)
+   {
+      history.clear();
+      init();
+   }
+   // if all is good with the file read then display the board!
+   else
+      draw();
    
+   return;
    
+}
+
+/***************************************************
+ * BOARD::PRINTHISTORY
+ *         *** EXTRA CREDIT ****
+ *
+ *    This function will undo the last move made.
+ ***************************************************/
+void Board::printHistory()
+{
+   for (int i = 0; i < history.size(); i++)
+   {
+      std::cout << history[i] << std::endl;
+   }
    return;
 }
 

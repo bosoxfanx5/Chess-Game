@@ -57,6 +57,7 @@ public:
     void draw();
     void undo();
     void drawTest();
+    void printHistory();
     void writeFile();
     //Piece getPieceAtLocation(Position location) {return squares[location.getRow()][location.getCol()];}
     

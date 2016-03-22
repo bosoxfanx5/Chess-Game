@@ -229,6 +229,10 @@ void Board::interact()
       {
          undo();
       }
+      else if (moveString == "auto")
+      {
+         autoMove();
+      }
       else if (moveString == "history")
       {
          printHistory();
@@ -644,13 +648,66 @@ void Board::undo()
  * BOARD::PRINTHISTORY
  *         *** EXTRA CREDIT ****
  *
- *    This function will undo the last move made.
+ *    This function will print the move history.
  ***************************************************/
 void Board::printHistory()
 {
    for (int i = 0; i < history.size(); i++)
    {
       std::cout << history[i] << std::endl;
+   }
+   return;
+}
+
+/***************************************************
+ * BOARD::AUTOMOVE
+ *         *** EXTRA CREDIT ****
+ *
+ *    This function make a random move.
+ ***************************************************/
+void Board::autoMove()
+{
+   Piece *p;
+   bool w = !(history.size() % 2);
+   int r;
+   int c;
+   
+   bool moved = false;
+   while (!moved)
+   {
+      do
+      {
+         r = rand() % 7; //random bumber between 0 and 7
+         c = rand() % 7; //random bumber between 0 and 7
+         
+         p = squares[r][c];
+      } while (p->getIsWhite() != w);
+      
+      Position position(r, c);
+      
+      p->posMoves.clear();
+      p->getMoves(*this, position);
+      int myRand = std::rand();
+      int s = squares[r][c]->posMoves.size();
+      int i = 0;
+      if (s == 0)
+         continue;
+      else if (s == 1)
+         i = 0;
+      else
+         i = myRand % s;
+      
+      string moveString = p->posMoves[i];
+      
+      Move move(moveString, *this);
+      move.parse();
+      if (move.validate())
+      {
+         move.execute();
+         history.push_back(moveString);
+         draw();
+         moved = true;
+      }
    }
    return;
 }

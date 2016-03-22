@@ -576,7 +576,7 @@ void Board::autoMove()
  * BOARD::RANK
  *         *** EXTRA CREDIT ****
  *
- *    This function will print the move history.
+ *    This function will print the rank.
  ***************************************************/
 void Board::rank()
 {

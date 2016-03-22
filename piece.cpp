@@ -787,7 +787,9 @@ void Pawn::getMoves(Board & board, Position & position)
                validMove += 'E';
                posMoves.push_back(validMove);
             }
-        }
-    }
+         }
+      }
+   }
+   
 }
 

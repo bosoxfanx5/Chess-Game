@@ -165,7 +165,7 @@ void Move::parse() throw(string)
                 setCastle(false);
                 break;
             case 'E':  // En-passant
-            case 'e':  // En-passant
+            //case 'e':  // En-passant
                 setEnPassant();
                 break;
                 

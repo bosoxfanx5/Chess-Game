@@ -48,7 +48,7 @@ void Move::execute()
     else if(getEnPassant())
    {
       string lastMove = board->history[board->history.size() - 1];
-      Position posLastMove(lastMove[2], lastMove[3]);
+      Position posLastMove(lastMove[3], lastMove[2]);
       board->squares[posLastMove.getRow()][posLastMove.getCol()] = new Space();
    }
    else if(getCastleK())

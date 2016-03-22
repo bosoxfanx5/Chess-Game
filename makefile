@@ -10,6 +10,10 @@
 #    1.  Undo feature is available by typing in 'undo'
 #    2.  Auto move feature is available by typeing in 'auto'
 #    3.  Rank is available by typing in 'rank'
+#    4.  Move history is available by typing 'hystory'
+#
+#    Auto move and Rank have been commented out to get it to compile on the
+#    server.  This work when compiled on a Mac.
 #
 # Group Names and Contribution:
 #    Dan McDaniel     = 33.3%

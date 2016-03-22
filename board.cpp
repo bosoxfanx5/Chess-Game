@@ -586,9 +586,9 @@ void Board::rank()
          score += squares[i][j]->getScore();
    
    if (score > 0)
-      std::cout << "White is ahead by " << abs(score) << std::endl;
+      std::cout << "White is ahead by: " << abs(score) << std::endl;
    else if (score < 0)
-      std::cout << "Black is ahead by " << abs(score) << std::endl;
+      std::cout << "Black is ahead by: " << abs(score) << std::endl;
    else if (score == 0)
       std::cout << "White and black are tied." << std::endl;
    return;

@@ -28,8 +28,6 @@
 #include "position.h"
 #include "board.h"
 
-//using namespace std;
-
 
 //NON-MEMBER FUNCTIONS//
 #ifndef TRIM
@@ -315,10 +313,8 @@ void Board::draw()
       {
          std::cout << r + 1 << " ";        //row headers
          for (int c = 0; c <= 7; c++)
-            //if (this->squares[r][c].piece->getLetter() != '\0')
             if (this->squares[r][c]->getLetter() != ' ')  //occupied if not null
                std::cout << this->squares[r][c]->getLetter();
-         //std::cout << 'z';
             else                      //free
                std::cout << " ";
          std::cout << std::endl;
@@ -343,7 +339,6 @@ void Board::draw()
             //Output
             if (tempPiece != '\0') //occupied if not null
             {
-               //std::cout << " " << tempPiece << " ";
                if (tempPiece == 'p')
                   std::cout << " " << (char)tolower(tempPiece) << " ";
                else if (backRow.find(tempPiece) + 1)
@@ -363,28 +358,6 @@ void Board::draw()
       std::cout << "   a  b  c  d  e  f  g  h " << std::endl;
    }
 }
-//*/
-
-///*******************
-// * Draw Test Board *
-// *******************/
-//void Board::drawTest()
-//{
-//   std::cout << CLEAR;
-//   std::cout << "  abcdefgh" << std::endl;   // I prefer endl over '\0'.
-//   for (int r = 7; r >= 0; r--)
-//   {
-//      std::cout << r + 1 << " ";        //row headers
-//      for (int c = 0; c <= 7; c++)
-//         //if (this->squares[r][c].piece->getLetter() != '\0')
-//         if (this->squares[r][c]->getLetter() != ' ')  //occupied if not null
-//            std::cout << this->squares[r][c]->getLetter();
-//      //std::cout << 'z';
-//         else                      //free
-//            std::cout << " ";
-//      std::cout << std::endl;
-//   }
-//}
 
 /***************************************************
  * BOARD::INIT
@@ -439,118 +412,6 @@ void Board::init()
 }
 
 /***************************************************
- * BOARD::INITK
- *         *** TEST PURPOSES ONLY ****
- *
- *    This function is for testing purposes only.  It
- * will start the board with the pieces in position
- * to make testing the King movements easier/quicker.
- ***************************************************/
-void Board::initk()
-{
-   //Clear all spaces
-   for (int r = 8; r >= 0; r--)
-      for (int c = 0; c <= 7; c++)
-         this->squares[r][c] = new Space();
-   
-   //White
-   this->squares[0][4] = new King(true); //true = isWhite
-   //this->squares[0][3] = new Queen(true);
-   this->squares[0][0] = new Rook(true); //Left
-   this->squares[0][7] = new Rook(true); //Right
-   //this->squares[0][1] = new Knight(true);
-   //this->squares[0][6] = new Knight(true);
-   //this->squares[0][2] = new Bishop(true);
-   //this->squares[0][5] = new Bishop(true);
-   
-   this->squares[1][0] = new Pawn(true);
-   this->squares[1][1] = new Pawn(true);
-   this->squares[1][2] = new Pawn(true);
-   this->squares[1][3] = new Pawn(true);
-   this->squares[1][4] = new Pawn(true);
-   this->squares[1][5] = new Pawn(true);
-   this->squares[1][6] = new Pawn(true);
-   this->squares[1][7] = new Pawn(true);
-   
-   
-   
-   //Black
-   this->squares[6][0] = new Pawn(false);
-   this->squares[6][1] = new Pawn(false);
-   this->squares[6][2] = new Pawn(false);
-   this->squares[6][3] = new Pawn(false);
-   this->squares[6][4] = new Pawn(false);
-   this->squares[6][5] = new Pawn(false);
-   this->squares[6][6] = new Pawn(false);
-   this->squares[6][7] = new Pawn(false);
-   
-   this->squares[7][0] = new Rook(false);
-   this->squares[7][7] = new Rook(false);
-   //this->squares[7][1] = new Knight(false);
-   //this->squares[7][6] = new Knight(false);
-   //this->squares[7][2] = new Bishop(false);
-   //this->squares[7][5] = new Bishop(false);
-   //this->squares[7][3] = new Queen(false);
-   this->squares[7][4] = new King(false);
-}
-
-/***************************************************
- * BOARD::INITQ
- *         *** TEST PURPOSES ONLY ****
- *
- *    This function is for testing purposes only.  It
- * will start the board with the pieces in position
- * to make testing the Queen movements easier/quicker.
- ***************************************************/
-void Board::initq()
-{
-   //Clear all spaces
-   for (int r = 8; r >= 0; r--)
-      for (int c = 0; c <= 7; c++)
-         this->squares[r][c] = new Space();
-   
-   //White
-   this->squares[0][4] = new King(true); //true = isWhite
-   this->squares[0][3] = new Queen(true);
-   this->squares[0][0] = new Rook(true); //Left
-   this->squares[0][7] = new Rook(true); //Right
-   this->squares[0][1] = new Knight(true);
-   this->squares[0][6] = new Knight(true);
-   //this->squares[0][2] = new Bishop(true);
-   this->squares[0][5] = new Bishop(true);
-   
-   this->squares[1][0] = new Pawn(true);
-   this->squares[1][1] = new Pawn(true);
-   //   this->squares[1][2] = new Pawn(true);
-   //   this->squares[1][3] = new Pawn(true);
-   //   this->squares[1][4] = new Pawn(true);
-   this->squares[1][5] = new Pawn(true);
-   this->squares[1][6] = new Pawn(true);
-   this->squares[1][7] = new Pawn(true);
-   
-   
-   
-   //Black
-   this->squares[6][0] = new Pawn(false);
-   this->squares[6][1] = new Pawn(false);
-   //   this->squares[6][2] = new Pawn(false);
-   //   this->squares[6][3] = new Pawn(false);
-   //   this->squares[6][4] = new Pawn(false);
-   this->squares[6][5] = new Pawn(false);
-   this->squares[6][6] = new Pawn(false);
-   this->squares[6][7] = new Pawn(false);
-   
-   this->squares[7][0] = new Rook(false);
-   this->squares[7][7] = new Rook(false);
-   this->squares[7][1] = new Knight(false);
-   this->squares[7][6] = new Knight(false);
-   this->squares[7][2] = new Bishop(false);
-   this->squares[7][5] = new Bishop(false);
-   this->squares[7][3] = new Queen(false);
-   //this->squares[7][4] = new King(false);
-}
-
-/***************************************************
  * BOARD::UNDO
  *         *** EXTRA CREDIT ****
  *
@@ -558,17 +419,6 @@ void Board::initq()
  ***************************************************/
 void Board::undo()
 {
-//   init();
-//
-//   for (int i = 0; i < history.size() - 1; i++)
-//   {
-//      Move move(history[i], *this);
-//      move.parse();
-//      move.execute();
-//   }
-//   draw();
-//   history.pop_back();
-//   return;
    
    // open the new file
    std::ofstream fout("temp.txt");

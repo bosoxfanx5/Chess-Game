@@ -149,6 +149,7 @@ void Move::parse() throw(string)
     {
         switch (text[i])
         {
+            case ' ': break;
             case 'p':   // capture a pawn
             case 'n':   // capture a knight
             case 'b':   // capture a bishop

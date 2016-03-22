@@ -23,6 +23,7 @@
 #include <fstream>
 #include <string.h>
 #include <vector>
+#include <random>
 #include "piece.h"
 #include "move.h"
 #include "position.h"

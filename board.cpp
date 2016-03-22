@@ -582,20 +582,15 @@ void Board::rank()
 {
    int score = 0;
    for (int i = 0; i <= 7; i++)
-   {
       for (int j = 0; j <= 7; j++)
-      {
          score += squares[i][j]->getScore();
-      }
-   }
+   
    if (score > 0)
       std::cout << "White is ahead by " << abs(score) << std::endl;
-   else
-      if (score < 0)
-         std::cout << "Black is ahead by " << abs(score) << std::endl;
-      else
-         if (score == 0)
-            std::cout << "White and black are tied." << std::endl;
+   else if (score < 0)
+      std::cout << "Black is ahead by " << abs(score) << std::endl;
+   else if (score == 0)
+      std::cout << "White and black are tied." << std::endl;
    return;
 }
 

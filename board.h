@@ -55,6 +55,8 @@ public:
     void load();
     void draw();
     void undo();
+    void rank();
+    void autoMove();
     void drawTest();
     void printHistory();
     void writeFile();

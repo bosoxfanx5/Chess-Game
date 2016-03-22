@@ -764,6 +764,5 @@ void Pawn::getMoves(Board & board, Position & position)
             }
         }
     }
-    
 }
 

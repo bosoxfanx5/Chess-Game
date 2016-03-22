@@ -231,6 +231,10 @@ void Board::interact()
       {
          autoMove();
       }
+      else if (moveString == "rank")
+      {
+         rank();
+      }
       else if (moveString == "history")
       {
          printHistory();
@@ -517,6 +521,7 @@ void Board::printHistory()
  ***************************************************/
 void Board::autoMove()
 {
+   srand (time(NULL));
    Piece *p;
    bool w = !(history.size() % 2);
    int r;
@@ -527,8 +532,11 @@ void Board::autoMove()
    {
       do
       {
-         r = rand() % 7; //random bumber between 0 and 7
-         c = rand() % 7; //random bumber between 0 and 7
+         //srand (time(NULL));
+         r = rand() % 8; //random bumber between 0 and 7
+         
+         //srand (time(NULL));
+         c = rand() % 8; //random bumber between 0 and 7
          
          p = squares[r][c];
       } while (p->getIsWhite() != w);
@@ -537,6 +545,8 @@ void Board::autoMove()
       
       p->posMoves.clear();
       p->getMoves(*this, position);
+      
+      //srand (time(NULL));
       int myRand = std::rand();
       int s = squares[r][c]->posMoves.size();
       int i = 0;
@@ -562,5 +572,30 @@ void Board::autoMove()
    return;
 }
 
-
+/***************************************************
+ * BOARD::RANK
+ *         *** EXTRA CREDIT ****
+ *
+ *    This function will print the move history.
+ ***************************************************/
+void Board::rank()
+{
+   int score = 0;
+   for (int i = 0; i <= 7; i++)
+   {
+      for (int j = 0; j <= 7; j++)
+      {
+         score += squares[i][j]->getScore();
+      }
+   }
+   if (score > 0)
+      std::cout << "White is ahead by " << abs(score) << std::endl;
+   else
+      if (score < 0)
+         std::cout << "Black is ahead by " << abs(score) << std::endl;
+      else
+         if (score == 0)
+            std::cout << "White and black are tied." << std::endl;
+   return;
+}
 

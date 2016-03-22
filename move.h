@@ -1,10 +1,13 @@
-//
-//  move.h
-//  Object Oriented Chess
-//
-//  Created by Brooks Robison on 3/17/16.
-//  Copyright © 2016 Dan McDaniel. All rights reserved.
-//
+/***************************************************************************
+ * Program:
+ *    Project 3, Object Oriented Chess
+ *    Brother McCracken, CS165
+ * Authors:
+ *    Dan McDaniel, Brooks Robison, Thomas Woodworth
+ * File Summary:
+ *    move.h contains the Move Class and was based off a file given
+ *    in the class.
+ ***************************************************************************/
 
 
 

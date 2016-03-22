@@ -1,10 +1,12 @@
-//
-//  this->cpp
-//  Object Oriented Chess
-//
-//  Created by Brooks Robison on 3/17/16.
-//  Copyright © 2016 Dan McDaniel. All rights reserved.
-//
+/***************************************************************************
+ * Program:
+ *    Project 3, Object Oriented Chess
+ *    Brother McCracken, CS165
+ * Authors:
+ *    Dan McDaniel, Brooks Robison, Thomas Woodworth
+ * File Summary:
+ *    This file was based off of a file provided in the class.
+ ***************************************************************************/
 
 #include <iostream>
 #include "move.h"

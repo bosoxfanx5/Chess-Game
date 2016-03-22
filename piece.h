@@ -53,11 +53,8 @@ public:
    bool getIsWhite() const                { return isWhite; }
    virtual char getLetter() const = 0;
    virtual int getScore()   const = 0;
-   virtual void getMoves(Board & board, Position & position) = 0;   //
-   std::vector<std::string> posMoves;   //
-   
-   //static bool fSimple;   // not starting off in Test mode
-   //static int  currentMove;
+   virtual void getMoves(Board & board, Position & position) = 0; 
+   std::vector<std::string> posMoves;
    
 protected:
    bool isWhite;

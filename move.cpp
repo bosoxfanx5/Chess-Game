@@ -76,10 +76,6 @@ void Move::parse() throw(string)
     
     char      piece     = NO_PIECE;   // piece to be promoted to
     char      capture   = false;      // Piece to capture
-    //char      promote   = false;      // Piece to promote to
-    //bool      enpassant = false;      // Enpassant pawn capture
-    //bool      castleK   = false;      // kingside castle
-    //bool      castleQ   = false;      // queenside castle
     bool      isWhite   = false;      // white's move?
     
     isWhite = !(board->history.size() % 2);

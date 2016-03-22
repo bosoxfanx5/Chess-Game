@@ -24,7 +24,6 @@ using namespace std;
 int main()
 {
    Board board = *new Board(); //default to clean board
-   //board.load();     //
    board.init();
    board.draw();
    board.interact();

@@ -375,8 +375,6 @@ void Space::getMoves(Board & board, Position & position)
  ***************************************************/
 void King::getMoves(Board & board, Position & position)
 {
-   int colMoveLeft;
-   int colMoveRight;
    int r = position.getRow();
    int c = position.getCol();
    bool w = isWhite;
@@ -385,31 +383,57 @@ void King::getMoves(Board & board, Position & position)
    bool qCastle = true;
    bool kCastle = true;
    
-   colMoveLeft = (w) ? (c - 1) : (c + 1);
-   colMoveRight = (w) ? (c + 1) : (c - 1);
-   
-   // Validate squares immediately around the King
-   for (int i = r - 1; i <= r + 1; i++)
-      if (i >= 0 && i < 8)
-      {
-         for (int j = c - 1; j <= c + 1; j++)
-            if (j >= 0 && j < 8)
-            {
-               l = tolower(board.squares[i][j]->getLetter());
-               if (l == ' ' || w != board.squares[i][j]->getIsWhite())
+   if (w)
+   {
+      // Validate squares immediately around the King for White
+      for (int i = r - 1; i <= r + 1; i++)
+         if (i >= 0 && i < 8)
+         {
+            for (int j = c - 1; j <= c + 1; j++)
+               if (j >= 0 && j < 8)
                {
-                  //validMove = getCol(c) + getRowAlpha(r + 1) + getCol(j) + getRowAlpha(i + 1) + l;
-                  validMove = "";
-                  validMove += getCol(c);
-                  validMove += getRowAlpha(r + 1);
-                  validMove += getCol(j);
-                  validMove += getRowAlpha(i + 1);
-                  validMove += l;
-                  posMoves.push_back(validMove);
-                  //std::cout << "c" << j << "r" << i << " is valid" << std::endl;
+                  l = tolower(board.squares[i][j]->getLetter());
+                  if (l == ' ' || w != board.squares[i][j]->getIsWhite())
+                  {
+                     //validMove = getCol(c) + getRowAlpha(r + 1) + getCol(j) + getRowAlpha(i + 1) + l;
+                     validMove = "";
+                     validMove += getCol(c);
+                     validMove += getRowAlpha(r + 1);
+                     validMove += getCol(j);
+                     validMove += getRowAlpha(i + 1);
+                     validMove += l;
+                     posMoves.push_back(validMove);
+                     //std::cout << "c" << j << "r" << i << " is valid" << std::endl;
+                  }
                }
-            }
-      }
+         }
+   }
+   else
+   {
+      // Validate squares immediately around the King for Black
+      for (int i = r + 1; i >= r - 1; i--)
+         if (i >= 0 && i < 8)
+         {
+            for (int j = c + 1; j >= c - 1; j--)
+               if (j >= 0 && j < 8)
+               {
+                  l = tolower(board.squares[i][j]->getLetter());
+                  if (l == ' ' || w != board.squares[i][j]->getIsWhite())
+                  {
+                     //validMove = getCol(c) + getRowAlpha(r + 1) + getCol(j) + getRowAlpha(i + 1) + l;
+                     validMove = "";
+                     validMove += getCol(c);
+                     validMove += getRowAlpha(r + 1);
+                     validMove += getCol(j);
+                     validMove += getRowAlpha(i + 1);
+                     validMove += l;
+                     posMoves.push_back(validMove);
+                     //std::cout << "c" << j << "r" << i << " is valid" << std::endl;
+                  }
+               }
+         }
+   }
+   
    // Check for castle move
    // syntax for castle move e1g1c (e8g1c) -> King Side, e1c1C (e8c1C) -> Queen Side
    //      There are only two spots a King can move to when castling: 2 squares to the left or 2 squares to the right.
